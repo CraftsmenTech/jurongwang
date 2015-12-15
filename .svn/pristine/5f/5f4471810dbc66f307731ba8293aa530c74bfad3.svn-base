@@ -1,0 +1,584 @@
+package com.orong.activity;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.telephony.TelephonyManager;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
+
+import com.orong.Constant;
+import com.orong.R;
+import com.orong.entity.HttpDatas;
+import com.orong.entity.UserInfo;
+import com.orong.utils.JSONUtil;
+import com.orong.utils.MatchUtil;
+import com.orong.utils.Md5Util;
+import com.orong.utils.net.NetUtils;
+import com.orong.utils.net.HttpAsyncTask.TaskCallBack;
+
+/**
+ * @Title: RegisterActivity.java
+ * @Description: 注册页面
+ * @author lanhaizhong
+ * @date 2013年7月5日 上午10:15:31
+ * @version V1.0 Copyright (c) 2013 Crong.com,Inc. All Rights Reserved.
+ */
+public class RegisterActivity extends BaseActivity implements OnClickListener {
+	private LinearLayout llStepNavigate;// 页面第一第二步的导航条
+	private TextView tvStep1;
+	private TextView tvStep2;
+	private ViewFlipper vfRegister;// 页面切换的容器
+	private int viewIndex = 0;// 初始化当前页排位
+
+	// step1界面元素
+	private EditText etPhoneNum;// 电话号码输入框
+	private String phone;
+	private Button btGetCode;// 获取验证码按钮;
+	private EditText etCheckCode;// 验证码输入框
+	private Button btNextStep;// 下一步按钮
+	private CheckBox cbAccepted;// 同意复选框
+	private TextView tvProtocolOfOrong;// 服务条款标题
+
+	// step2的界面元素
+	private EditText etUserName;// 电话或用户名
+	private EditText etPassWord;// 登录密码
+	private EditText etTransatonPassWord;// 交易密码
+	private Button btRegissterLogin;// 注册并登录
+
+	private Runnable timerRunnable;// 定时器
+	private static final int TIMECHANGE = 200;
+	// 定时结束
+	private static final int TIMERCOMPLETE = 300;
+	@SuppressLint("HandlerLeak")
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch (msg.what) {
+			case TIMECHANGE:
+				Bundle data = msg.getData();
+				int time = data.getInt("time");
+				btGetCode.setText(String.valueOf(time));
+				break;
+			case TIMERCOMPLETE:
+				btGetCode.setClickable(true);
+				setButtonBackgroud(btGetCode);
+				btGetCode.setText(R.string.get_verification_code);
+				btNextStep.setClickable(false);
+				setButtonBackgroud(btNextStep);
+				handler.removeCallbacks(timerRunnable);
+				timerRunnable = null;
+				break;
+			default:
+				break;
+			}
+		}
+	};
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		setContentView(R.layout.activity_register);
+		setTitle(this, R.string.register);
+		initView();
+
+	}
+
+	@Override
+	public void initView() {
+		super.initView();
+		llStepNavigate = (LinearLayout) this.findViewById(R.id.ll_step_navigate);
+		tvStep1 = (TextView) this.findViewById(R.id.tv_step1);
+		tvStep2 = (TextView) this.findViewById(R.id.tv_step2);
+
+		ivReback = (ImageView) this.findViewById(R.id.iv_reback);
+		ivReback.setOnClickListener(this);
+		vfRegister = (ViewFlipper) this.findViewById(R.id.vfl_register);
+
+		// step1
+		etPhoneNum = (EditText) this.findViewById(R.id.et_phonenum);
+		btGetCode = (Button) this.findViewById(R.id.bt_get_checkCode);
+		btGetCode.setOnClickListener(this);
+
+		etCheckCode = (EditText) this.findViewById(R.id.et_checkcode);
+		etCheckCode.addTextChangedListener(new captChaTextWatcher());
+		// 同意并已经输入验证码才能实行下一步
+		cbAccepted = (CheckBox) this.findViewById(R.id.cb_accepted);
+		cbAccepted.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				btNextStep.setClickable(isChecked && etCheckCode.getText().toString().trim().length() == 4 && !btGetCode.isClickable());
+				setButtonBackgroud(btNextStep);
+			}
+		});
+
+		tvProtocolOfOrong = (TextView) this.findViewById(R.id.tv_protocol_of_orong);
+		tvProtocolOfOrong.setOnClickListener(this);
+
+		btNextStep = (Button) this.findViewById(R.id.bt_next_step);
+		btNextStep.setOnClickListener(this);
+		btNextStep.setClickable(false);
+		setButtonBackgroud(btNextStep);
+
+		// step2
+		etUserName = (EditText) this.findViewById(R.id.et_usernmae);
+		etPassWord = (EditText) this.findViewById(R.id.et_login_paw);
+
+		etTransatonPassWord = (EditText) this.findViewById(R.id.et_transation_paw);
+		etTransatonPassWord.setOnClickListener(this);
+
+		btRegissterLogin = (Button) this.findViewById(R.id.bt_register_and_login);
+		btRegissterLogin.setOnClickListener(this);
+
+		// 试图 获取本机电话号码并显示到电话号输入框
+		TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		String telephone = manager.getLine1Number();
+		if (telephone != null) {
+			if (telephone.startsWith("+86")) {
+				telephone = telephone.substring(3);
+			} else if (telephone.startsWith("86")) {
+				telephone = telephone.substring(2);
+			}
+		}
+		etPhoneNum.setText(telephone);
+
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		if (timerRunnable != null) {
+			handler.removeCallbacks(timerRunnable);
+			timerRunnable = null;
+		}
+		super.onDestroy();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.iv_reback:
+			reback();
+			break;
+		case R.id.bt_get_checkCode:
+			phone = etPhoneNum.getText().toString().trim();
+			getCaptcha(phone);
+			break;
+		case R.id.bt_next_step:
+			String captcha = etCheckCode.getText().toString().trim();
+			doCheckCaptcha(captcha);
+			break;
+		case R.id.tv_protocol_of_orong:
+			startActivity(new Intent(this, ProtocolActivity.class));
+			break;
+		case R.id.bt_register_and_login:
+			doRegisterAndLogin();
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 获取验证码
+	 * 
+	 * @param phone
+	 *            接收验证码的手机帐号
+	 */
+	private void getCaptcha(String phone) {
+		if (MatchUtil.isPhoneNum(phone)) {
+			HttpDatas datas = new HttpDatas(Constant.USERAPI);
+			datas.putParam("method", "GetRegisterCode");
+			datas.putParam("phoneNum", phone);
+			NetUtils.sendRequest(datas, RegisterActivity.this, RegisterActivity.this.getString(R.string.requesting), new TaskCallBack() {
+				int validTime = 0;
+				String loginName = null;
+
+				@Override
+				public int excueHttpResponse(String strResponds) {
+					JSONObject jsonObject = JSONUtil.instaceJsonObject(strResponds);
+					int code = 0;
+					if (jsonObject != null) {
+						try {
+							code = jsonObject.getInt("code");
+							if (code == 2000) {
+								validTime = jsonObject.getInt("validTime");
+							} else if (code == 3001) {
+								loginName = jsonObject.getString("loginname");
+							}
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+					return code;
+				}
+
+				@Override
+				public void beforeTask() {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void afterTask(int result) {
+					switch (result) {
+					case 2000:
+						Toast.makeText(getApplicationContext(), getString(R.string.send_message), Toast.LENGTH_LONG).show();
+						btGetCode.setClickable(false);
+						setButtonBackgroud(btGetCode);
+						if (cbAccepted.isChecked()) {
+							btNextStep.setClickable(true);
+							setButtonBackgroud(btNextStep);
+						}
+						// 定时器
+						if (timerRunnable != null) {
+							handler.removeCallbacks(timerRunnable);
+							timerRunnable = null;
+						}
+						timerRunnable = new Runnable() {
+							@Override
+							public void run() {
+								if (validTime > 0) {
+									validTime--;
+									Message msg = handler.obtainMessage();
+									msg.what = TIMECHANGE;
+									Bundle bundle = new Bundle();
+									bundle.putInt("time", validTime);
+									msg.setData(bundle);
+									msg.sendToTarget();
+									handler.postDelayed(timerRunnable, 1000);
+								} else {
+									handler.sendEmptyMessage(TIMERCOMPLETE);
+								}
+							}
+						};
+						handler.post(timerRunnable);
+						break;
+					case 3001:// 手机号码已经注册
+						Toast.makeText(getApplicationContext(), getString(R.string.phone_has_register), 0).show();
+						mySetResult(3001, loginName);
+						finish();
+						break;
+					case 3003:// 手机号码请求过多
+						Toast.makeText(getApplicationContext(), getString(R.string.getCaptcha_too_many), 0).show();
+						break;
+					case 3014:// 请求时间间隔过短
+						Toast.makeText(getApplicationContext(), getString(R.string.getCaptcha_frequently), 0).show();
+						break;
+
+					default:
+						showResulttoast(result, RegisterActivity.this);
+						break;
+					}
+				}
+			});
+
+		} else {
+			if ("".equals(phone)) {
+				Toast.makeText(this, R.string.null_phone, 0).show();
+			} else {
+				Toast.makeText(this, R.string.error_phone, 0).show();
+			}
+			btNextStep.setClickable(false);
+			setButtonBackgroud(btNextStep);
+			return;
+		}
+
+	}
+
+	/**
+	 * 点击下一步对验证码验证
+	 */
+	private void doCheckCaptcha(String captcha) {
+		if (captcha == null || "".equals(captcha)) {
+			Toast.makeText(this, R.string.null_captcha, 0).show();
+			return;
+		} else {
+			HttpDatas datas = new HttpDatas(Constant.USERAPI);
+			datas.putParam("method", "VerifyRegisterCode");
+			datas.putParam("phoneNum", phone);
+			datas.putParam("phoneCode", captcha);
+			NetUtils.sendRequest(datas, RegisterActivity.this, RegisterActivity.this.getString(R.string.checking_captcha), new TaskCallBack() {
+				@Override
+				public int excueHttpResponse(String strResponds) {
+					int code = 0;
+					try {
+						JSONObject jsonObject = new JSONObject(strResponds);
+						code = jsonObject.getInt("code");
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return code;
+				}
+
+				@Override
+				public void beforeTask() {
+
+				}
+
+				@Override
+				public void afterTask(int result) {
+					switch (result) {
+					case Constant.RESPONSE_OK:
+						llStepNavigate.setBackgroundResource(R.drawable.step2);
+						tvStep1.setTextColor(getResources().getColor(R.color.white2));
+						tvStep2.setTextColor(getResources().getColor(R.color.white2));
+						vfRegister.showNext();
+						viewIndex++;
+						break;
+					case 3004:
+						Toast.makeText(getApplicationContext(), "该验证码已过期，请从新获取", 0).show();
+						break;
+					case 3005:
+						Toast.makeText(getApplicationContext(), "验证码错误，请从新输入", 0).show();
+						etCheckCode.setText(null);
+						break;
+					default:
+						showResulttoast(result, RegisterActivity.this);
+						break;
+					}
+				}
+			});
+		}
+	}
+
+	protected void mySetResult(int resultCode, String loginName) {
+		Intent data = new Intent();
+		data.putExtra("Account", loginName);
+		setResult(resultCode, data);
+	}
+
+	/**
+	 * 注册并登录
+	 */
+	private void doRegisterAndLogin() {
+		// 验证用户名
+		String username = etUserName.getText().toString().trim();
+		if (!MatchUtil.isLicitAccount(username)) {
+			if ("".equals(username)) {
+				Toast.makeText(this, R.string.null_account, 0).show();
+			} else if (username.length() < 3) {
+				Toast.makeText(this, R.string.short_account, 0).show();
+			} else {
+				Toast.makeText(this, R.string.error_account, 0).show();
+			}
+			return;
+		}
+		// 验证密码
+		String loginPasWord = etPassWord.getText().toString().trim();
+		if ("".equals(loginPasWord)) {
+			Toast.makeText(this, R.string.null_password, 0).show();
+			return;
+		} else if (loginPasWord.length() < 6) {
+			Toast.makeText(this, R.string.short_password, 0).show();
+			return;
+		}
+		if (MatchUtil.isAllNumber(loginPasWord)) {
+			Toast.makeText(this, R.string.number_password, 0).show();
+			return;
+		} else if (!MatchUtil.isLicitPassword(loginPasWord)) {
+			Toast.makeText(this, R.string.error_password, 0).show();
+
+			return;
+		}
+
+		// 验证交易密码
+		String transationPassWord = etTransatonPassWord.getText().toString().trim();
+		if (loginPasWord.equals(transationPassWord)) {
+			Toast.makeText(this, R.string.same_password, 0).show();
+			return;
+		}
+		if ("".equals(transationPassWord)) {
+			Toast.makeText(this, R.string.null_tran_password, 0).show();
+			return;
+		} else if (transationPassWord.length() < 6) {
+			Toast.makeText(this, R.string.short_tran_password, 0).show();
+			return;
+		}
+		if (MatchUtil.isAllNumber(transationPassWord)) {
+			System.out.println(MatchUtil.isAllNumber(loginPasWord));
+			Toast.makeText(this, R.string.number_tran_password, 0).show();
+			return;
+		}
+		if (!MatchUtil.isLicitPassword(transationPassWord)) {
+			Toast.makeText(this, R.string.error_tran_password, 0).show();
+			return;
+		}
+		// 都通过
+		requestRegister(phone, username, loginPasWord, transationPassWord);
+
+	}
+
+	/**
+	 * 注册登录请求
+	 * 
+	 * @param phone
+	 *            注册手机
+	 * @param username
+	 *            注册帐号
+	 * @param loginPasWord
+	 *            登录密码
+	 * @param transationPassWord
+	 *            交易密码
+	 */
+	private void requestRegister(String phone, String username, String loginPasWord, String transationPassWord) {
+		HttpDatas datas = new HttpDatas(Constant.USERAPI);
+		datas.putParam("method", "Register");
+		datas.putParam("phoneNum", phone);
+		datas.putParam("loginName", username);
+		datas.putParam("logPwd", Md5Util.md5Diagest(loginPasWord, 16));
+		datas.putParam("tradePwd", Md5Util.md5Diagest(transationPassWord, 16));
+		NetUtils.sendRequest(datas, RegisterActivity.this, getString(R.string.registering), new TaskCallBack() {
+			UserInfo info;
+			String loginName = null;
+
+			@Override
+			public int excueHttpResponse(String strResponds) {
+				int code = 0;
+				try {
+					JSONObject jsonObject = new JSONObject(strResponds);
+					code = jsonObject.getInt("code");
+					if (code == Constant.RESPONSE_OK) {
+						info = JSONUtil.jsonObject2Bean(jsonObject, UserInfo.class);
+					} else if (code == 3001) {
+						loginName = jsonObject.getString("loginname");
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return code;
+			}
+
+			@Override
+			public void beforeTask() {
+
+			}
+
+			@Override
+			public void afterTask(int result) {
+				switch (result) {
+				case Constant.RESPONSE_OK:
+					Toast.makeText(getApplicationContext(), RegisterActivity.this.getString(R.string.registerSuccess), 0).show();
+					Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+					intent.putExtra("User", info);
+					startActivity(intent);
+					break;
+				case 3001:
+					Toast.makeText(getApplicationContext(), getString(R.string.phone_has_register), 0).show();
+					mySetResult(3001, loginName);
+					finish();
+					break;
+				case 3006:
+					Toast.makeText(getApplicationContext(), getString(R.string.uname_was_uesed), 0).show();
+					break;
+				default:
+					showResulttoast(result, RegisterActivity.this);
+					break;
+				}
+
+			}
+		});
+	}
+
+	/**
+	 * 返回前一页 如果ViewFlipper 的当前页不是第一页退回前一页，否则退出整个页面，
+	 */
+	private void reback() {
+		if (viewIndex > 0) {
+			llStepNavigate.setBackgroundResource(R.drawable.step1);
+			tvStep1.setTextColor(getResources().getColor(R.color.white2));
+			tvStep2.setTextColor(getResources().getColor(R.color.textcolor));
+			vfRegister.showPrevious();
+			viewIndex--;
+		} else {
+			finish();
+		}
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		reback();
+
+	}
+
+	private void setButtonBackgroud(Button button) {
+		if (button.isClickable()) {
+			button.setBackgroundResource(R.drawable.register_step_background_selector);
+		} else {
+			button.setBackgroundResource(R.drawable.unclickble_right_round);
+		}
+	}
+
+	class captChaTextWatcher implements TextWatcher {
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			int length = s.length();
+			if (length > 0) {
+				if (s.charAt(length - 1) == ' ') {
+					s.delete(length - 1, length);
+					length--;
+					return;
+				}
+			}
+			if (length > 4) {
+				s.delete(length - 1, length);
+				length--;
+				return;
+			}
+			if (length == 4 && cbAccepted.isChecked()) {
+				phone = etPhoneNum.getText().toString().trim();
+				if (MatchUtil.isPhoneNum(phone)) {
+					btNextStep.setClickable(true);
+					setButtonBackgroud(btNextStep);
+				} else {
+					if ("".equals(phone)) {
+						Toast.makeText(getApplicationContext(), R.string.null_phone, 0).show();
+					} else {
+						Toast.makeText(getApplicationContext(), R.string.error_phone, 0).show();
+					}
+				}
+
+			} else {
+				btNextStep.setClickable(false);
+				setButtonBackgroud(btNextStep);
+			}
+		}
+
+	}
+}

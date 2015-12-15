@@ -1,0 +1,71 @@
+package com.orong.activity;
+
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import com.orong.R;
+import com.orong.adapter.RepayPlanAdapter;
+import com.orong.entity.RepayPlan;
+import com.orong.utils.JSONUtil;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * @Title: RepayPlanActivity.java
+ * @Description: 还款计划界面
+ * @author lanhaizhong
+ * @date 2013年7月15日上午11:42:54
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class RepayPlanActivity extends BaseActivity {
+
+	private TextView tvRepayPlanInfo;
+	private ListView lvRepayplans;
+	private ArrayList<RepayPlan> repayPlanList;
+	private RepayPlanAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_repay_plan);
+		initivReabck(this);
+		setTitle(this, R.string.repayed_plan);
+		initView();
+		Intent intent = getIntent();
+		String loanName = intent.getStringExtra("LoanName");
+		tvRepayPlanInfo.setText(loanName);
+		String arryStr = intent.getStringExtra("RefundPlanJSON");
+		if (arryStr == null) {
+			Toast.makeText(this, "出错", 0).show();
+			finish();
+		} else {
+			JSONArray jsonArray;
+			try {
+				jsonArray = new JSONArray(arryStr);
+				repayPlanList = JSONUtil.jsonArray2ArrayList(jsonArray, RepayPlan.class);
+				adapter = new RepayPlanAdapter(repayPlanList, this);
+				lvRepayplans.setAdapter(adapter);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public void initView() {
+		// TODO Auto-generated method stub
+		super.initView();
+		tvRepayPlanInfo = (TextView) this.findViewById(R.id.tv_repayplaninfo_text);
+		lvRepayplans = (ListView) this.findViewById(R.id.lv_repay_plan_list);
+		repayPlanList = new ArrayList<RepayPlan>();
+
+	}
+}

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/pad3"
+    android:layout_marginRight="@dimen/pad3"
+    android:layout_marginTop="@dimen/pad3"
+    android:background="@drawable/corner_round"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/pad3"
+    android:paddingLeft="@dimen/pad3" >
+
+    <ImageView
+        android:id="@+id/iv_usericon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="@dimen/pad3"
+        android:scaleType="fitXY"
+        android:src="@drawable/useric" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/pad1"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:paddingRight="@dimen/pad1" >
+
+                <ImageView
+                    android:id="@+id/iv_news"
+                    android:layout_width="@dimen/spa48"
+                    android:layout_height="@dimen/spa33"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="@dimen/pad9"
+                    android:layout_marginTop="@dimen/pad9"
+                    android:background="@drawable/news_readed"
+                    android:clickable="true"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/tv_notread_count"
+                    android:layout_width="@dimen/spa22"
+                    android:layout_height="@dimen/spa22"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/circlebackgound"
+                    android:gravity="center"
+                    android:text="33"
+                    android:textColor="@color/white2"
+                    android:textSize="@dimen/f13"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_member_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/pad4"
+                    android:text="张某某"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/f21" />
+
+                <TextView
+                    android:id="@+id/tv_member_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/pad4"
+                    android:text="（10086）"
+                    android:textColor="@color/textcolor"
+                    android:textSize="@dimen/f21" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dotted_line" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_member_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/pad4"
+                android:text="000000"
+                android:textColor="@color/cor7"
+                android:textSize="@dimen/f21"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

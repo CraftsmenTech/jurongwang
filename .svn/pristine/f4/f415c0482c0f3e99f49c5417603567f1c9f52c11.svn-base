@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/pad3" >
+
+    <ImageView
+        android:id="@+id/iv_project_ic"
+        android:layout_width="@dimen/spa120"
+        android:layout_height="@dimen/spa100"
+        android:scaleType="fitXY"
+        android:src="@drawable/useric" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:id="@+id/tv_project_theme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:ellipsize="middle"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:text="fdsfdcxzcdsddfsfdsdsffdvx中盘哪个更尴尬的范德萨范德萨sfsdfdsfdsfdsfdsfdsfddfs" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/pad3" >
+
+            <TextView
+                android:id="@+id/tv_project_sum"
+                style="@style/normal_textstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:paddingRight="@dimen/pad1"
+                android:text="进度：dfsefsdf"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:id="@+id/tv_project_progress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="right|center_vertical"
+                android:text="进度：82.9%" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

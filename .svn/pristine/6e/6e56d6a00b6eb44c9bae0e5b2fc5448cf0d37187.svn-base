@@ -1,0 +1,51 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+/**
+ * @Title: RecomMemberActivity.java
+ * @Description: 推荐会员界面
+ * @author lanhaizhong
+ * @date 2013年7月10日上午10:11:53
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class RecomMemberActivity extends BaseRecommendActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_recom_declare);
+		initView(this);
+		initivReabck(this);
+		setTitle(this, R.string.my_recom_menber);
+
+		setTextOfTvHasRecommendedNum(getString(R.string.member_has_recom), 23);
+		setTextOfTvHasGotBrokerage(25434.00);
+		setTextOfTvWillHaveGotBrokerage(1232312.00);
+		setTextOfBtRecommend(getString(R.string.recom_member));
+		tvRecommendedRules.setText(R.string.the_member_recom_rules);
+
+		rlRecommendedRules.setOnClickListener(this);
+		btRecommend.setOnClickListener(this);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.rl_recommended_rules:
+			startActivity(new Intent(this, RulesOfRecoMemberActivity.class));
+			break;
+		case R.id.bt_recommend:
+			startActivity(new Intent(this, DoRecomMemberActivity.class));
+			break;
+		default:
+			super.onClick(v);
+			break;
+		}
+	}
+}

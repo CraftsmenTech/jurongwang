@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@color/blue" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的聚融"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/pad3"
+        android:paddingLeft="@dimen/pad3"
+        android:paddingTop="@dimen/pad3" >
+
+        <ImageView
+            android:id="@+id/iv_usericon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/useric" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/iv_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="@dimen/pad3"
+                    android:clickable="true"
+                    android:src="@drawable/news" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_member_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/pad4"
+                        android:text="李天一"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/f21" />
+
+                    <TextView
+                        android:id="@+id/tv_member_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/pad4"
+                        android:text="（10086）"
+                        android:textColor="@color/textcolor"
+                        android:textSize="@dimen/f21" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dotted_line" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/tv_member_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/pad4"
+                    android:text="dsfsdf"
+                    android:textColor="@color/cor7"
+                    android:textSize="@dimen/f21"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_recom_member"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/iv_imageView1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/recom_member" />
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/iv_imageView1"
+                android:text="有偿推荐会员"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/sharp_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_declare_project"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/iv_imageView2"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/recom_project" />
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/iv_imageView2"
+                android:text="有偿申报项目"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/sharp_line" />
+
+        <RelativeLayout
+            android:id="@+id/rl_toBeDeputy"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/iv_imageView3"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:src="@drawable/invested_deputy" />
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="12dp"
+                android:layout_toRightOf="@+id/iv_imageView3"
+                android:text="成为投资者代表"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

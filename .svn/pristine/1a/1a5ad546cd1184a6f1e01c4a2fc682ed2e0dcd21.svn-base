@@ -1,0 +1,173 @@
+package com.orong.activity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.orong.Constant;
+import com.orong.R;
+import com.orong.entity.HttpDatas;
+import com.orong.entity.MemberInfo;
+import com.orong.utils.LoadImageRespone;
+import com.orong.utils.net.NetUtils;
+import com.orong.utils.net.NetUtils.DownloadCallback;
+import com.orong.utils.net.HttpAsyncTask.TaskCallBack;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+/**
+ * @Title: MemberSpaceActivity.java
+ * @Description: 会员空间页面
+ * @author lanhaizhong
+ * @date 2013年7月16日上午11:51:46
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class MemberSpaceActivity extends BaseActivity {
+
+	private ImageView iv_picture;
+	private TextView tv_name;
+	private TextView tv_phone;
+	private TextView tv_identity;
+	private Button bt_addFriend;
+	private MemberInfo info;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_member_space);
+		setTitle(this, "会员空间");
+		initivReabck(this);
+		initView();
+		LoadUserICIamge(info.getPicture());
+	}
+
+	@Override
+	public void initView() {
+		iv_picture = (ImageView) this.findViewById(R.id.iv_member_ic);
+		tv_name = (TextView) this.findViewById(R.id.tv_member_name);
+		tv_phone = (TextView) this.findViewById(R.id.tv_member_phone);
+		tv_identity = (TextView) this.findViewById(R.id.tv_member_Identity);
+		bt_addFriend = (Button) this.findViewById(R.id.bt_be_friends);
+		bt_addFriend.setOnClickListener(this);
+
+		Intent intent = getIntent();
+		info = (MemberInfo) intent.getSerializableExtra("MemberInfo");
+
+		tv_name.setText(info.getName());
+		String phone = info.getPhone();
+		tv_phone.setText(String.format(getString(R.string.phoneformat), phone.subSequence(0, 3), phone.subSequence(phone.length() - 3, phone.length())));
+		setUserIdentity(info.getUserFlag());
+		setFrendButtonText(info.isFriend());
+		super.initView();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_be_friends:
+			HttpDatas datas = new HttpDatas(Constant.USERAPI);
+			datas.putParam("method", "AddFriend");
+			datas.putParam("friendUserId", info.getUserID());
+			NetUtils.sendRequest(datas, this, getString(R.string.requesting), new TaskCallBack() {
+				boolean isSuccess = false;
+
+				@Override
+				public int excueHttpResponse(String respondsStr) {
+					int code = 0;
+					try {
+						JSONObject jsonObject = new JSONObject(respondsStr);
+						code = jsonObject.getInt("code");
+						if (code == Constant.RESPONSE_OK) {
+							isSuccess = jsonObject.getBoolean("isSucceed");
+						}
+					} catch (JSONException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return code;
+				}
+
+				@Override
+				public void beforeTask() {
+
+				}
+
+				@Override
+				public void afterTask(int result) {
+					switch (result) {
+					case Constant.RESPONSE_OK:
+						Toast.makeText(getApplicationContext(), "成功加为好友", 0).show();
+						setFrendButtonText(true);
+						break;
+					case 3013:
+						Toast.makeText(getApplicationContext(), "对方已经是您的好友", 0).show();
+						setFrendButtonText(true);
+						break;
+					default:
+						showResulttoast(result, MemberSpaceActivity.this);
+						break;
+					}
+				}
+			});
+			break;
+
+		default:
+			break;
+		}
+		super.onClick(v);
+	}
+
+	private void setUserIdentity(int flag) {
+		switch (flag) {
+		case 0:
+			tv_identity.setText(R.string.userFlag0);// 借款人
+			break;
+		case 1:
+			tv_identity.setText(R.string.userFlag1);// 投资人
+			break;
+		case 2:
+			tv_identity.setText(R.string.userFlag2);// 其它
+			break;
+		default:
+			break;
+		}
+	}
+
+	private void setFrendButtonText(boolean isfriend) {
+		bt_addFriend.setClickable(!isfriend);
+		if (isfriend) {
+			bt_addFriend.setText(R.string.wasFriend);
+			bt_addFriend.setBackgroundResource(R.drawable.cor6_rounded_rectangle);
+		} else {
+			bt_addFriend.setText(R.string.befriend);
+			bt_addFriend.setBackgroundResource(R.drawable.blue_button_background_selector);
+		}
+	}
+
+	private void LoadUserICIamge(String url) {
+		if (url == null) {
+			return;
+		} else {
+			NetUtils.downLoadImage(url, this, new DownloadCallback() {
+
+				@Override
+				public void loadCompleteCallback(LoadImageRespone respone) {
+					// TODO Auto-generated method stub
+					if (respone != null) {
+						iv_picture.setImageBitmap(respone.getBitmap());
+					}
+				}
+
+				@Override
+				public void beforeDownload() {
+				}
+			});
+		}
+	}
+}

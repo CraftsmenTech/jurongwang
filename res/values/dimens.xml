@@ -1,0 +1,50 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="f26">18sp</dimen>
+    <dimen name="f21">15sp</dimen>
+    <dimen name="f18">13sp</dimen>
+    <dimen name="f16">11sp</dimen>
+    <dimen name="f13">9sp</dimen>
+    <dimen name="f24">17sp</dimen>
+    <dimen name="spa10">67dp</dimen>
+    <dimen name="spa74">50dp</dimen>
+    <dimen name="spa72">49dp</dimen>
+    <dimen name="spa78">53dp</dimen>
+    <dimen name="spa82">55dp</dimen>
+    <dimen name="spa66">44dp</dimen>
+    <dimen name="spa68">45dp</dimen>
+    <dimen name="spa60">40dp</dimen>
+    <dimen name="spa100">67dp</dimen>
+    <dimen name="spa120">80dp</dimen>
+    <dimen name="spa600">400dp</dimen>
+    <dimen name="spa150">100dp</dimen>
+    <dimen name="spa180">120dp</dimen>
+    <dimen name="spa48">45dp</dimen>
+    <dimen name="spa33">30dp</dimen>
+    <dimen name="spa22">16dp</dimen>
+    <dimen name="spa390">270dp</dimen>
+    <dimen name="spa90">60dp</dimen>
+    <dimen name="spa18">12dp</dimen>
+    <dimen name="spa15">10dp</dimen>
+    <dimen name="spa3">3dp</dimen>
+    <dimen name="spa230">155dp</dimen>
+    <dimen name="spa260">174dp</dimen>
+    <dimen name="spa130">87dp</dimen>
+    <dimen name="contract">72dp</dimen>
+    <!-- 投资列表中checkbox间距 -->
+    <dimen name="investment_chekbox_pandding">6dp</dimen>
+
+    <!-- 边距 -->
+    <dimen name="pad5">3dp</dimen>
+    <dimen name="pad1">4dp</dimen>
+    <dimen name="pad3">6dp</dimen>
+    <dimen name="pad4">12dp</dimen>
+    <dimen name="pad15">10dp</dimen>
+    <dimen name="pad20">14dp</dimen>
+    <dimen name="pad9">6dp</dimen>
+    <dimen name="pad12">9dp</dimen>
+
+</resources>

@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/green_rounded_rectangle"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/pad4"
+            android:layout_weight="2"
+            android:gravity="center_vertical"
+            android:text="中国改革的后防漏洞和风力可达规划"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/pad4"
+            android:layout_marginRight="@dimen/pad4"
+            android:gravity="center_vertical"
+            android:text="2013/06/06 9:47:32"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="20" >
+
+        <ScrollView
+            style="@style/screen_margin_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad3"
+            android:background="@drawable/corner_round" >
+
+            <TextView
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"
+                android:paddingBottom="@dimen/pad4"
+                android:text="中广网北京7月9日消息 河南濮阳县政府称，经核实表明，《新闻纵横》报道的定在经济实体中兼职或者兼职取酬，以及从事有偿中介活动。"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/f21" />
+        </ScrollView>
+    </LinearLayout>
+
+    <Button
+        style="@style/blue_buttom_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:text="确认" />
+
+</LinearLayout>

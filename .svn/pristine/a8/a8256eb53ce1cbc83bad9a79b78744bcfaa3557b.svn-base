@@ -1,0 +1,52 @@
+package com.orong.utils;
+
+import java.io.File;
+
+import android.content.Context;
+import android.os.Environment;
+
+/**
+ * @Title: FileUitls.java
+ * @Description: 创建File对象的工具
+ * @author lanhaizhong
+ * @date 2013年8月14日 上午11:41:01
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class FileUitls {
+
+	/**
+	 * 判断Sd卡是否可用
+	 * 
+	 * @param context
+	 * @return
+	 */
+	private static boolean isSdCardUsed(Context context) {
+		return Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+	}
+
+	/**
+	 * 创建一个目录对象
+	 * 
+	 * @param context
+	 * @param directoryName
+	 * @return
+	 */
+	public static File createDirectory(Context context, String directoryName) {
+		String path;
+		if (isSdCardUsed(context)) {
+			path = Environment.getExternalStorageDirectory() + "/" + directoryName;
+		} else {
+			path = Environment.getRootDirectory() + "/" + directoryName;
+		}
+
+		File file = new File(path);
+		if (!file.exists()) {
+			if (file.mkdirs()) {
+				return file;
+			}
+		}
+		return file;
+	}
+
+}

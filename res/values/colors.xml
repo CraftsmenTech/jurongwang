@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 特别提示、重要数据等文字颜色：#004199     蓝色       “cor1 -->
+    <color name="cor1">#004299</color>
+    <color name="cor2">#7cbe28</color>
+    <!-- 背景 -->
+
+    <color name="cor4">#fafafa</color>
+    <color name="cor5">#cccccc</color>
+    <color name="cor6">#999999</color>
+    <color name="cor7">#666666</color>
+    <color name="cor8">#333333</color>
+    <color name="blue">#004299</color>
+    <color name="green">#7cbe28</color>
+    <color name="blue_start">#00338B</color>
+    <color name="blue_center">#003F97</color>
+    <color name="blue_end">#0B4CA4</color>
+    <color name="yellow_text">#f08300</color>
+    <!-- 青色按下效果颜色 -->
+    <color name="green_start">#61A30C</color>
+    <color name="green_center">#80C22C</color>
+    <color name="green_end">#95D741</color>
+
+    <!-- footer、标题、下拉列表、按钮等文字颜色：#fafafa  白色 “cor4” -->
+    <color name="white2">#fafafa</color>
+
+    <!-- 正常略黑的位子颜色 -->
+    <color name="textcolor">#666666</color>
+
+    <!-- 所有线框的标准色 -->
+    <color name="linecolor">#cccccc</color>
+    <color name="colorhint">#cccccc</color>
+    <color name="shape_start">#02367D</color>
+    <color name="shape_end">#0F438A</color>
+    <color name="light_gray">#EFEFEF</color>
+    <color name="red1">#EB321B</color>
+
+    <!-- capture -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="linkblue">#33B5E5</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

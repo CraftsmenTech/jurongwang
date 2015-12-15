@@ -1,0 +1,92 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <TextView
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <TextView
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <TextView
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <TextView
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <TextView
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_weight="1"
+            android:background="@drawable/corner_round"
+            android:gravity="center_vertical"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_marginLeft="@dimen/pad3"
+            android:background="@color/light_gray"
+            android:textSize="@dimen/f26"
+            android:textColor="@color/textcolor"
+            android:text="KTMF"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Button
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_rounded_rectangle"
+        android:text="推荐项目"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

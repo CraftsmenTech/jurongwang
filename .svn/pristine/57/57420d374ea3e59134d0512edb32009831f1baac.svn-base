@@ -1,0 +1,107 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+
+/**
+ * @Title: DetailOfInvestmentActivity.java
+ * @Description: 我要投资-》要融资项目的融资详情
+ * @author lanhaizhong
+ * @date 2013年7月12日下午2:14:17
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DetailOfInvestmentActivity extends BaseActivity {
+
+	private ImageView ivProjectIC;// 项目的图标
+	private TextView tvProjectTheme;// 投资项目主题
+	private TextView tvProjectSum;// 项目金额
+	private CheckBox cbProjectStatus;// 项目可投资状态
+	private TextView tvInvestmentInfo;// 投资信息
+
+	private ProgressBar pbProjectProgress;// 进度条
+	private TextView tvProgressText;// 进度
+	private TextView tvRatePercent;// 利率
+	private TextView tvTimeLimit;// 期限
+	private TextView tvIndemnity;//
+	private TextView tvLave;// 剩余
+
+	private LinearLayout llProjectInfo;// 项目信息
+	private LinearLayout llContractInfo;// 合同信息
+	private LinearLayout llRepayPlan;// 还款计划
+
+	private Button btInvest;// 我要投资
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detail_of_investment);
+		initivReabck(this);
+		setTitle(this, R.string.detailof_inve);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		super.initView();
+		ivProjectIC = (ImageView) this.findViewById(R.id.iv_project_ic);
+		tvProjectTheme = (TextView) this.findViewById(R.id.tv_project_theme);
+		tvProjectSum = (TextView) this.findViewById(R.id.tv_project_sum);
+		cbProjectStatus = (CheckBox) this.findViewById(R.id.cb_pro_status);
+		tvInvestmentInfo = (TextView) this.findViewById(R.id.tv_investment_info);
+
+		pbProjectProgress = (ProgressBar) this.findViewById(R.id.pb_project_progress);
+		tvProgressText = (TextView) this.findViewById(R.id.tv_progress_text);
+		tvRatePercent = (TextView) this.findViewById(R.id.tv_rate_percent);
+		tvTimeLimit = (TextView) this.findViewById(R.id.tv_time_limit);
+		tvIndemnity = (TextView) this.findViewById(R.id.tv_indemnity);
+		tvLave = (TextView) this.findViewById(R.id.tv_lave);
+
+		llProjectInfo = (LinearLayout) this.findViewById(R.id.ll_project_info);
+		llProjectInfo.setOnClickListener(this);
+		llContractInfo = (LinearLayout) this.findViewById(R.id.ll_contract_info);
+		llContractInfo.setOnClickListener(this);
+		llRepayPlan = (LinearLayout) this.findViewById(R.id.ll_repayed_plan);
+		llRepayPlan.setOnClickListener(this);
+
+		btInvest = (Button) this.findViewById(R.id.bt_invest);
+		btInvest.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId()) {
+		case R.id.ll_project_info:
+			Intent projectIntent = new Intent(this, ProjectInfoActivity.class);
+			startActivity(projectIntent);
+			break;
+		case R.id.ll_contract_info:
+			Intent contractIntent = new Intent(this, ContractInfoActivity.class);
+			startActivity(contractIntent);
+			break;
+		case R.id.ll_repayed_plan:
+			Intent repayIntent = new Intent(this, RepayPlanActivity.class);
+			startActivity(repayIntent);
+			break;
+		case R.id.bt_invest:
+			Intent investIntent = new Intent(this, InvestActivity.class);
+			startActivity(investIntent);
+			break;
+
+		default:
+			super.onClick(v);
+			break;
+		}
+
+	}
+
+}

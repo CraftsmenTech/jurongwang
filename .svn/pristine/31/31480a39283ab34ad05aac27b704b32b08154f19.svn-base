@@ -1,0 +1,226 @@
+package com.orong.utils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Set;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
+import android.widget.ImageView;
+
+/**
+ * @Title: FileUitls.java
+ * @Description: 创建File对象的工具
+ * @author lanhaizhong
+ * @date 2013年8月14日 上午11:41:01
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class FileUitls {
+
+	/**
+	 * 判断Sd卡是否可用
+	 * 
+	 * @param context
+	 * @return
+	 */
+	private static boolean isSdCardUsed(Context context) {
+		return Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+	}
+
+	public static String getSDCardPath(Context context) {
+		String path;
+		if (isSdCardUsed(context)) {
+			path = Environment.getExternalStorageDirectory().getPath();
+		} else {
+			path = Environment.getRootDirectory().getPath();
+		}
+		return path;
+	}
+
+	/**
+	 * 在sd卡下创建一个目录对象
+	 * 
+	 * @param context
+	 * @param directoryName
+	 *            下的目录名称
+	 * @return
+	 */
+	public static File createDirectory(Context context, String directoryName) {
+		String path;
+		if (isSdCardUsed(context)) {
+			path = Environment.getExternalStorageDirectory() + "/" + directoryName;
+		} else {
+			path = Environment.getRootDirectory() + "/" + directoryName;
+		}
+
+		File file = new File(path);
+		if (!file.exists()) {
+			if (file.mkdirs()) {
+				return file;
+			}
+		}
+		return file;
+	}
+
+	/**
+	 * 在sd卡下得到一个图片的bitmap
+	 * 
+	 * @param fileName
+	 *            sd卡下的相对名称（sd卡跟目录不用加进去）
+	 * @return
+	 */
+	public static Bitmap getBitmapfromSDPathByName(Context context, String fileName) {
+		File file = new File(getSDCardPath(context) + "/" + fileName);
+		Bitmap bitmap = null;
+		if (file.exists()) {
+			bitmap = BitmapFactory.decodeFile(file.getPath());
+		}
+		return bitmap;
+	}
+
+	/**
+	 * 将文件对象变成Bitmap 对象
+	 * 
+	 * @param filePath
+	 *            全路径
+	 * @return
+	 */
+	public static Bitmap getBitmapfromFile(String filePath) {
+		Bitmap bitmap = null;
+		try {
+			bitmap = BitmapFactory.decodeFile(filePath);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return bitmap;
+
+	}
+
+	// 递归
+	public static long getFilesZise(File f) throws Exception// 取得文件夹大小
+	{
+		long size = 0;
+		File flist[] = f.listFiles();
+		for (int i = 0; i < flist.length; i++) {
+			if (flist[i].isDirectory()) {
+				size = size + getFilesZise(flist[i]);
+			} else {
+				size = size + flist[i].length();
+			}
+		}
+		return size;
+	}
+
+	public static int getFilesNum(File direct) {
+		int num = 0;
+		if (direct == null || !direct.isDirectory() || !direct.exists()) {
+			return 0;
+		} else {
+
+			File flist[] = direct.listFiles();
+			for (int i = 0; i < flist.length; i++) {
+				if (flist[i].isDirectory()) {
+					num = num + getFilesNum(flist[i]);
+				} else {
+					num++;
+				}
+			}
+			return num;
+		}
+	}
+
+	/**
+	 * 删除文件 如果文件大于某容量
+	 * 
+	 * @param direct
+	 *            目录
+	 * @param maxFiles
+	 *            容许最多文件数量
+	 * @param maxSize
+	 *            文件中大小 单位字节
+	 * @param deletfileNum
+	 *            删除文件数量
+	 */
+	public static void deleteOldfiles(File direct, long maxFiles, long maxSize, long deletfileNum) {
+		try {
+			if (getFilesNum(direct) > maxFiles || getFilesZise(direct) > maxSize) {
+				HashMap<Long, File> fileMap = new HashMap<Long, File>();
+				getSavetime(direct, fileMap);
+				Set<Long> keyset = fileMap.keySet();
+				ArrayList<Long> list = new ArrayList<Long>(keyset);
+				Collections.sort(list, new Comparator<Long>() {
+					@Override
+					public int compare(Long lhs, Long rhs) {
+						// TODO Auto-generated method stub
+						return lhs.compareTo(rhs);
+					}
+				});
+				int size = list.size();// 文件个数
+				if (size > deletfileNum) {
+					for (int i = 0; i < deletfileNum; i++) {
+						Long key = list.get(i);
+						fileMap.get(key).delete();// 从前面开始删除
+					}
+				} else {
+					for (int i = 0; i < size; i++) {
+						Long key = list.get(i);
+						fileMap.get(key).delete();// 从前面开始删除
+					}
+				}
+
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+
+	/**
+	 * 获取文件的保存时间
+	 * 
+	 * @param direct
+	 * @param fileMap
+	 */
+	private static void getSavetime(File direct, HashMap<Long, File> fileMap) {
+		File flist[] = direct.listFiles();
+		for (int i = 0; i < flist.length; i++) {
+			if (flist[i].isDirectory()) {
+				// num = num + getFilesNum(flist[i]);
+				getSavetime(flist[i], fileMap);
+			} else {
+				File file = flist[i];
+				long key = file.lastModified();
+				fileMap.put(key, file);
+			}
+		}
+	}
+
+	/**
+	 * 删除某一目录下除开指定文件外的所有文件
+	 * 
+	 * @param direct
+	 *            目录
+	 * @param safe
+	 *            要保留的的文件
+	 */
+	public static void deleteOtherfiles(File direct, File safe) {
+		if (direct == null || !direct.exists() || !direct.isDirectory() || safe == null) {
+			return;
+		} else {
+			File[] files = direct.listFiles();
+			int length = files.length;
+			for (int i = 0; i < length; i++) {
+				File file = files[i];
+				if (!file.getPath().equals(safe.getPath())) {
+					file.delete();
+				}
+			}
+		}
+	}
+}

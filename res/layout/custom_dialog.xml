@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/pad4"
+    android:background="@drawable/corner_round"
+    android:minWidth="@dimen/spa390"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blue_rounded_rectangle"
+        android:orientation="vertical"
+        android:paddingTop="3dp" >
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa60"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:text="退出程序"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@color/blue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_frame"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/pad1"
+        android:visibility="gone" >
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_dialog_massage"
+        style="@style/normal_textstyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:maxHeight="@dimen/spa600"
+        android:minHeight="@dimen/spa120"
+        android:paddingBottom="@dimen/pad3"
+        android:paddingLeft="@dimen/pad4"
+        android:paddingRight="@dimen/pad4"
+        android:paddingTop="@dimen/pad4"
+        android:scrollbars="vertical"
+        android:text="你确定要退出程序吗" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pad4"
+        android:layout_marginTop="@dimen/pad4"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bt_left"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa60"
+            android:layout_marginLeft="@dimen/pad20"
+            android:layout_marginRight="@dimen/pad3"
+            android:layout_weight="1"
+            android:background="@drawable/left_button_background_selector"
+            android:text="否"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <Button
+            android:id="@+id/bt_right"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa60"
+            android:layout_marginLeft="@dimen/pad3"
+            android:layout_marginRight="@dimen/pad20"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button_background_selector"
+            android:text="是"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+</LinearLayout>

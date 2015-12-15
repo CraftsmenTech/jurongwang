@@ -1,0 +1,41 @@
+ <!-- 合同信息页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_repayplaninfo_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/green_top_round"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/spa72"
+            android:paddingLeft="@dimen/pad3"
+            android:text="投资1000万，获利100万"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <ListView
+            android:id="@+id/lv_repay_plan_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="1px" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * @Title: DetailOfInvestmentActivity.java
+ * @Description: 我要投资-》要融资项目的投资详情
+ * @author lanhaizhong
+ * @date 2013年7月12日下午2:14:17
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DetailOfInvestmentActivity extends BaseActivity {
+
+	private ImageView ivProjectIC;//项目的图标
+	private TextView tvProjectTheme;//投资项目主题
+	private TextView tvProjectSum;//项目金额
+	private CheckBox cbProjectStatus;//项目可投资状态
+	private TextView tvInvestmentInfo;//投资信息
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_detail_of_investment);
+		initivReabck(this);
+		setTitle(this, R.string.detailof_inve);
+	}
+}

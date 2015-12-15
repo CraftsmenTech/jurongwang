@@ -1,0 +1,95 @@
+package com.orong.entity;
+
+import com.orong.utils.Bean;
+
+/**
+ * @Title: ProjectSummary.java
+ * @Description: 投资项目摘要
+ * @author lanhaizhong
+ * @date 2013年8月19日 上午11:31:42
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class ProjectSummary implements Bean {
+
+	private String picture;// 图片的URL
+	private String title;// 主题
+	private double amount;// 金额
+	private double speedOfProgress;// 进度
+	private double rate;// 利率
+	private int loanTerm;// 期限
+	private int measureUnit;
+
+	public ProjectSummary() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public ProjectSummary(String picture, String title, double amount, double speedOfProgress, double rate, int loanTerm, int measureUnit) {
+		super();
+		this.picture = picture;
+		this.title = title;
+		this.amount = amount;
+		this.speedOfProgress = speedOfProgress;
+		this.rate = rate;
+		this.loanTerm = loanTerm;
+		this.measureUnit = measureUnit;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
+
+	public double getSpeedOfProgress() {
+		return speedOfProgress;
+	}
+
+	public void setSpeedOfProgress(double speedOfProgress) {
+		this.speedOfProgress = speedOfProgress;
+	}
+
+	public double getRate() {
+		return rate;
+	}
+
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+
+	public int getLoanTerm() {
+		return loanTerm;
+	}
+
+	public void setLoanTerm(int loanTerm) {
+		this.loanTerm = loanTerm;
+	}
+
+	public int getMeasureUnit() {
+		return measureUnit;
+	}
+
+	public void setMeasureUnit(int measureUnit) {
+		this.measureUnit = measureUnit;
+	}
+
+}

@@ -1,0 +1,112 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cor3"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_labbar"
+        android:background="@color/cor1"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_labletext1"
+                style="@style/normal_Labletextstyle"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="@string/crong_investment_assistant"
+                android:textSize="@dimen/font4" />
+
+            <TextView
+                style="@style/normal_Labletextstyle"
+                android:layout_alignBottom="@+id/tv_labletext1"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@+id/tv_labletext1"
+                android:text="@string/android"
+                android:textSize="@dimen/font1" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa12"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/phone_or_username"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/font3" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:background="#cccccc"
+            android:textSize="@dimen/font3" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa12"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:hint="@string/login_pw"
+            android:password="true"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/font3" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cb_savedpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad4"
+        android:text="@string/autoLogin"
+        android:textColor="@color/textcolor" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa12"
+            android:layout_weight="1"
+            android:background="@drawable/blue_rounded_rectangle"
+            android:text="@string/register"
+            android:textColor="@color/cor4" />
+
+        <View
+            android:layout_width="@dimen/pad4"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa12"
+            android:layout_weight="1"
+            android:background="@drawable/green_rounded_rectangle"
+            android:text="@string/login"
+            android:textColor="@color/cor4" />
+    </LinearLayout>
+
+</LinearLayout>

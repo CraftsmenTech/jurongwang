@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 特别提示、重要数据等文字颜色：#004199     蓝色       “cor1 -->
+    <color name="cor1">#004299</color>
+    <color name="cor2">#7cbe28</color>
+    <!-- 背景 -->
+
+    <color name="cor4">#fafafa</color>
+    <color name="cor5">#cccccc</color>
+    <color name="cor6">#999999</color>
+    <color name="cor7">#666666</color>
+    <color name="cor8">#333333</color>
+    
+    <color name="blue">#004299</color>
+    <color name="green">#7cbe28</color>
+
+    <!-- footer、标题、下拉列表、按钮等文字颜色：#fafafa  白色 “cor4” -->
+    <color name="white2">#fafafa</color>
+
+    <!-- 正常略黑的位子颜色 -->
+    <color name="textcolor">#666666</color>
+
+    <!-- 所有线框的标准色 -->
+    <color name="linecolor">#999999</color>
+    <color name="shape_start">#02367D</color>
+    <color name="shape_end">#0F438A</color>
+
+</resources>

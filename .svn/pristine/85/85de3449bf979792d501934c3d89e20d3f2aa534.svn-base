@@ -1,0 +1,87 @@
+package com.orong.adapter;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+import com.orong.entity.ProjectSummary;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * @Title: ProjectsAdapter.java
+ * @Description: 展示可投资项目的列表
+ * @author lanhaizhong
+ * @date 2013年7月11日下午5:24:29
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class ProjectsAdapter extends BaseAdapter {
+
+	private ArrayList<ProjectSummary> projectList;
+	private Context context;
+
+	public ProjectsAdapter(ArrayList<ProjectSummary> projectList, Context context) {
+		this.projectList = projectList;
+		this.context = context;
+	}
+
+	@Override
+	public int getCount() {
+		return projectList == null ? 0 : projectList.size();
+	}
+
+	@Override
+	public Object getItem(int position) {
+		return projectList == null ? null : projectList.get(position);
+	}
+
+	@Override
+	public long getItemId(int position) {
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View view, ViewGroup parent) {
+		ViewHolder holder;
+		if (view == null) {
+			view = LayoutInflater.from(context).inflate(R.layout.projects_item, null);
+			holder = new ViewHolder();
+			holder.iv_project_ic=(ImageView) view.findViewById(R.id.iv_project_ic);
+			holder.tv_title = (TextView) view.findViewById(R.id.tv_project_theme);
+			holder.tv_sum = (TextView) view.findViewById(R.id.tv_project_sum);
+			holder.tv_progress = (TextView) view.findViewById(R.id.tv_project_progress);
+			holder.tv_deadline = (TextView) view.findViewById(R.id.tv_deadline);
+			holder.tv_rate = (TextView) view.findViewById(R.id.tv_rate);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+		ProjectSummary summary = projectList.get(position);
+		holder.tv_title.setText(summary.getTitle());
+		holder.tv_sum.setText(String.valueOf(summary.getAmount()));
+		holder.tv_progress.setText(String.valueOf(summary.getSpeedOfProgress()));
+		holder.tv_deadline.setText(String.valueOf(summary.getLoanTerm()));
+		holder.tv_rate.setText(String.valueOf(summary.getRate()));
+		return view;
+	}
+
+	static class ViewHolder {
+		ImageView iv_project_ic;
+		TextView tv_title;// 项目名称
+		TextView tv_sum;// 金额
+		TextView tv_progress;// 进度
+		TextView tv_deadline; // 期限
+		TextView tv_rate;// 利率
+
+	}
+
+	public void setProjectList(ArrayList<ProjectSummary> projectList) {
+		this.projectList = projectList;
+	}
+
+}

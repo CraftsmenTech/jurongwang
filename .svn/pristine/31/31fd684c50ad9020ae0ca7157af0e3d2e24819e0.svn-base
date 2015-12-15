@@ -1,0 +1,51 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+/**
+ * @Title: BecomeDeputyActivity.java
+ * @Description: 成为投资代表页面
+ * @author lanhaizhong
+ * @date 2013年7月10日上午11:49:44
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class BecomeDeputyActivity extends BaseRecommendActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_become_deputy);
+		initView(this);
+		initivReabck(this);
+		setTitle(this, R.string.my_deputied_project);
+
+		setTextOfTvHasRecommendedNum(getString(R.string.deputied_project_num), 223);
+		setTextOfTvHasGotBrokerage(2534.00);
+		setTextOfTvWillHaveGotBrokerage(1232312.00);
+		setTextOfBtRecommend(getString(R.string.become_deputy));
+		tvRecommendedRules.setText(R.string.the_deputy_rules);
+
+		btRecommend.setOnClickListener(this);
+		rlRecommendedRules.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.rl_recommended_rules:
+			startActivity(new Intent(this, RulesOfDeputyActivity.class));
+			break;
+		case R.id.bt_recommend:
+			startActivity(new Intent(BecomeDeputyActivity.this, ApplyForDeputyActivity.class));
+			break;
+		default:
+			super.onClick(v);
+			break;
+		}
+
+	}
+}

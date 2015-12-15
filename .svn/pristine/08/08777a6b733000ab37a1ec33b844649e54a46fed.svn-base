@@ -1,0 +1,38 @@
+package com.orong.view;
+
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.os.Build;
+import android.util.AttributeSet;
+import android.widget.LinearLayout;
+
+/**
+ * @Title: CustomLinearLayout.java
+ * @Description: TODO
+ * @author lanhaizhong
+ * @date 2013年7月4日 上午9:31:22
+ * @version V1.0 Copyright (c) 2013 Crong.com,Inc. All Rights Reserved.
+ */
+
+public class CustomLinearLayout extends LinearLayout {
+
+	public CustomLinearLayout(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+	public CustomLinearLayout(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+	}
+
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	public CustomLinearLayout(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		// TODO Auto-generated constructor stub
+	}
+
+}

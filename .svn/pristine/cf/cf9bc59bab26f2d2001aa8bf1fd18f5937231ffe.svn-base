@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <EditText
+        android:id="@+id/et_apply_info"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请在此填写申请理由"
+        android:gravity="top"
+        android:background="@drawable/corner_round"
+        android:minHeight="@dimen/spa150" />
+
+    <Button
+        style="@style/screen_margin_style"
+        android:id="@+id/bt_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_rounded_rectangle"
+        android:text="@string/become_deputy"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

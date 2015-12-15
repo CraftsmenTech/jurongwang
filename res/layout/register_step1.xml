@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_phonenum"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:hint="@string/input_phone_num"
+            android:paddingLeft="8dp"
+            android:phoneNumber="true"
+            android:singleLine="true"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+
+        <Button
+            android:id="@+id/bt_get_checkCode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/register_step_background_selector"
+            android:text="@string/get_verification_code"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_checkcode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:hint="@string/input_verification_code"
+            android:paddingLeft="8dp"
+            android:singleLine="true"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+
+       
+        <Button
+            android:id="@+id/bt_next_step"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/register_step_background_selector"
+            android:clickable="false"
+            android:text="@string/next_step"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad4"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/cb_accepted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@null"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_backgound_selector"
+            android:drawablePadding="3dp"
+            android:text="@string/readed_and_agree"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:id="@+id/tv_protocol_of_orong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="true"
+            android:text="@string/protocol_of_orong"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+</LinearLayout>

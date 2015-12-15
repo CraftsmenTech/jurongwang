@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <ScrollView
+        android:id="@+id/sv_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/pad12"
+        android:layout_weight="29" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/et_real_name"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa74"
+                android:background="@drawable/editext_backgound_selector"
+                android:hint="@string/input_realname"
+                android:paddingLeft="@dimen/pad3"
+                android:singleLine="true"
+                android:textColorHint="@color/colorhint" />
+
+            <EditText
+                android:id="@+id/et_ID_number"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa74"
+                android:background="@drawable/editext_backgound_selector"
+                android:hint="@string/IDNumber"
+                android:paddingLeft="@dimen/pad3"
+                android:singleLine="true"
+                android:textColorHint="@color/colorhint" />
+
+            <TextView
+                android:id="@+id/tv_bankname"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa74"
+                android:background="@drawable/text_spinner_select_backlound"
+                android:clickable="true"
+                android:gravity="center_vertical|center_horizontal"
+                android:singleLine="true"
+                android:text="请选择银行"
+                android:textColor="@color/textcolor"
+                android:textColorHint="@color/colorhint"
+                android:textSize="@dimen/f21" />
+
+            <EditText
+                android:id="@+id/et_back_account"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa74"
+                android:background="@drawable/editext_backgound_selector"
+                android:ems="10"
+                android:hint="@string/bank_account"
+                android:paddingLeft="@dimen/pad3"
+                android:singleLine="true"
+                android:textColorHint="@color/colorhint" />
+
+            <EditText
+                android:id="@+id/et_child_bank"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa74"
+                android:background="@drawable/editext_backgound_selector"
+                android:hint="@string/child_bankname"
+                android:paddingLeft="@dimen/pad3"
+                android:singleLine="true"
+                android:textColorHint="@color/colorhint" />
+
+            <Button
+                android:id="@+id/bt_summit"
+                style="@style/screen_margin_style"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/spa72"
+                android:background="@drawable/blue_button_background_selector"
+                android:text="@string/summitverify"
+                android:textColor="@color/white2"
+                android:textSize="@dimen/f21" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ListView
+        android:id="@+id/lv_banklist"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa180"
+        android:layout_marginBottom="@dimen/pad12"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:background="@drawable/wheel_bg"
+        android:visibility="gone" >
+    </ListView>
+
+</LinearLayout>

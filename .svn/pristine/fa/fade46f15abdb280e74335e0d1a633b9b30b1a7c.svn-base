@@ -1,0 +1,68 @@
+package com.orong.adapter;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
+
+/**
+ * @Title: UserNewsListAdapter.java
+ * @Description: 展示提醒用户的信息列表
+ * @author lanhaizhong
+ * @date 2013年7月9日下午4:32:34
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class UserNewsListAdapter extends BaseAdapter {
+
+	private ArrayList<Object> newsList;
+	private Context context;
+
+	public UserNewsListAdapter(ArrayList<Object> newsList, Context context) {
+		this.newsList = newsList;
+		this.context = context;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 3;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		ViewHolder holder;
+		if (convertView == null) {
+			convertView = LayoutInflater.from(context).inflate(R.layout.usernews_item, null);
+			holder = new ViewHolder();
+			convertView.setTag(holder);
+		} else {
+			holder = (ViewHolder) convertView.getTag();
+		}
+		return convertView;
+	}
+
+	static class ViewHolder {
+		CheckBox cbIsReaded;
+		TextView tvNewsTitle;
+		TextView tvNewsDate;
+	}
+}

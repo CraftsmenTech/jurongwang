@@ -1,0 +1,63 @@
+package com.orong.activity;
+
+import com.orong.OrongApplication;
+import com.orong.R;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+/**
+ * @Title: BaseActivity.java
+ * @Description: 基础activity类是个基类
+ * @author lanhaizhong
+ * @date 2013年7月3日 上午11:17:29
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class BaseActivity extends Activity implements OnClickListener {
+	public ImageView iv_reback;
+	public TextView tvTitle;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		super.onCreate(savedInstanceState);
+		OrongApplication.addActivity2Stack(this);
+		//initView();
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		OrongApplication.removeActivityFromStack(this);
+		super.onDestroy();
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+
+	}
+	/**
+	 * 设置标题
+	 * @param activity
+	 * @param titleStr 标题文字
+	 */
+	public void setTitle(Activity activity,String titleStr){
+		tvTitle=(TextView) activity.findViewById(R.id.tv_title);
+		tvTitle.setText(titleStr);
+	}
+	/**
+	 * 通过资源id设置标题 
+	 * @param activity
+	 * @param titleResouceId  资源ID
+	 */
+	public void setTitle(Activity activity,int titleResouceId){
+		tvTitle=(TextView) activity.findViewById(R.id.tv_title);
+		tvTitle.setText(titleResouceId);
+	}
+}

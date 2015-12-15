@@ -1,0 +1,34 @@
+package com.orong.utils.net;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
+/**
+ * Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * @Title: NetWorkStatusCheck.java
+ * @Description: 网络状态检查类
+ * @author lanhaizhong
+ * @date 2013年7月3日 上午11:29:42
+ * @version V1.0
+ */
+public class NetWorkStatusCheck {
+	/**
+	 * 检查是否有可用网络
+	 * 
+	 * @param context
+	 *            上下文环境
+	 * @return 有可用网络返回true 否则返回false
+	 */
+	public static boolean isHasNet(Context context) {
+		ConnectivityManager conn = (ConnectivityManager) context
+				.getSystemService(context.CONNECTIVITY_SERVICE);
+		NetworkInfo info = conn.getActiveNetworkInfo();// 获取联网状态网络
+		if (info == null || !info.isAvailable()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+}

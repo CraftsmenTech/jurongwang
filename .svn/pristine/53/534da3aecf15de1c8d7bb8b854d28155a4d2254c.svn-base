@@ -1,0 +1,23 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: InvestActivity.java
+ * @Description: 我要投资
+ * @author lanhaizhong
+ * @date 2013年7月15日下午2:45:21
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class InvestActivity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_invest);
+		initivReabck(this);
+		setTitle(this, R.string.doinvestment);
+	}
+}

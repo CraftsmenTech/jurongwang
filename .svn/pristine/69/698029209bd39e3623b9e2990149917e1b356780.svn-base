@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:id="@+id/ll_step_navigate"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:background="@drawable/step1" >
+
+        <TextView
+            android:id="@+id/tv_step1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="第一步" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="第二步" />
+    </LinearLayout>
+
+    <ViewFlipper
+        android:id="@+id/vfl_register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <include layout="@layout/register_step1" />
+
+        <include layout="@layout/register_step2" />
+    </ViewFlipper>
+
+</LinearLayout>

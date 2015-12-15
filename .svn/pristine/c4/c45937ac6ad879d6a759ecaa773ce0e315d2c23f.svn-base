@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lv_usernews_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/linecolor"
+            android:dividerHeight="1px" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>

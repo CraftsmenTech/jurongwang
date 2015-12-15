@@ -1,0 +1,985 @@
+android.support.v4.app.BackStackState
+android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.Fragment$SavedState
+android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentActivity
+android.support.v4.app.FragmentActivity: FragmentActivity()
+android.support.v4.app.FragmentManagerState
+android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentState
+android.support.v4.app.FragmentState: android.os.Parcelable$Creator CREATOR
+android.support.v4.app.FragmentTabHost
+android.support.v4.app.FragmentTabHost: FragmentTabHost(android.content.Context,android.util.AttributeSet)
+android.support.v4.app.FragmentTabHost: void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener)
+android.support.v4.app.FragmentTabHost$SavedState
+android.support.v4.app.FragmentTabHost$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.content.FileProvider
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status[] values()
+android.support.v4.content.ModernAsyncTask$Status: android.support.v4.content.ModernAsyncTask$Status valueOf(java.lang.String)
+android.support.v4.view.PagerTabStrip
+android.support.v4.view.PagerTabStrip: PagerTabStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColor(int)
+android.support.v4.view.PagerTabStrip: void setTabIndicatorColorResource(int)
+android.support.v4.view.PagerTabStrip: int getTabIndicatorColor()
+android.support.v4.view.PagerTabStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.PagerTabStrip: void setBackgroundColor(int)
+android.support.v4.view.PagerTabStrip: void setBackgroundResource(int)
+android.support.v4.view.PagerTabStrip: void setDrawFullUnderline(boolean)
+android.support.v4.view.PagerTabStrip: boolean getDrawFullUnderline()
+android.support.v4.view.PagerTabStrip: int getMinHeight()
+android.support.v4.view.PagerTitleStrip
+android.support.v4.view.PagerTitleStrip: void setSingleLineAllCaps(android.widget.TextView)
+android.support.v4.view.PagerTitleStrip: PagerTitleStrip(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.PagerTitleStrip: void setTextSpacing(int)
+android.support.v4.view.PagerTitleStrip: int getTextSpacing()
+android.support.v4.view.PagerTitleStrip: void setNonPrimaryAlpha(float)
+android.support.v4.view.PagerTitleStrip: void setTextColor(int)
+android.support.v4.view.PagerTitleStrip: void setGravity(int)
+android.support.v4.view.PagerTitleStrip: int getMinHeight()
+android.support.v4.view.ViewPager
+android.support.v4.view.ViewPager: ViewPager(android.content.Context)
+android.support.v4.view.ViewPager: ViewPager(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager: void setScrollState(int)
+android.support.v4.view.ViewPager: void setAdapter(android.support.v4.view.PagerAdapter)
+android.support.v4.view.ViewPager: android.support.v4.view.PagerAdapter getAdapter()
+android.support.v4.view.ViewPager: void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener)
+android.support.v4.view.ViewPager: int getClientWidth()
+android.support.v4.view.ViewPager: void setCurrentItem(int)
+android.support.v4.view.ViewPager: int getCurrentItem()
+android.support.v4.view.ViewPager: void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener)
+android.support.v4.view.ViewPager: void setChildrenDrawingOrderEnabledCompat(boolean)
+android.support.v4.view.ViewPager: int getOffscreenPageLimit()
+android.support.v4.view.ViewPager: void setOffscreenPageLimit(int)
+android.support.v4.view.ViewPager: void setPageMargin(int)
+android.support.v4.view.ViewPager: int getPageMargin()
+android.support.v4.view.ViewPager: void setPageMarginDrawable(android.graphics.drawable.Drawable)
+android.support.v4.view.ViewPager: void setPageMarginDrawable(int)
+android.support.v4.view.ViewPager: void setScrollingCacheEnabled(boolean)
+android.support.v4.view.ViewPager$LayoutParams
+android.support.v4.view.ViewPager$LayoutParams: ViewPager$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.view.ViewPager$SavedState
+android.support.v4.view.ViewPager$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.DrawerLayout
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout: DrawerLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.DrawerLayout: void setScrimColor(int)
+android.support.v4.widget.DrawerLayout: void setDrawerListener(android.support.v4.widget.DrawerLayout$DrawerListener)
+android.support.v4.widget.DrawerLayout: void setDrawerLockMode(int)
+android.support.v4.widget.DrawerLayout$LayoutParams
+android.support.v4.widget.DrawerLayout$LayoutParams: DrawerLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.DrawerLayout$SavedState
+android.support.v4.widget.DrawerLayout$SavedState: android.os.Parcelable$Creator CREATOR
+android.support.v4.widget.SlidingPaneLayout
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout: SlidingPaneLayout(android.content.Context,android.util.AttributeSet,int)
+android.support.v4.widget.SlidingPaneLayout: void setParallaxDistance(int)
+android.support.v4.widget.SlidingPaneLayout: int getParallaxDistance()
+android.support.v4.widget.SlidingPaneLayout: void setSliderFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getSliderFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setCoveredFadeColor(int)
+android.support.v4.widget.SlidingPaneLayout: int getCoveredFadeColor()
+android.support.v4.widget.SlidingPaneLayout: void setPanelSlideListener(android.support.v4.widget.SlidingPaneLayout$PanelSlideListener)
+android.support.v4.widget.SlidingPaneLayout: void setShadowDrawable(android.graphics.drawable.Drawable)
+android.support.v4.widget.SlidingPaneLayout: void setShadowResource(int)
+android.support.v4.widget.SlidingPaneLayout$LayoutParams
+android.support.v4.widget.SlidingPaneLayout$LayoutParams: SlidingPaneLayout$LayoutParams(android.content.Context,android.util.AttributeSet)
+android.support.v4.widget.SlidingPaneLayout$SavedState
+android.support.v4.widget.SlidingPaneLayout$SavedState: android.os.Parcelable$Creator CREATOR
+com.orong.OrongApplication
+com.orong.OrongApplication: OrongApplication()
+com.orong.R$color: int blue
+com.orong.R$color: int blue_center
+com.orong.R$color: int blue_end
+com.orong.R$color: int blue_start
+com.orong.R$color: int colorhint
+com.orong.R$color: int cor1
+com.orong.R$color: int cor2
+com.orong.R$color: int cor4
+com.orong.R$color: int cor5
+com.orong.R$color: int cor6
+com.orong.R$color: int cor7
+com.orong.R$color: int cor8
+com.orong.R$color: int green
+com.orong.R$color: int green_center
+com.orong.R$color: int green_end
+com.orong.R$color: int green_start
+com.orong.R$color: int light_gray
+com.orong.R$color: int linecolor
+com.orong.R$color: int linkblue
+com.orong.R$color: int possible_result_points
+com.orong.R$color: int red1
+com.orong.R$color: int result_view
+com.orong.R$color: int shape_end
+com.orong.R$color: int shape_start
+com.orong.R$color: int textcolor
+com.orong.R$color: int viewfinder_frame
+com.orong.R$color: int viewfinder_laser
+com.orong.R$color: int viewfinder_mask
+com.orong.R$color: int white
+com.orong.R$color: int white2
+com.orong.R$dimen: int activity_horizontal_margin
+com.orong.R$dimen: int activity_vertical_margin
+com.orong.R$dimen: int contract
+com.orong.R$dimen: int f13
+com.orong.R$dimen: int f16
+com.orong.R$dimen: int f18
+com.orong.R$dimen: int f21
+com.orong.R$dimen: int f24
+com.orong.R$dimen: int f26
+com.orong.R$dimen: int investment_chekbox_pandding
+com.orong.R$dimen: int pad1
+com.orong.R$dimen: int pad12
+com.orong.R$dimen: int pad15
+com.orong.R$dimen: int pad20
+com.orong.R$dimen: int pad3
+com.orong.R$dimen: int pad4
+com.orong.R$dimen: int pad9
+com.orong.R$dimen: int spa10
+com.orong.R$dimen: int spa100
+com.orong.R$dimen: int spa120
+com.orong.R$dimen: int spa15
+com.orong.R$dimen: int spa150
+com.orong.R$dimen: int spa18
+com.orong.R$dimen: int spa180
+com.orong.R$dimen: int spa22
+com.orong.R$dimen: int spa3
+com.orong.R$dimen: int spa33
+com.orong.R$dimen: int spa390
+com.orong.R$dimen: int spa48
+com.orong.R$dimen: int spa60
+com.orong.R$dimen: int spa600
+com.orong.R$dimen: int spa66
+com.orong.R$dimen: int spa68
+com.orong.R$dimen: int spa72
+com.orong.R$dimen: int spa74
+com.orong.R$dimen: int spa78
+com.orong.R$dimen: int spa82
+com.orong.R$dimen: int spa90
+com.orong.R$drawable: int account
+com.orong.R$drawable: int back
+com.orong.R$drawable: int blue_button_background_selector
+com.orong.R$drawable: int blue_pressed_rounded_rectangle
+com.orong.R$drawable: int blue_rounded_rectangle
+com.orong.R$drawable: int checkbox_backgound_selector
+com.orong.R$drawable: int circlebackgound
+com.orong.R$drawable: int color_progessbar
+com.orong.R$drawable: int cor6_rounded_rectangle
+com.orong.R$drawable: int cor7_rounded_rectangle
+com.orong.R$drawable: int cor8_top_rounded_rectangle
+com.orong.R$drawable: int corner_round
+com.orong.R$drawable: int custom_seekbar
+com.orong.R$drawable: int dimensional
+com.orong.R$drawable: int divide
+com.orong.R$drawable: int dotted_line
+com.orong.R$drawable: int green_above_rounded_rectangle
+com.orong.R$drawable: int green_buttom_round
+com.orong.R$drawable: int green_button_background_selector
+com.orong.R$drawable: int green_preesed_right_round
+com.orong.R$drawable: int green_pressed_rounded_rectangle
+com.orong.R$drawable: int green_right_round
+com.orong.R$drawable: int green_rounded_rectangle
+com.orong.R$drawable: int green_top_round
+com.orong.R$drawable: int home
+com.orong.R$drawable: int icon
+com.orong.R$drawable: int invested_deputy
+com.orong.R$drawable: int investment
+com.orong.R$drawable: int left_button_background_selector
+com.orong.R$drawable: int listitem_arrow
+com.orong.R$drawable: int more
+com.orong.R$drawable: int navy_blue_shape
+com.orong.R$drawable: int news_isread_backgound_selector
+com.orong.R$drawable: int news_readed
+com.orong.R$drawable: int news_unreaded
+com.orong.R$drawable: int oncheck
+com.orong.R$drawable: int optionmemubackround
+com.orong.R$drawable: int passwowrd
+com.orong.R$drawable: int phone_icon
+com.orong.R$drawable: int photograph
+com.orong.R$drawable: int project_ic
+com.orong.R$drawable: int project_statucheck_selection
+com.orong.R$drawable: int radiolbutton_background_selector
+com.orong.R$drawable: int reback_image_selector
+com.orong.R$drawable: int recom_member
+com.orong.R$drawable: int recom_project
+com.orong.R$drawable: int register_step_background_selector
+com.orong.R$drawable: int select_down
+com.orong.R$drawable: int select_photo
+com.orong.R$drawable: int select_up
+com.orong.R$drawable: int sequence_backgound_selector
+com.orong.R$drawable: int sharp_line
+com.orong.R$drawable: int shooting
+com.orong.R$drawable: int splash
+com.orong.R$drawable: int status_able
+com.orong.R$drawable: int status_unable
+com.orong.R$drawable: int step1
+com.orong.R$drawable: int step2
+com.orong.R$drawable: int translucent_button_left_selector
+com.orong.R$drawable: int translucent_button_right_selector
+com.orong.R$drawable: int translucent_left
+com.orong.R$drawable: int translucent_left_press
+com.orong.R$drawable: int translucent_right
+com.orong.R$drawable: int translucent_right_press
+com.orong.R$drawable: int uncheck
+com.orong.R$drawable: int unclickble_right_round
+com.orong.R$drawable: int unselect_down
+com.orong.R$drawable: int unselect_up
+com.orong.R$drawable: int unsequence_backgound_selector
+com.orong.R$drawable: int useric
+com.orong.R$drawable: int wave_line
+com.orong.R$drawable: int white_sharp_line
+com.orong.R$id: int action_settings
+com.orong.R$id: int auto_focus
+com.orong.R$id: int bt_apply
+com.orong.R$id: int bt_be_friends
+com.orong.R$id: int bt_exitapp
+com.orong.R$id: int bt_get_checkCode
+com.orong.R$id: int bt_identify_investment
+com.orong.R$id: int bt_invest
+com.orong.R$id: int bt_left
+com.orong.R$id: int bt_login
+com.orong.R$id: int bt_next
+com.orong.R$id: int bt_next_step
+com.orong.R$id: int bt_previous
+com.orong.R$id: int bt_recommend
+com.orong.R$id: int bt_register
+com.orong.R$id: int bt_register_and_login
+com.orong.R$id: int bt_right
+com.orong.R$id: int bt_set_best_sum
+com.orong.R$id: int bt_submit
+com.orong.R$id: int cb_accepted
+com.orong.R$id: int cb_is_readed
+com.orong.R$id: int cb_savedpw
+com.orong.R$id: int cb_sequ_by_interest_rate
+com.orong.R$id: int cb_sequ_by_pro
+com.orong.R$id: int cb_sequ_by_sum
+com.orong.R$id: int cb_sequ_by_time
+com.orong.R$id: int decode
+com.orong.R$id: int decode_failed
+com.orong.R$id: int decode_succeeded
+com.orong.R$id: int devider_view
+com.orong.R$id: int encode_failed
+com.orong.R$id: int encode_succeeded
+com.orong.R$id: int et_account
+com.orong.R$id: int et_apply_info
+com.orong.R$id: int et_checkcode
+com.orong.R$id: int et_contact_name
+com.orong.R$id: int et_contact_phone
+com.orong.R$id: int et_cycle
+com.orong.R$id: int et_demands
+com.orong.R$id: int et_invest_sum
+com.orong.R$id: int et_login_paw
+com.orong.R$id: int et_opinion
+com.orong.R$id: int et_password
+com.orong.R$id: int et_phonenum
+com.orong.R$id: int et_project_name
+com.orong.R$id: int et_transaction_password
+com.orong.R$id: int et_transation_paw
+com.orong.R$id: int et_usernmae
+com.orong.R$id: int iv_call_service
+com.orong.R$id: int iv_change_ic
+com.orong.R$id: int iv_imageView1
+com.orong.R$id: int iv_imageView2
+com.orong.R$id: int iv_imageView3
+com.orong.R$id: int iv_member_ic
+com.orong.R$id: int iv_member_space
+com.orong.R$id: int iv_news
+com.orong.R$id: int iv_option_menu
+com.orong.R$id: int iv_project_ic
+com.orong.R$id: int iv_reback
+com.orong.R$id: int iv_result_image
+com.orong.R$id: int iv_usericon
+com.orong.R$id: int launch_product_query
+com.orong.R$id: int ll_contract_info
+com.orong.R$id: int ll_frame
+com.orong.R$id: int ll_normal_result
+com.orong.R$id: int ll_photograph
+com.orong.R$id: int ll_project_info
+com.orong.R$id: int ll_repayed_plan
+com.orong.R$id: int ll_select_photo
+com.orong.R$id: int ll_step_navigate
+com.orong.R$id: int lv_projects
+com.orong.R$id: int lv_repay_plan_list
+com.orong.R$id: int lv_usernews_list
+com.orong.R$id: int pb_project_progress
+com.orong.R$id: int preview_view
+com.orong.R$id: int quit
+com.orong.R$id: int rb_investment
+com.orong.R$id: int rb_more
+com.orong.R$id: int rb_myorong
+com.orong.R$id: int rb_shooting
+com.orong.R$id: int restart_preview
+com.orong.R$id: int return_scan_result
+com.orong.R$id: int rg_navigation
+com.orong.R$id: int rl_aboutUs
+com.orong.R$id: int rl_checkVerson
+com.orong.R$id: int rl_declare_project
+com.orong.R$id: int rl_deputy_caption
+com.orong.R$id: int rl_help
+com.orong.R$id: int rl_recmember_caption
+com.orong.R$id: int rl_recom_member
+com.orong.R$id: int rl_recommended_rules
+com.orong.R$id: int rl_recproject_caption
+com.orong.R$id: int rl_repayment_caption
+com.orong.R$id: int rl_splash
+com.orong.R$id: int rl_telUs
+com.orong.R$id: int rl_toBeDeputy
+com.orong.R$id: int search_book_contents_failed
+com.orong.R$id: int search_book_contents_succeeded
+com.orong.R$id: int textView1
+com.orong.R$id: int tv_availabale_over
+com.orong.R$id: int tv_borrow_time
+com.orong.R$id: int tv_borrower
+com.orong.R$id: int tv_capital
+com.orong.R$id: int tv_credited_sum
+com.orong.R$id: int tv_deadline
+com.orong.R$id: int tv_dialog_massage
+com.orong.R$id: int tv_dialog_title
+com.orong.R$id: int tv_has_got_brokerage
+com.orong.R$id: int tv_indemnity
+com.orong.R$id: int tv_interest
+com.orong.R$id: int tv_investment_info
+com.orong.R$id: int tv_labletext1
+com.orong.R$id: int tv_lave
+com.orong.R$id: int tv_lender
+com.orong.R$id: int tv_may_invest_sum
+com.orong.R$id: int tv_member_Identity
+com.orong.R$id: int tv_member_name
+com.orong.R$id: int tv_member_phone
+com.orong.R$id: int tv_member_sum
+com.orong.R$id: int tv_messageTime
+com.orong.R$id: int tv_messageTitle
+com.orong.R$id: int tv_message_content
+com.orong.R$id: int tv_news_date
+com.orong.R$id: int tv_news_title
+com.orong.R$id: int tv_no_project
+com.orong.R$id: int tv_nomessage_notice
+com.orong.R$id: int tv_notread_count
+com.orong.R$id: int tv_phoneRegister
+com.orong.R$id: int tv_progress_text
+com.orong.R$id: int tv_project_progress
+com.orong.R$id: int tv_project_sum
+com.orong.R$id: int tv_project_theme
+com.orong.R$id: int tv_projectinfo_title
+com.orong.R$id: int tv_protection_mode
+com.orong.R$id: int tv_protocol_of_orong
+com.orong.R$id: int tv_rate
+com.orong.R$id: int tv_rate_percent
+com.orong.R$id: int tv_recom_regulation
+com.orong.R$id: int tv_recommendedNum
+com.orong.R$id: int tv_repay_date
+com.orong.R$id: int tv_repay_index
+com.orong.R$id: int tv_repayplaninfo_text
+com.orong.R$id: int tv_rules_of_deputy
+com.orong.R$id: int tv_rules_of_recmember
+com.orong.R$id: int tv_rules_of_recproject
+com.orong.R$id: int tv_step1
+com.orong.R$id: int tv_step2
+com.orong.R$id: int tv_telephone
+com.orong.R$id: int tv_time_limit
+com.orong.R$id: int tv_title
+com.orong.R$id: int tv_txtResult
+com.orong.R$id: int tv_update_date
+com.orong.R$id: int tv_used_sum
+com.orong.R$id: int tv_version_code
+com.orong.R$id: int tv_will_have_got_brokerage
+com.orong.R$id: int vfl_register
+com.orong.R$id: int viewPager
+com.orong.R$id: int viewfinder_view
+com.orong.R$layout: int activity_about
+com.orong.R$layout: int activity_apply_for_deputy
+com.orong.R$layout: int activity_become_deputy
+com.orong.R$layout: int activity_contract_info
+com.orong.R$layout: int activity_detail_of_investment
+com.orong.R$layout: int activity_details
+com.orong.R$layout: int activity_do_recom_project
+com.orong.R$layout: int activity_help_caption
+com.orong.R$layout: int activity_invest
+com.orong.R$layout: int activity_login
+com.orong.R$layout: int activity_main
+com.orong.R$layout: int activity_member_space
+com.orong.R$layout: int activity_myidentity
+com.orong.R$layout: int activity_project_info
+com.orong.R$layout: int activity_protocol
+com.orong.R$layout: int activity_recom_declare
+com.orong.R$layout: int activity_register
+com.orong.R$layout: int activity_repay_plan
+com.orong.R$layout: int activity_rules_of_deputy
+com.orong.R$layout: int activity_rules_of_recommenber
+com.orong.R$layout: int activity_rules_of_recproject
+com.orong.R$layout: int activity_rules_of_repayment
+com.orong.R$layout: int activity_splash
+com.orong.R$layout: int activity_tel_us
+com.orong.R$layout: int activity_user_news
+com.orong.R$layout: int contract_list_item
+com.orong.R$layout: int custom_dialog
+com.orong.R$layout: int dialog_upload
+com.orong.R$layout: int fragment_capture
+com.orong.R$layout: int fragment_investment
+com.orong.R$layout: int fragment_more
+com.orong.R$layout: int fragment_myorong
+com.orong.R$layout: int identity
+com.orong.R$layout: int invement_listview_head
+com.orong.R$layout: int more_option_menu_popup
+com.orong.R$layout: int projects_item
+com.orong.R$layout: int recommendedinterface
+com.orong.R$layout: int register_step1
+com.orong.R$layout: int register_step2
+com.orong.R$layout: int repay_plan_item
+com.orong.R$layout: int title_bar
+com.orong.R$layout: int title_bar1
+com.orong.R$layout: int title_bar2
+com.orong.R$layout: int usernews_item
+com.orong.R$menu: int splash
+com.orong.R$raw: int beep
+com.orong.R$string: int aboutus
+com.orong.R$string: int aboutus_info
+com.orong.R$string: int action_settings
+com.orong.R$string: int albums
+com.orong.R$string: int android
+com.orong.R$string: int app_name
+com.orong.R$string: int auditting
+com.orong.R$string: int autoLogin
+com.orong.R$string: int available_over
+com.orong.R$string: int become_deputy
+com.orong.R$string: int befriend
+com.orong.R$string: int callforus
+com.orong.R$string: int cancel
+com.orong.R$string: int cancel_download
+com.orong.R$string: int cancelrequest
+com.orong.R$string: int capital
+com.orong.R$string: int caption1
+com.orong.R$string: int caption2
+com.orong.R$string: int caption3
+com.orong.R$string: int caption4
+com.orong.R$string: int capture_title
+com.orong.R$string: int check_update
+com.orong.R$string: int checking_captcha
+com.orong.R$string: int checking_deputy
+com.orong.R$string: int contact_name
+com.orong.R$string: int contact_name_null
+com.orong.R$string: int contact_name_toolong
+com.orong.R$string: int contact_phone
+com.orong.R$string: int contact_phone_null
+com.orong.R$string: int contract_info
+com.orong.R$string: int credited_sum
+com.orong.R$string: int crong_investment_assistant
+com.orong.R$string: int cycle
+com.orong.R$string: int cycle_toobig
+com.orong.R$string: int cycle_zero
+com.orong.R$string: int deadline
+com.orong.R$string: int declare_project
+com.orong.R$string: int demands
+com.orong.R$string: int demands_toobig
+com.orong.R$string: int demands_zero
+com.orong.R$string: int deputied_project_num
+com.orong.R$string: int deputy_gain
+com.orong.R$string: int deputy_rules_detail
+com.orong.R$string: int deputy_rules_title
+com.orong.R$string: int description
+com.orong.R$string: int detailof_inve
+com.orong.R$string: int doinvestment
+com.orong.R$string: int editphoto
+com.orong.R$string: int enter_invest_password
+com.orong.R$string: int enter_invest_sum
+com.orong.R$string: int error_account
+com.orong.R$string: int error_contact_phone
+com.orong.R$string: int error_password
+com.orong.R$string: int error_phone
+com.orong.R$string: int error_pw_or_user
+com.orong.R$string: int error_tran_password
+com.orong.R$string: int exit_app
+com.orong.R$string: int findUpdate
+com.orong.R$string: int float_format
+com.orong.R$string: int getCaptcha_frequently
+com.orong.R$string: int getCaptcha_too_many
+com.orong.R$string: int getInfo
+com.orong.R$string: int get_verification_code
+com.orong.R$string: int has_got_brokerage
+com.orong.R$string: int hello_world
+com.orong.R$string: int help_caption
+com.orong.R$string: int identify_investment
+com.orong.R$string: int income_str
+com.orong.R$string: int indemnity
+com.orong.R$string: int input_phone_num
+com.orong.R$string: int input_verification_code
+com.orong.R$string: int interest
+com.orong.R$string: int interest_rate
+com.orong.R$string: int interest_rate_of_year
+com.orong.R$string: int is_deputy_now
+com.orong.R$string: int lave
+com.orong.R$string: int live_for_time
+com.orong.R$string: int loading
+com.orong.R$string: int login
+com.orong.R$string: int login_now
+com.orong.R$string: int login_pw
+com.orong.R$string: int login_success
+com.orong.R$string: int may_invest_sum
+com.orong.R$string: int memberQrcode
+com.orong.R$string: int member_has_recom
+com.orong.R$string: int more
+com.orong.R$string: int my_declared_project
+com.orong.R$string: int my_deputied_project
+com.orong.R$string: int my_member_id
+com.orong.R$string: int my_recom_menber
+com.orong.R$string: int myorong
+com.orong.R$string: int newest
+com.orong.R$string: int next_step
+com.orong.R$string: int no
+com.orong.R$string: int no_network
+com.orong.R$string: int no_response
+com.orong.R$string: int no_username
+com.orong.R$string: int noproject
+com.orong.R$string: int not_oauthor
+com.orong.R$string: int not_yet
+com.orong.R$string: int null_account
+com.orong.R$string: int null_captcha
+com.orong.R$string: int null_password
+com.orong.R$string: int null_phone
+com.orong.R$string: int null_tran_password
+com.orong.R$string: int nullparamexception
+com.orong.R$string: int number_password
+com.orong.R$string: int number_tran_password
+com.orong.R$string: int opinion_hint
+com.orong.R$string: int orong_protocol
+com.orong.R$string: int pass_word_prompt
+com.orong.R$string: int password
+com.orong.R$string: int phone_has_register
+com.orong.R$string: int phone_or_username
+com.orong.R$string: int phone_registerNotifide
+com.orong.R$string: int phoneformat
+com.orong.R$string: int photograph
+com.orong.R$string: int please_input_cycle
+com.orong.R$string: int please_input_demands
+com.orong.R$string: int presstel
+com.orong.R$string: int project_has_declared
+com.orong.R$string: int project_info
+com.orong.R$string: int project_name
+com.orong.R$string: int project_name_null
+com.orong.R$string: int project_name_toolong
+com.orong.R$string: int protocol_of_orong
+com.orong.R$string: int quit
+com.orong.R$string: int readed_and_agree
+com.orong.R$string: int reason100Error
+com.orong.R$string: int reasonTooSimple
+com.orong.R$string: int recom_member
+com.orong.R$string: int recomember_gain1
+com.orong.R$string: int recomember_gain2
+com.orong.R$string: int recomember_rules_detail1
+com.orong.R$string: int recomember_rules_detail2
+com.orong.R$string: int recomenber_rules_title
+com.orong.R$string: int recommended_num
+com.orong.R$string: int recoproject_gain
+com.orong.R$string: int recoproject_rules_detail
+com.orong.R$string: int recproject_fail
+com.orong.R$string: int recproject_rules_title
+com.orong.R$string: int recproject_success
+com.orong.R$string: int register
+com.orong.R$string: int registerSuccess
+com.orong.R$string: int register_and_login
+com.orong.R$string: int registering
+com.orong.R$string: int relogin
+com.orong.R$string: int relogin_message
+com.orong.R$string: int repay1
+com.orong.R$string: int repay1_detail
+com.orong.R$string: int repay2
+com.orong.R$string: int repay2_detail
+com.orong.R$string: int repay3
+com.orong.R$string: int repay3_detail
+com.orong.R$string: int repay4
+com.orong.R$string: int repay4_detail
+com.orong.R$string: int repayed_plan
+com.orong.R$string: int repayindexformatstr
+com.orong.R$string: int requestApplySuccess
+com.orong.R$string: int requesting
+com.orong.R$string: int responese_exception
+com.orong.R$string: int result_preview
+com.orong.R$string: int resummit
+com.orong.R$string: int rules_of_repay
+com.orong.R$string: int same_password
+com.orong.R$string: int schedule
+com.orong.R$string: int select_from_albums
+com.orong.R$string: int send_message
+com.orong.R$string: int sequ1
+com.orong.R$string: int sequ2
+com.orong.R$string: int sequ3
+com.orong.R$string: int sequ4
+com.orong.R$string: int server_exception
+com.orong.R$string: int service_telephone
+com.orong.R$string: int set_best_sum
+com.orong.R$string: int short_account
+com.orong.R$string: int short_password
+com.orong.R$string: int short_tran_password
+com.orong.R$string: int str£¤
+com.orong.R$string: int sum
+com.orong.R$string: int text_less_than_5
+com.orong.R$string: int text_more_than_100
+com.orong.R$string: int thanks_for_opinion
+com.orong.R$string: int the_deputy_rules
+com.orong.R$string: int the_member_recom_rules
+com.orong.R$string: int the_project_declared_rules
+com.orong.R$string: int time_limit
+com.orong.R$string: int timeout
+com.orong.R$string: int transaction_password
+com.orong.R$string: int uname_was_uesed
+com.orong.R$string: int update_date
+com.orong.R$string: int update_now
+com.orong.R$string: int uploade
+com.orong.R$string: int uploadimage
+com.orong.R$string: int uploading_message
+com.orong.R$string: int used_sum
+com.orong.R$string: int userFlag0
+com.orong.R$string: int userFlag1
+com.orong.R$string: int userFlag2
+com.orong.R$string: int userformat
+com.orong.R$string: int username
+com.orong.R$string: int version
+com.orong.R$string: int versionName
+com.orong.R$string: int wasFriend
+com.orong.R$string: int was_deputy
+com.orong.R$string: int will_have_got_brokerage
+com.orong.R$string: int yes
+com.orong.R$style: int AppBaseTheme
+com.orong.R$style: int AppTheme
+com.orong.R$style: int blue_buttom_style
+com.orong.R$style: int custom_dialog
+com.orong.R$style: int green_buttom_style
+com.orong.R$style: int navigation_radiobutton_style
+com.orong.R$style: int normal_Labletextstyle
+com.orong.R$style: int normal_textstyle
+com.orong.R$style: int screen_margin_style
+com.orong.activity.AboutActivity
+com.orong.activity.AboutActivity: AboutActivity()
+com.orong.activity.ApplyForDeputyActivity
+com.orong.activity.ApplyForDeputyActivity: ApplyForDeputyActivity()
+com.orong.activity.ApplyForDeputyActivity: void onClick(android.view.View)
+com.orong.activity.BaseActivity
+com.orong.activity.BaseActivity: BaseActivity()
+com.orong.activity.BaseActivity: void onClick(android.view.View)
+com.orong.activity.BaseFragmentActivity
+com.orong.activity.BaseFragmentActivity: BaseFragmentActivity()
+com.orong.activity.BaseRecommendActivity
+com.orong.activity.BaseRecommendActivity: BaseRecommendActivity()
+com.orong.activity.BecomeDeputyActivity
+com.orong.activity.BecomeDeputyActivity: BecomeDeputyActivity()
+com.orong.activity.BecomeDeputyActivity: void onClick(android.view.View)
+com.orong.activity.ContractInfoActivity
+com.orong.activity.ContractInfoActivity: ContractInfoActivity()
+com.orong.activity.DeclareProjectActivity
+com.orong.activity.DeclareProjectActivity: DeclareProjectActivity()
+com.orong.activity.DeclareProjectActivity: void onClick(android.view.View)
+com.orong.activity.DetailOfInvestmentActivity
+com.orong.activity.DetailOfInvestmentActivity: DetailOfInvestmentActivity()
+com.orong.activity.DetailOfInvestmentActivity: void onClick(android.view.View)
+com.orong.activity.DetailsActivity
+com.orong.activity.DetailsActivity: DetailsActivity()
+com.orong.activity.DoRecProjectActivity
+com.orong.activity.DoRecProjectActivity: DoRecProjectActivity()
+com.orong.activity.DoRecProjectActivity: void onClick(android.view.View)
+com.orong.activity.HelpCaptionActivity
+com.orong.activity.HelpCaptionActivity: HelpCaptionActivity()
+com.orong.activity.HelpCaptionActivity: void onClick(android.view.View)
+com.orong.activity.InvestActivity
+com.orong.activity.InvestActivity: InvestActivity()
+com.orong.activity.InvestActivity: void onClick(android.view.View)
+com.orong.activity.LoginActivity
+com.orong.activity.LoginActivity: LoginActivity()
+com.orong.activity.LoginActivity: void onClick(android.view.View)
+com.orong.activity.MainActivity
+com.orong.activity.MainActivity: MainActivity()
+com.orong.activity.MemberSpaceActivity
+com.orong.activity.MemberSpaceActivity: MemberSpaceActivity()
+com.orong.activity.MemberSpaceActivity: void onClick(android.view.View)
+com.orong.activity.MyIdentityActivity
+com.orong.activity.MyIdentityActivity: MyIdentityActivity()
+com.orong.activity.MyIdentityActivity: void onClick(android.view.View)
+com.orong.activity.ProjectInfoActivity
+com.orong.activity.ProjectInfoActivity: ProjectInfoActivity()
+com.orong.activity.ProtocolActivity
+com.orong.activity.ProtocolActivity: ProtocolActivity()
+com.orong.activity.RecomMemberActivity
+com.orong.activity.RecomMemberActivity: RecomMemberActivity()
+com.orong.activity.RecomMemberActivity: void onClick(android.view.View)
+com.orong.activity.RegisterActivity
+com.orong.activity.RegisterActivity: RegisterActivity()
+com.orong.activity.RegisterActivity: void onClick(android.view.View)
+com.orong.activity.RepayPlanActivity
+com.orong.activity.RepayPlanActivity: RepayPlanActivity()
+com.orong.activity.RulesOfDeputyActivity
+com.orong.activity.RulesOfDeputyActivity: RulesOfDeputyActivity()
+com.orong.activity.RulesOfRecMemberActivity
+com.orong.activity.RulesOfRecMemberActivity: RulesOfRecMemberActivity()
+com.orong.activity.RulesOfRecProjectActivity
+com.orong.activity.RulesOfRecProjectActivity: RulesOfRecProjectActivity()
+com.orong.activity.RulesOfRepayActivity
+com.orong.activity.RulesOfRepayActivity: RulesOfRepayActivity()
+com.orong.activity.SplashActivity
+com.orong.activity.SplashActivity: SplashActivity()
+com.orong.activity.TelUsActivity
+com.orong.activity.TelUsActivity: TelUsActivity()
+com.orong.activity.TelUsActivity: void onClick(android.view.View)
+com.orong.activity.UserNewSListActivity
+com.orong.activity.UserNewSListActivity: UserNewSListActivity()
+com.orong.activity.UserNewSListActivity: void onClick(android.view.View)
+com.orong.entity.Commission
+com.orong.entity.Commission: int count
+com.orong.entity.Commission: double earned
+com.orong.entity.Commission: double without
+com.orong.entity.Commission: int getCount()
+com.orong.entity.Commission: void setCount(int)
+com.orong.entity.Commission: double getEarned()
+com.orong.entity.Commission: void setEarned(double)
+com.orong.entity.Commission: double getWithout()
+com.orong.entity.Commission: void setWithout(double)
+com.orong.entity.Commission: Commission()
+com.orong.entity.Commission: Commission(int,double,double)
+com.orong.entity.Contract
+com.orong.entity.Contract: java.lang.String name
+com.orong.entity.Contract: java.lang.String signDate
+com.orong.entity.Contract: java.lang.String loanPer
+com.orong.entity.Contract: java.lang.String lender
+com.orong.entity.Contract: java.util.Date insertDate
+com.orong.entity.Contract: java.lang.String assureWay
+com.orong.entity.Contract: Contract()
+com.orong.entity.Contract: Contract(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.util.Date,java.lang.String)
+com.orong.entity.Contract: java.lang.String getName()
+com.orong.entity.Contract: void setName(java.lang.String)
+com.orong.entity.Contract: java.lang.String getSignDate()
+com.orong.entity.Contract: void setSignDate(java.lang.String)
+com.orong.entity.Contract: java.lang.String getLoanPer()
+com.orong.entity.Contract: void setLoanPer(java.lang.String)
+com.orong.entity.Contract: java.lang.String getLender()
+com.orong.entity.Contract: void setLender(java.lang.String)
+com.orong.entity.Contract: java.util.Date getInsertDate()
+com.orong.entity.Contract: void setInsertDate(java.util.Date)
+com.orong.entity.Contract: java.lang.String getAssureWay()
+com.orong.entity.Contract: void setAssureWay(java.lang.String)
+com.orong.entity.Contract: java.lang.String getDateFormat(java.util.Date)
+com.orong.entity.Contract: java.lang.String getinsertDateFormat()
+com.orong.entity.DeputyCommission
+com.orong.entity.DeputyCommission: int isDeputy
+com.orong.entity.DeputyCommission: DeputyCommission()
+com.orong.entity.DeputyCommission: DeputyCommission(int,double,double)
+com.orong.entity.DeputyCommission: DeputyCommission(int,double,double,int)
+com.orong.entity.DeputyCommission: int getIsDeputy()
+com.orong.entity.DeputyCommission: void setIsDeputy(int)
+com.orong.entity.DetailMessage
+com.orong.entity.DetailMessage: long serialVersionUID
+com.orong.entity.DetailMessage: java.lang.String content
+com.orong.entity.DetailMessage: java.lang.String getContent()
+com.orong.entity.DetailMessage: void setContent(java.lang.String)
+com.orong.entity.DetailMessage: DetailMessage()
+com.orong.entity.DetailMessage: DetailMessage(java.lang.String,int,java.lang.String,java.util.Date)
+com.orong.entity.DetailMessage: DetailMessage(java.lang.String,int,java.lang.String,java.util.Date,java.lang.String)
+com.orong.entity.DetailMessage: DetailMessage(com.orong.entity.MessageSummary,java.lang.String)
+com.orong.entity.HttpDatas
+com.orong.entity.HttpDatas: java.lang.String url
+com.orong.entity.HttpDatas: boolean isPost
+com.orong.entity.HttpDatas: java.util.ArrayList paramList
+com.orong.entity.HttpDatas: HttpDatas(java.lang.String,boolean,java.util.ArrayList)
+com.orong.entity.HttpDatas: HttpDatas(java.lang.String,boolean)
+com.orong.entity.HttpDatas: HttpDatas(java.lang.String)
+com.orong.entity.HttpDatas: java.lang.String getUrl()
+com.orong.entity.HttpDatas: void setUrl(java.lang.String)
+com.orong.entity.HttpDatas: boolean isPost()
+com.orong.entity.HttpDatas: void setPost(boolean)
+com.orong.entity.HttpDatas: java.util.ArrayList getParamList()
+com.orong.entity.HttpDatas: void putParam(java.lang.String,java.lang.String)
+com.orong.entity.LoanDetail
+com.orong.entity.LoanDetail: java.lang.String loanName
+com.orong.entity.LoanDetail: java.lang.String picture
+com.orong.entity.LoanDetail: double money
+com.orong.entity.LoanDetail: float income
+com.orong.entity.LoanDetail: float schedule
+com.orong.entity.LoanDetail: float interestRate
+com.orong.entity.LoanDetail: java.lang.String guarantee
+com.orong.entity.LoanDetail: java.lang.String deadline
+com.orong.entity.LoanDetail: java.lang.String timeRemaining
+com.orong.entity.LoanDetail: java.lang.String projectId
+com.orong.entity.LoanDetail: boolean isInvestment
+com.orong.entity.LoanDetail: LoanDetail()
+com.orong.entity.LoanDetail: LoanDetail(java.lang.String,java.lang.String,double,float,float,float,java.lang.String,java.lang.String,java.lang.String,java.lang.String,boolean)
+com.orong.entity.LoanDetail: java.lang.String getLoanName()
+com.orong.entity.LoanDetail: void setLoanName(java.lang.String)
+com.orong.entity.LoanDetail: java.lang.String getPicture()
+com.orong.entity.LoanDetail: void setPicture(java.lang.String)
+com.orong.entity.LoanDetail: double getMoney()
+com.orong.entity.LoanDetail: void setMoney(double)
+com.orong.entity.LoanDetail: float getIncome()
+com.orong.entity.LoanDetail: void setIncome(float)
+com.orong.entity.LoanDetail: float getSchedule()
+com.orong.entity.LoanDetail: void setSchedule(float)
+com.orong.entity.LoanDetail: float getInterestRate()
+com.orong.entity.LoanDetail: void setInterestRate(float)
+com.orong.entity.LoanDetail: java.lang.String getGuarantee()
+com.orong.entity.LoanDetail: void setGuarantee(java.lang.String)
+com.orong.entity.LoanDetail: java.lang.String getDeadline()
+com.orong.entity.LoanDetail: void setDeadline(java.lang.String)
+com.orong.entity.LoanDetail: java.lang.String getTimeRemaining()
+com.orong.entity.LoanDetail: void setTimeRemaining(java.lang.String)
+com.orong.entity.LoanDetail: java.lang.String getProjectId()
+com.orong.entity.LoanDetail: void setProjectId(java.lang.String)
+com.orong.entity.LoanDetail: boolean isInvestment()
+com.orong.entity.LoanDetail: void setInvestment(boolean)
+com.orong.entity.LoanSummary
+com.orong.entity.LoanSummary: java.lang.String loanID
+com.orong.entity.LoanSummary: java.lang.String picture
+com.orong.entity.LoanSummary: java.lang.String loanName
+com.orong.entity.LoanSummary: double money
+com.orong.entity.LoanSummary: double schedule
+com.orong.entity.LoanSummary: double interestRate
+com.orong.entity.LoanSummary: int deadline
+com.orong.entity.LoanSummary: LoanSummary()
+com.orong.entity.LoanSummary: LoanSummary(java.lang.String,java.lang.String,java.lang.String,double,double,double,int)
+com.orong.entity.LoanSummary: java.lang.String getLoanID()
+com.orong.entity.LoanSummary: void setLoanID(java.lang.String)
+com.orong.entity.LoanSummary: java.lang.String getPicture()
+com.orong.entity.LoanSummary: void setPicture(java.lang.String)
+com.orong.entity.LoanSummary: java.lang.String getLoanName()
+com.orong.entity.LoanSummary: void setLoanName(java.lang.String)
+com.orong.entity.LoanSummary: double getMoney()
+com.orong.entity.LoanSummary: void setMoney(double)
+com.orong.entity.LoanSummary: double getSchedule()
+com.orong.entity.LoanSummary: void setSchedule(double)
+com.orong.entity.LoanSummary: double getInterestRate()
+com.orong.entity.LoanSummary: void setInterestRate(double)
+com.orong.entity.LoanSummary: int getDeadline()
+com.orong.entity.LoanSummary: void setDeadline(int)
+com.orong.entity.MemberInfo
+com.orong.entity.MemberInfo: java.lang.String userID
+com.orong.entity.MemberInfo: java.lang.String picture
+com.orong.entity.MemberInfo: java.lang.String name
+com.orong.entity.MemberInfo: java.lang.String phone
+com.orong.entity.MemberInfo: int userFlag
+com.orong.entity.MemberInfo: boolean isFriend
+com.orong.entity.MemberInfo: MemberInfo()
+com.orong.entity.MemberInfo: MemberInfo(java.lang.String,java.lang.String,java.lang.String,java.lang.String,int,boolean)
+com.orong.entity.MemberInfo: java.lang.String getUserID()
+com.orong.entity.MemberInfo: void setUserID(java.lang.String)
+com.orong.entity.MemberInfo: java.lang.String getPicture()
+com.orong.entity.MemberInfo: void setPicture(java.lang.String)
+com.orong.entity.MemberInfo: java.lang.String getName()
+com.orong.entity.MemberInfo: void setName(java.lang.String)
+com.orong.entity.MemberInfo: java.lang.String getPhone()
+com.orong.entity.MemberInfo: void setPhone(java.lang.String)
+com.orong.entity.MemberInfo: int getUserFlag()
+com.orong.entity.MemberInfo: void setUserFlag(int)
+com.orong.entity.MemberInfo: boolean isFriend()
+com.orong.entity.MemberInfo: void setFriend(boolean)
+com.orong.entity.MessageSummary
+com.orong.entity.MessageSummary: long serialVersionUID
+com.orong.entity.MessageSummary: java.lang.String Message_ID
+com.orong.entity.MessageSummary: int Read_Flag
+com.orong.entity.MessageSummary: java.lang.String Title
+com.orong.entity.MessageSummary: java.util.Date Send_Date
+com.orong.entity.MessageSummary: MessageSummary()
+com.orong.entity.MessageSummary: MessageSummary(java.lang.String,int,java.lang.String,java.util.Date)
+com.orong.entity.MessageSummary: java.lang.String getMessage_ID()
+com.orong.entity.MessageSummary: void setMessage_ID(java.lang.String)
+com.orong.entity.MessageSummary: int getRead_Flag()
+com.orong.entity.MessageSummary: java.lang.String getTitle()
+com.orong.entity.MessageSummary: void setTitle(java.lang.String)
+com.orong.entity.MessageSummary: java.util.Date getSend_Date()
+com.orong.entity.MessageSummary: void setSend_Date(java.util.Date)
+com.orong.entity.MessageSummary: void setSend_Date(long)
+com.orong.entity.MessageSummary: void setRead_Flag(int)
+com.orong.entity.MessageSummary: java.lang.String getFomatDate()
+com.orong.entity.ProjectInfo
+com.orong.entity.ProjectInfo: java.lang.String name
+com.orong.entity.ProjectInfo: double total
+com.orong.entity.ProjectInfo: double usedTotal
+com.orong.entity.ProjectInfo: ProjectInfo()
+com.orong.entity.ProjectInfo: ProjectInfo(java.lang.String,double,double)
+com.orong.entity.ProjectInfo: java.lang.String getName()
+com.orong.entity.ProjectInfo: void setName(java.lang.String)
+com.orong.entity.ProjectInfo: double getTotal()
+com.orong.entity.ProjectInfo: void setTotal(double)
+com.orong.entity.ProjectInfo: double getUsedTotal()
+com.orong.entity.ProjectInfo: void setUsedTotal(double)
+com.orong.entity.RepayPlan
+com.orong.entity.RepayPlan: int num
+com.orong.entity.RepayPlan: java.util.Date Refund_Date
+com.orong.entity.RepayPlan: float Principal
+com.orong.entity.RepayPlan: float Interest
+com.orong.entity.RepayPlan: RepayPlan()
+com.orong.entity.RepayPlan: RepayPlan(int,java.util.Date,float,float)
+com.orong.entity.RepayPlan: int getNum()
+com.orong.entity.RepayPlan: void setNum(int)
+com.orong.entity.RepayPlan: java.util.Date getRefund_Date()
+com.orong.entity.RepayPlan: void setRefund_Date(java.util.Date)
+com.orong.entity.RepayPlan: float getPrincipal()
+com.orong.entity.RepayPlan: void setPrincipal(float)
+com.orong.entity.RepayPlan: float getInterest()
+com.orong.entity.RepayPlan: void setInterest(float)
+com.orong.entity.RepayPlan: java.lang.String getDateFormat(java.util.Date)
+com.orong.entity.RepayPlan: java.lang.String getRefund_DateFormat()
+com.orong.entity.UpLoadDatas
+com.orong.entity.UpLoadDatas: java.lang.String url
+com.orong.entity.UpLoadDatas: java.io.File imageFile
+com.orong.entity.UpLoadDatas: android.content.Context context
+com.orong.entity.UpLoadDatas: java.util.ArrayList paramList
+com.orong.entity.UpLoadDatas: UpLoadDatas()
+com.orong.entity.UpLoadDatas: UpLoadDatas(java.lang.String,java.io.File,android.content.Context)
+com.orong.entity.UpLoadDatas: java.lang.String getUrl()
+com.orong.entity.UpLoadDatas: void setUrl(java.lang.String)
+com.orong.entity.UpLoadDatas: android.content.Context getContext()
+com.orong.entity.UpLoadDatas: void setContext(android.content.Context)
+com.orong.entity.UpLoadDatas: java.io.File getImageFile()
+com.orong.entity.UpLoadDatas: void setImageFile(java.io.File)
+com.orong.entity.UpLoadDatas: java.util.ArrayList getParamList()
+com.orong.entity.UpLoadDatas: void setParamList(java.util.ArrayList)
+com.orong.entity.UpLoadDatas: void putParam(java.lang.String,java.lang.String)
+com.orong.entity.UserInfo
+com.orong.entity.UserInfo: long serialVersionUID
+com.orong.entity.UserInfo: java.lang.String userName
+com.orong.entity.UserInfo: java.lang.String picture
+com.orong.entity.UserInfo: java.lang.String phone
+com.orong.entity.UserInfo: int userFlag
+com.orong.entity.UserInfo: int deputyFlag
+com.orong.entity.UserInfo: int messageCount
+com.orong.entity.UserInfo: double availBal
+com.orong.entity.UserInfo: long qrCode
+com.orong.entity.UserInfo: UserInfo()
+com.orong.entity.UserInfo: UserInfo(java.lang.String,java.lang.String,java.lang.String,int,int,int,double,long)
+com.orong.entity.UserInfo: java.lang.String getUserName()
+com.orong.entity.UserInfo: void setUserName(java.lang.String)
+com.orong.entity.UserInfo: java.lang.String getPicture()
+com.orong.entity.UserInfo: void setPicture(java.lang.String)
+com.orong.entity.UserInfo: java.lang.String getPhone()
+com.orong.entity.UserInfo: void setPhone(java.lang.String)
+com.orong.entity.UserInfo: int getUserFlag()
+com.orong.entity.UserInfo: void setUserFlag(int)
+com.orong.entity.UserInfo: int getDeputyFlag()
+com.orong.entity.UserInfo: void setDeputyFlag(int)
+com.orong.entity.UserInfo: int getMessageCount()
+com.orong.entity.UserInfo: void setMessageCount(int)
+com.orong.entity.UserInfo: double getAvailBal()
+com.orong.entity.UserInfo: void setAvailBal(double)
+com.orong.entity.UserInfo: long getQrCode()
+com.orong.entity.UserInfo: void setQrCode(long)
+com.orong.entity.VersionInfo
+com.orong.entity.VersionInfo: int versionCode
+com.orong.entity.VersionInfo: java.lang.String versionName
+com.orong.entity.VersionInfo: java.lang.String url
+com.orong.entity.VersionInfo: java.lang.String description
+com.orong.entity.VersionInfo: java.util.Date updateTime
+com.orong.entity.VersionInfo: VersionInfo()
+com.orong.entity.VersionInfo: VersionInfo(int,java.lang.String,java.lang.String,java.lang.String,java.util.Date)
+com.orong.entity.VersionInfo: int getVersionCode()
+com.orong.entity.VersionInfo: void setVersionCode(int)
+com.orong.entity.VersionInfo: java.lang.String getVersionName()
+com.orong.entity.VersionInfo: void setVersionName(java.lang.String)
+com.orong.entity.VersionInfo: java.lang.String getUrl()
+com.orong.entity.VersionInfo: void setUrl(java.lang.String)
+com.orong.entity.VersionInfo: java.lang.String getDescription()
+com.orong.entity.VersionInfo: void setDescription(java.lang.String)
+com.orong.entity.VersionInfo: java.util.Date getUpdateTime()
+com.orong.entity.VersionInfo: void setUpdateTime(java.util.Date)
+com.orong.fragment.InvestmentFragment$sortName: com.orong.fragment.InvestmentFragment$sortName[] values()
+com.orong.fragment.InvestmentFragment$sortName: com.orong.fragment.InvestmentFragment$sortName valueOf(java.lang.String)
+com.orong.zxing.decoding.CaptureActivityHandler$State: com.orong.zxing.decoding.CaptureActivityHandler$State[] values()
+com.orong.zxing.decoding.CaptureActivityHandler$State: com.orong.zxing.decoding.CaptureActivityHandler$State valueOf(java.lang.String)
+com.orong.zxing.view.ViewfinderView
+com.orong.zxing.view.ViewfinderView: ViewfinderView(android.content.Context,android.util.AttributeSet)
+org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode[] values()
+org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode valueOf(java.lang.String)

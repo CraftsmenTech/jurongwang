@@ -1,0 +1,137 @@
+package com.orong.entity;
+
+import java.io.Serializable;
+
+import com.orong.utils.Bean;
+
+/**
+ * @Title: LoanDetail.java
+ * @Description: TODO
+ * @author lanhaizhong
+ * @date 2013年8月20日 下午1:59:26
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class LoanDetail implements Bean, Serializable {
+	private String loanName;
+	private String picture;
+	private double money;// 金额
+	private float income;// 预计效益
+	private float schedule;// 进度
+	private float interestRate;// 年华利率
+	private String guarantee;// 风险保障
+	private String deadline;// 期限
+	private String timeRemaining;// 剩余时间
+	private String projectId;// 项目名称（项目信息栏中需要 不是融资(借款)id）
+	private boolean isInvestment;// 可投资状态
+
+	public LoanDetail() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public LoanDetail(String loanName, String picture, double money, float income, float schedule, float interestRate, String guarantee, String deadline, String timeRemaining,
+			String projectId, boolean isInvestment) {
+		super();
+		this.loanName = loanName;
+		this.picture = picture;
+		this.money = money;
+		this.income = income;
+		this.schedule = schedule;
+		this.interestRate = interestRate;
+		this.guarantee = guarantee;
+		this.deadline = deadline;
+		this.timeRemaining = timeRemaining;
+		this.projectId = projectId;
+		this.isInvestment = isInvestment;
+	}
+
+	public String getLoanName() {
+		return loanName;
+	}
+
+	public void setLoanName(String loanName) {
+		this.loanName = loanName;
+	}
+
+	public String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+
+	public double getMoney() {
+		return money;
+	}
+
+	public void setMoney(double money) {
+		this.money = money;
+	}
+
+	public float getIncome() {
+		return income;
+	}
+
+	public void setIncome(float income) {
+		this.income = income;
+	}
+
+	public float getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(float schedule) {
+		this.schedule = schedule;
+	}
+
+	public float getInterestRate() {
+		return interestRate;
+	}
+
+	public void setInterestRate(float interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public String getGuarantee() {
+		return guarantee;
+	}
+
+	public void setGuarantee(String guarantee) {
+		this.guarantee = guarantee;
+	}
+
+	public String getDeadline() {
+		return deadline;
+	}
+
+	public void setDeadline(String deadline) {
+		this.deadline = deadline;
+	}
+
+	public String getTimeRemaining() {
+		return timeRemaining;
+	}
+
+	public void setTimeRemaining(String timeRemaining) {
+		this.timeRemaining = timeRemaining;
+	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
+	}
+
+	public boolean isInvestment() {
+		return isInvestment;
+	}
+
+	public void setInvestment(boolean isInvestment) {
+		this.isInvestment = isInvestment;
+	}
+
+}

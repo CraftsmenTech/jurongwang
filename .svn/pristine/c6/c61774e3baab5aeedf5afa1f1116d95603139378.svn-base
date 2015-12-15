@@ -1,0 +1,42 @@
+package com.orong.activity;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+import com.orong.adapter.ContractInfoAdapter;
+
+import android.os.Bundle;
+import android.widget.ListView;
+
+/**
+ * @Title: ContractInfoActivity.java
+ * @Description: 合同信息页面，罗列某项投资系项目的具体合同信息
+ * @author lanhaizhong
+ * @date 2013年7月15日上午10:48:12
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class ContractInfoActivity extends BaseActivity {
+
+	private ListView lvContracts;
+	private ArrayList<Object> contractInfoList;
+	private ContractInfoAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_contract_info);
+		initivReabck(this);
+		setTitle(this, R.string.contract_info);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		super.initView();
+		lvContracts = (ListView) this.findViewById(R.id.lv_contract_list);
+
+		adapter = new ContractInfoAdapter(contractInfoList, this);
+
+		lvContracts.setAdapter(adapter);
+	}
+}

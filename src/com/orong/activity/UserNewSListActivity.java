@@ -1,0 +1,395 @@
+package com.orong.activity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.orong.Constant;
+import com.orong.R;
+import com.orong.adapter.UserNewsListAdapter;
+import com.orong.db.MessageDao;
+import com.orong.entity.DetailMessage;
+import com.orong.entity.HttpDatas;
+import com.orong.entity.MessageSummary;
+import com.orong.utils.JSONUtil;
+import com.orong.utils.net.NetUtils;
+import com.orong.utils.net.HttpAsyncTask.TaskCallBack;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+
+/**
+ * @Title: UserNewSListActivity.java
+ * @Description: 提醒用户的一些信息列表
+ * @author lanhaizhong
+ * @date 2013年7月9日下午4:25:16
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class UserNewSListActivity extends BaseActivity implements OnItemClickListener {
+
+	private ListView lvNewsList;
+	private TextView tvNomassageNotice;
+	private UserNewsListAdapter adapter;// 提醒信息列表适配
+	private List<MessageSummary> messageList;
+	private Button btPrevious;
+	private Button btNext;
+
+	int newMessageCount = 0;// 新消息条目
+	private int pageSize = 50;
+	private static int count = 0;// 信息列表的总数
+	private static int pageIndex = 1;// 始起页
+	private static int limit = 0;// 数据库读取数始起条目
+	private MessageDao dao;
+	private static int readCount = 0;// 阅读的数量
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_user_news);
+		dao = new MessageDao(this);
+		initView();
+		messageList = new ArrayList<MessageSummary>();
+		adapter = new UserNewsListAdapter(messageList, UserNewSListActivity.this);
+		lvNewsList.setAdapter(adapter);
+		lvNewsList.setOnItemClickListener(this);
+
+		Intent intent = getIntent();
+		newMessageCount = intent.getIntExtra("MessageCount", 0);
+
+		loadnewsMessage(pageSize, 1);
+
+	}
+
+	@Override
+	public void initView() {
+		lvNewsList = (ListView) this.findViewById(R.id.lv_usernews_list);
+		tvNomassageNotice = (TextView) this.findViewById(R.id.tv_nomessage_notice);
+		btPrevious = (Button) this.findViewById(R.id.bt_previous);
+		btPrevious.setOnClickListener(this);
+		btNext = (Button) this.findViewById(R.id.bt_next);
+		btNext.setOnClickListener(this);
+		setTitle(UserNewSListActivity.this, "信息列表");
+		ivReback = (ImageView) findViewById(R.id.iv_reback);
+		ivReback.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				mySetResult();
+				doReback();
+			}
+		});
+		// initivReabck(this);
+		super.initView();
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_previous:
+			int page = pageIndex - 1;
+			List<MessageSummary> li = messageList.subList((page - 1) * pageSize, page * pageSize);
+			adapter.setNewsList(li);
+			adapter.notifyDataSetChanged();
+			pageIndex--;
+			setPageButtonVisable();
+			break;
+		case R.id.bt_next:
+			int index = pageIndex * pageSize;
+			if (index < messageList.size()) {// 已经加载过
+				if ((index + pageSize) > messageList.size()) {
+					adapter.setNewsList(messageList.subList(index, messageList.size()));
+					adapter.notifyDataSetChanged();
+				} else {
+					adapter.setNewsList(messageList.subList(index, index + pageSize));
+					adapter.notifyDataSetChanged();
+				}
+				pageIndex++;
+				setPageButtonVisable();
+			} else {
+				int page2 = pageIndex + 1;
+				loadnewsMessage(pageSize, page2);
+			}
+			break;
+
+		default:
+			super.onClick(v);
+			break;
+		}
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> arg0, View arg1, final int arg2, long arg3) {
+		// TODO Auto-generated method stub
+		if (arg0.equals(lvNewsList)) {
+			final MessageSummary summary = (MessageSummary) adapter.getItem(arg2);
+
+			String Message_ID = summary.getMessage_ID();
+			// if()
+			DetailMessage message = null;
+			message = dao.getDetailMessage(Message_ID);
+			if (message != null && message.getContent() != null) {
+				adapter.setSummaryRead(arg2, true);
+				Intent intent = new Intent(UserNewSListActivity.this, DetailsActivity.class);
+				intent.putExtra("Message", message);
+				startActivityForResult(intent, 1000);
+				return;
+			} else {
+
+				getDetailMessage(arg2, summary, Message_ID);
+
+			}
+		}
+	}
+
+	/**
+	 * 获取消息详情
+	 * 
+	 * @param arg2
+	 *            adpterposition
+	 * @param summary
+	 * @param Message_ID
+	 */
+	private void getDetailMessage(final int arg2, final MessageSummary summary, String Message_ID) {
+		HttpDatas datas = new HttpDatas(Constant.USERAPI);
+		datas.putParam("method", "GetMessage");
+		datas.putParam("messageId", Message_ID);
+		NetUtils.sendRequest(datas, UserNewSListActivity.this, getString(R.string.loading), new TaskCallBack() {
+			int code = 0;
+			DetailMessage message;
+
+			@Override
+			public int excueHttpResponse(String respondsStr) {
+				try {
+					JSONObject jsonObject = new JSONObject(respondsStr);
+					code = jsonObject.getInt("code");
+					if (code == Constant.RESPONSE_OK) {
+						String count = jsonObject.getString("count");
+						message = new DetailMessage(summary, count);
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+				return code;
+			}
+
+			@Override
+			public void beforeTask() {
+
+			}
+
+			@Override
+			public void afterTask(int result) {
+				switch (result) {
+
+				case Constant.RESPONSE_OK:
+					int rflag = summary.getRead_Flag();
+					if (rflag == 0) {
+						readCount++;
+					}
+					message.setRead_Flag(1);
+					long id = dao.addmessage(message);
+					adapter.setSummaryRead(arg2, true);
+					Intent intent = new Intent(UserNewSListActivity.this, DetailsActivity.class);
+					intent.putExtra("Message", message);
+					startActivityForResult(intent, 1000);
+					break;
+
+				default:
+					break;
+				}
+			}
+		});
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == 1000) {
+			adapter.notifyDataSetChanged();
+		}
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		mySetResult();
+		finish();
+	}
+
+	/**
+	 * 加载尚未加载完的新消息并用旧的（本地保存）补全页面
+	 * 
+	 * @param pSize
+	 * @param pindex
+	 */
+	private void loadNew_AddOldMessage(int pSize, final int pindex) {
+		HttpDatas datas = new HttpDatas(Constant.USERAPI);
+		datas.putParam("method", "GetMessageList");
+		datas.putParam("pageIndex", String.valueOf(pindex));
+		datas.putParam("pageSize", String.valueOf(pSize));
+		NetUtils.sendRequest(datas, this, getString(R.string.loading), new TaskCallBack() {
+			ArrayList<MessageSummary> list;
+
+			@Override
+			public int excueHttpResponse(String respondsStr) {
+				int code = 0;
+				try {
+					JSONObject jsonObject = new JSONObject(respondsStr);
+					code = jsonObject.getInt("code");
+					if (code == Constant.RESPONSE_OK) {
+						count = jsonObject.getInt("count");
+						list = JSONUtil.jsonArray2ArrayList(jsonObject.getJSONArray("data"), MessageSummary.class);
+						if (list != null) {
+							int size = list.size();
+							dao.addmessageList(list);
+							ArrayList<MessageSummary> dblList;
+							if (size < pageSize) {
+								dblList = dao.getMessages(limit, pageSize - size);
+								if (dblList != null) {
+									limit = dblList.size();
+								}
+								list.addAll(dblList);
+							}
+						}
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return code;
+			}
+
+			@Override
+			public void beforeTask() {
+
+			}
+
+			@Override
+			public void afterTask(int result) {
+				switch (result) {
+				case Constant.RESPONSE_OK:
+					if (messageList == null) {
+						messageList = list;
+					} else {
+						messageList.addAll(list);
+					}
+					pageIndex = pindex;
+					setPageButtonVisable();
+					adapter.setNewsList(list);
+					adapter.notifyDataSetChanged();
+					break;
+
+				default:
+					showResulttoast(result, UserNewSListActivity.this);
+					break;
+				}
+			}
+		});
+	}
+
+	protected void mySetResult() {
+		Intent data = new Intent();
+		data.putExtra("readCount", readCount);
+		setResult(100, data);
+	}
+
+	/**
+	 * 加载信息
+	 * 
+	 * @param pageSize
+	 * @param pindex
+	 */
+	private void loadnewsMessage(int pageSize, final int pindex) {
+		HttpDatas datas = new HttpDatas(Constant.USERAPI);
+		datas.putParam("method", "GetMessageList");
+		datas.putParam("pageIndex", String.valueOf(pindex));
+		datas.putParam("pageSize", String.valueOf(pageSize));
+		NetUtils.sendRequest(datas, this, getString(R.string.loading), new TaskCallBack() {
+			ArrayList<MessageSummary> list;
+
+			@Override
+			public int excueHttpResponse(String respondsStr) {
+				int code = 0;
+				try {
+					JSONObject jsonObject = new JSONObject(respondsStr);
+					code = jsonObject.getInt("code");
+					if (code == Constant.RESPONSE_OK) {
+						count = jsonObject.getInt("count");
+						list = JSONUtil.jsonArray2ArrayList(jsonObject.getJSONArray("data"), MessageSummary.class);
+						dao.addmessageList(list);
+					}
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return code;
+			}
+
+			@Override
+			public void beforeTask() {
+
+			}
+
+			@Override
+			public void afterTask(int result) {
+				switch (result) {
+				case Constant.RESPONSE_OK:
+					if (messageList == null) {
+						messageList = list;
+					} else {
+						messageList.addAll(list);
+					}
+					if (pageIndex == 1 && (list == null || list.size() == 0)) {
+						tvNomassageNotice.setVisibility(View.VISIBLE);
+						lvNewsList.setVisibility(View.GONE);
+					}
+					pageIndex = pindex;
+					setPageButtonVisable();
+					adapter.setNewsList(list);
+					adapter.notifyDataSetChanged();
+					break;
+
+				default:
+					showResulttoast(result, UserNewSListActivity.this);
+					break;
+				}
+			}
+		});
+	}
+
+	/**
+	 * 设置上下一页按钮的可见
+	 * 
+	 * @param pageIndex
+	 */
+	private void setPageButtonVisable() {
+		if (pageIndex == 1) {
+			btPrevious.setVisibility(View.GONE);
+			if (pageSize < count) {// 说明还有下一页
+				btNext.setVisibility(View.VISIBLE);
+			} else {
+				btNext.setVisibility(View.GONE);
+			}
+		} else {
+			btPrevious.setVisibility(View.VISIBLE);
+			if (pageSize * pageIndex < count) {
+				btNext.setVisibility(View.VISIBLE);
+			} else {
+				btNext.setVisibility(View.GONE);
+			}
+		}
+	}
+
+}

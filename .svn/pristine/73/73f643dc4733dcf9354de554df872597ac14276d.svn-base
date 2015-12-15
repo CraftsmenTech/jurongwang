@@ -1,0 +1,58 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+
+/**
+ * @Title: LoginActivity.java
+ * @Description: 登录界面
+ * @author lanhaizhong
+ * @date 2013年7月3日 下午3:03:57
+ * @version V1.0 Copyright (c) 2013 Crong.com,Inc. All Rights Reserved.
+ */
+public class LoginActivity extends BaseActivity {
+
+	private Button bt_register;// 注册按钮
+	private Button bt_login;// 登录按钮
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_login);
+		initView();
+
+	}
+
+	protected void initView() {
+		// TODO Auto-generated method stub
+		this.bt_login = (Button) findViewById(R.id.bt_login);
+		bt_register = (Button) findViewById(R.id.bt_register);
+		bt_register.setOnClickListener(this);
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		super.onClick(v);
+		switch (v.getId()) {
+		case R.id.bt_register:
+			startActivity(new Intent(this, RegisterActivity.class));
+			break;
+		case R.id.bt_login:
+
+			break;
+
+		default:
+			break;
+		}
+	}
+}

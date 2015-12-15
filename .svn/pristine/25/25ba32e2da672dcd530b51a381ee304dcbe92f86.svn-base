@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:background="@drawable/green_rounded_rectangle" >
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/useric" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="167dp"
+            android:layout_height="167dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="center"
+            android:src="@drawable/dimensional" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_rounded_rectangle"
+            android:gravity="center"
+            android:minHeight="65dp"
+            android:padding="@dimen/pad3"
+            android:text="请使用二维码工具，扫描此会员推荐码  > 下载聚融投标助手APP   >  并注册成为会员  >  再拍一次推荐成功。"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+</LinearLayout>

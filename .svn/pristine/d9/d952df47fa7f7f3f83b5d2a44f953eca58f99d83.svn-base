@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:minHeight="@dimen/spa180"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_rounded_rectangle"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/spa74"
+            android:paddingLeft="@dimen/pad3"
+            android:paddingRight="@dimen/pad3"
+            android:text="@string/recoproject_gain"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/normal_textstyle"
+            android:layout_marginBottom="@dimen/pad4"
+            android:layout_marginLeft="@dimen/pad3"
+            android:layout_marginRight="@dimen/pad3"
+            android:layout_marginTop="@dimen/pad4"
+            android:lineSpacingMultiplier="1.3"
+            android:text="@string/recoproject_rules_detail"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+</LinearLayout>

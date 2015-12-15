@@ -1,0 +1,117 @@
+ <!-- 融资详情 我要投资界面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:minHeight="@dimen/spa78"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/pad3"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/pad3" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text="可用余额：" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:text="1000000元" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/pad3"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="@dimen/pad3" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|right"
+                    android:text="可用余额：" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|left"
+                    android:text="1000000元" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:background="@drawable/green_rounded_rectangle"
+            android:text="点击自动获取最佳投标金额"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad3"
+            android:hint="| 输入投标金额"
+            android:paddingBottom="@dimen/pad4"
+            android:paddingTop="@dimen/pad4" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad3"
+            android:hint="|输入交易密码"
+            android:paddingBottom="@dimen/pad4"
+            android:paddingTop="@dimen/pad4"
+            android:password="true" />
+    </LinearLayout>
+
+    <Button
+        style="@style/blue_buttom_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_margin="@dimen/pad3"
+        android:text="确定投资" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: MemberSpaceActivity.java
+ * @Description: 会员空间页面
+ * @author lanhaizhong
+ * @date 2013年7月16日上午11:51:46
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class MemberSpaceActivity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_member_space);
+		setTitle(this, "会员空间");
+		initivReabck(this);
+	}
+}

@@ -1,0 +1,132 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:background="@color/cor1"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_labletext1"
+                style="@style/normal_Labletextstyle"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="@string/crong_investment_assistant"
+                android:textSize="@dimen/f26" />
+
+            <TextView
+                style="@style/normal_Labletextstyle"
+                android:layout_alignBottom="@+id/tv_labletext1"
+                android:layout_marginLeft="2dp"
+                android:layout_toRightOf="@+id/tv_labletext1"
+                android:text="@string/android"
+                android:textSize="@dimen/f16" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_phoneRegister"
+        style="@style/normal_textstyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:lineSpacingExtra="3dp"
+        android:padding="@dimen/pad12"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/et_account"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/account"
+            android:hint="@string/phone_or_username"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center_vertical"
+            android:background="#cccccc"
+            android:textSize="@dimen/f21" />
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/passwowrd"
+            android:hint="@string/login_pw"
+            android:password="true"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cb_savedpw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad4"
+        android:background="@null"
+        android:button="@null"
+        android:drawableLeft="@drawable/checkbox_backgound_selector"
+        android:drawablePadding="2dp"
+        android:text="@string/autoLogin"
+        android:textColor="@color/textcolor" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/bt_register"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:layout_weight="1"
+            android:background="@drawable/blue_button_background_selector"
+            android:text="@string/register"
+            android:textColor="@color/cor4" />
+
+        <View
+            android:layout_width="@dimen/pad4"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:layout_weight="1"
+            android:background="@drawable/green_button_background_selector"
+            android:text="@string/login"
+            android:textColor="@color/cor4" />
+    </LinearLayout>
+
+</LinearLayout>

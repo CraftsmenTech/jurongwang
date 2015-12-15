@@ -1,0 +1,70 @@
+package com.orong.activity;
+
+import com.orong.OrongApplication;
+import com.orong.R;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+/**
+ * @Title: InvestActivity.java
+ * @Description: 我要投资
+ * @author lanhaizhong
+ * @date 2013年7月15日下午2:45:21
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class InvestActivity extends BaseActivity {
+
+	private TextView tvAvailabaleOver;// 可用金额
+	private TextView tvMayInvestSum;// 可投资
+	private Button btSetBestSum;// 点击自动填写最佳方案
+	private EditText etInvestSum;// 投资金额
+	private EditText etTransactionPw;// 交易密码
+	private Button btIdentifyInvestment;// 确定投资
+	private double availBal;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_invest);
+		initivReabck(this);
+		setTitle(this, R.string.doinvestment);
+		initView();
+		availBal = OrongApplication.user.getAvailBal();
+		tvAvailabaleOver.setText(availBal + "");
+	}
+
+	@Override
+	public void initView() {
+		super.initView();
+		tvAvailabaleOver = (TextView) this.findViewById(R.id.tv_availabale_over);
+		tvMayInvestSum = (TextView) this.findViewById(R.id.tv_may_invest_sum);
+		btSetBestSum = (Button) this.findViewById(R.id.bt_set_best_sum);
+
+		btSetBestSum.setOnClickListener(this);
+		etInvestSum = (EditText) this.findViewById(R.id.et_invest_sum);
+		etTransactionPw = (EditText) this.findViewById(R.id.et_transaction_password);
+
+		btIdentifyInvestment = (Button) this.findViewById(R.id.bt_identify_investment);
+		btIdentifyInvestment.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.bt_set_best_sum:
+			break;
+		case R.id.bt_identify_investment:
+			
+			break;
+
+		default:
+			super.onClick(v);
+			break;
+		}
+
+	}
+}

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/lv_projects"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@null"
+            android:dividerHeight="0px" >
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_no_project"
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/noproject"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:background="@drawable/wave_line"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" >
+
+                <CheckBox
+                    android:id="@+id/cb_sequ_by_sum"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableLeft="@null"
+                    android:drawablePadding="0px"
+                    android:drawableRight="@drawable/sequence_backgound_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/investment_chekbox_pandding"
+                    android:paddingRight="@dimen/investment_chekbox_pandding"
+                    android:text="@string/sequ1" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/divide" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" >
+
+                <CheckBox
+                    android:id="@+id/cb_sequ_by_pro"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableLeft="@null"
+                    android:drawablePadding="0px"
+                    android:drawableRight="@drawable/unsequence_backgound_selector"
+                    android:gravity="center_vertical"
+                    android:padding="10dp"
+                    android:paddingLeft="@dimen/investment_chekbox_pandding"
+                    android:paddingRight="@dimen/investment_chekbox_pandding"
+                    android:text="@string/sequ2" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/divide" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" >
+
+                <CheckBox
+                    android:id="@+id/cb_sequ_by_time"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableLeft="@null"
+                    android:drawablePadding="0px"
+                    android:drawableRight="@drawable/unsequence_backgound_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/investment_chekbox_pandding"
+                    android:paddingRight="@dimen/investment_chekbox_pandding"
+                    android:text="@string/sequ3" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/divide" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1" >
+
+                <CheckBox
+                    android:id="@+id/cb_sequ_by_interest_rate"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableLeft="@null"
+                    android:drawablePadding="0px"
+                    android:drawableRight="@drawable/unsequence_backgound_selector"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="@dimen/investment_chekbox_pandding"
+                    android:paddingRight="@dimen/investment_chekbox_pandding"
+                    android:text="@string/sequ4" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_previous"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/translucent_button_left_selector"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/translucent_button_right_selector"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+package com.orong.entity;
+
+import java.io.Serializable;
+
+import com.orong.utils.Bean;
+
+/**
+ * @Title: DetailMessage.java
+ * @Description: TODO
+ * @author lanhaizhong
+ * @date 2013年8月16日 下午3:03:50
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class DetailMessage implements Bean,Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String title;
+	private String count;
+	private String datatime;
+
+	public DetailMessage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public DetailMessage(String title, String count, String datatime) {
+		super();
+		this.title = title;
+		this.count = count;
+		this.datatime = datatime;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	public String getDatatime() {
+		return datatime;
+	}
+
+	public void setDatatime(String datatime) {
+		this.datatime = datatime;
+	}
+
+}

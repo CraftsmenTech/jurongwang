@@ -1,0 +1,237 @@
+package com.orong.activity;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import com.orong.OrongApplication;
+import com.orong.R;
+import com.orong.adapter.MainPaperAdapter;
+import com.orong.entity.User;
+import com.orong.fragment.InvestmentFragment;
+import com.orong.fragment.MoreFragment;
+import com.orong.fragment.MyOrongFragment;
+import com.orong.fragment.CaptureFragment;
+import com.orong.utils.LoadImageRespone;
+import com.orong.utils.net.NetUtils;
+import com.orong.utils.net.NetUtils.DownloadCallback;
+import com.orong.view.CustomDialog;
+import com.orong.view.CustomDialog.ButtonRespond;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
+public class MainActivity extends BaseFragmentActivity {
+
+	private ViewPager viewPager;
+	private ArrayList<Fragment> fragmentList;
+
+	private MyOrongFragment myOrongFragment;
+	private InvestmentFragment investmentFragment;
+	private CaptureFragment shootingFragment;
+	private MoreFragment moreFragment;
+
+	private RadioGroup rgNavigation;// 导航栏的单选框
+	private RadioButton rbMyOrong;// 聚融
+	private RadioButton rbInvestment;// 投资
+	private RadioButton rbShooting;// 拍拍
+	private RadioButton rbMore;// 更多
+
+	private CustomDialog dialog;
+	private int lastIndex = 0;// 上一条目
+	private int currentIndex = 0;// 当前页
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		super.onCreate(arg0);
+		setContentView(R.layout.activity_main);
+		Intent intent = getIntent();
+		Serializable serializable = intent.getSerializableExtra("User");
+		if (serializable != null) {
+			user = (User) serializable;
+		}
+		initView();
+	}
+
+	/**
+	 * 页面初始化
+	 */
+
+	private void initView() {
+		viewPager = (ViewPager) this.findViewById(R.id.viewPager);
+		myOrongFragment = new MyOrongFragment();
+		investmentFragment = new InvestmentFragment();
+		shootingFragment = new CaptureFragment();
+		moreFragment = new MoreFragment();
+
+		fragmentList = new ArrayList<Fragment>();
+		fragmentList.add(myOrongFragment);
+		fragmentList.add(investmentFragment);
+		fragmentList.add(shootingFragment);
+		fragmentList.add(moreFragment);
+
+		viewPager.setAdapter(new MainPaperAdapter(getSupportFragmentManager(), fragmentList));
+		viewPager.setCurrentItem(0);
+		viewPager.setOffscreenPageLimit(4);
+		viewPager.setOnPageChangeListener(new MainPaperChangeListener());
+
+		rgNavigation = (RadioGroup) this.findViewById(R.id.rg_navigation);
+		rgNavigation.setOnCheckedChangeListener(new NavigationCheckChangeListener());
+		rbMyOrong = (RadioButton) this.findViewById(R.id.rb_myorong);
+		rbInvestment = (RadioButton) this.findViewById(R.id.rb_investment);
+		rbShooting = (RadioButton) this.findViewById(R.id.rb_shooting);
+		rbShooting.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				if (!isChecked) {
+					shootingFragment.viewOutscreen();
+				}
+			}
+		});
+		rbMore = (RadioButton) this.findViewById(R.id.rb_more);
+
+	}
+
+	class NavigationCheckChangeListener implements OnCheckedChangeListener {
+
+		@Override
+		public void onCheckedChanged(RadioGroup group, int checkedId) {
+			// TODO Auto-generated method stub
+			switch (checkedId) {
+			case R.id.rb_myorong:
+				viewPager.setCurrentItem(0);
+				break;
+			case R.id.rb_investment:
+				viewPager.setCurrentItem(1);
+				break;
+			case R.id.rb_shooting:
+				viewPager.setCurrentItem(2);
+				break;
+			case R.id.rb_more:
+				viewPager.setCurrentItem(3);
+				break;
+
+			default:
+				break;
+			}
+		}
+
+	}
+
+	class MainPaperChangeListener implements OnPageChangeListener {
+
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void onPageSelected(int paperIndex) {
+			lastIndex = currentIndex;
+			switch (paperIndex) {
+			case 0:
+				rbMyOrong.setChecked(true);
+				break;
+			case 1:
+				rbInvestment.setChecked(true);
+				investmentFragment.loadProjectFirst();
+				break;
+			case 2:
+				rbShooting.setChecked(true);
+				if (lastIndex == 0) {// 如果是从第一页直接跳到第三页addCallback起作用通过滑动过去的不用
+					shootingFragment.viewOnscreen();
+				} else {
+					shootingFragment.viewOnscreen();
+				}
+				break;
+			case 3:
+				rbMore.setChecked(true);
+				break;
+
+			default:
+				break;
+			}
+
+			currentIndex = paperIndex;
+		}
+	}
+
+	public ViewPager getViewPager() {
+		return viewPager;
+	}
+
+	public RadioButton getRbShooting() {
+		return rbShooting;
+	}
+
+	@Override
+	protected void onResume() {
+		if (viewPager.getCurrentItem() == 2) {
+			shootingFragment.viewOnscreen();
+		}
+		super.onResume();
+	}
+
+	@Override
+	public void onPause() {
+		if (viewPager.getCurrentItem() == 2) {
+			shootingFragment.viewOutscreen();
+		}
+		super.onPause();
+	}
+
+	@Override
+	public void onBackPressed() {
+		if (viewPager.getCurrentItem() == 2) {
+			shootingFragment.restartPreviewAfterDelay(0L);
+		} else {
+			exitAPP();
+		}
+	}
+
+	/**
+	 * 退出程序
+	 */
+	private void exitAPP() {
+		dialog = new CustomDialog(MainActivity.this, new ButtonRespond() {
+
+			@Override
+			public void buttonRightRespond() {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+			}
+
+			@Override
+			public void buttonLeftRespond() {
+				// TODO Auto-generated method stub
+				dialog.dismiss();
+				OrongApplication.instance.onTerminate();
+			}
+		});
+		dialog.setDialogTitle(R.string.exit_app);
+		dialog.setDialogMassage(R.string.live_for_time);
+		dialog.setLeftButtonText(R.string.no);
+		dialog.setRightButtonText(R.string.yes);
+		// dialog.setLeftButonBackgroud(R.drawable.b);
+		dialog.show();
+	}
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <SurfaceView
+            android:id="@+id/preview_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center" />
+
+        <com.orong.zxing.view.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_normal_result"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/result_view"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/iv_result_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="90dp"
+                android:src="@drawable/welcome_captrue_normal" />
+
+            <TextView
+                android:id="@+id/tv_txtResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad4"
+                android:layout_marginRight="@dimen/pad4"
+                android:layout_marginTop="20dp"
+                android:autoLink="all"
+                android:textSize="@dimen/f26" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <include
+        android:layout_alignParentTop="true"
+        layout="@layout/title_bar1" />
+
+</RelativeLayout>

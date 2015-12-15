@@ -1,0 +1,442 @@
+package com.orong.utils.net;
+
+import java.io.BufferedOutputStream;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.HttpVersion;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectTimeoutException;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreProtocolPNames;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+import com.orong.Constant;
+import com.orong.OrongApplication;
+import com.orong.R;
+import com.orong.entity.HttpDatas;
+import com.orong.entity.UpLoadDatas;
+import com.orong.utils.CustomRunnable;
+import com.orong.utils.FileUitls;
+import com.orong.utils.LoadImageRespone;
+import com.orong.utils.ThreadPoolService;
+import com.orong.utils.net.HttpAsyncTask.TaskCallBack;
+
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.AsyncTask;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+/**
+ * Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ * @Title: NetUtils.java
+ * @Description: 一些网络应用的工具类
+ * @author lanhaizhong
+ * @date 2013年7月3日 上午11:29:42
+ * @version V1.0
+ */
+public class NetUtils {
+	/**
+	 * 检查是否有可用网络
+	 * 
+	 * @param context
+	 *            上下文环境
+	 * @return 有可用网络返回true 否则返回false
+	 */
+	public static boolean isHasNet(Context context) {
+		ConnectivityManager conn = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo info = conn.getActiveNetworkInfo();// 获取联网状态网络
+		if (info == null || !info.isAvailable()) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public static File fileDownLoad(String uri, String fileDirect, String fileName, final Context context, ProgressDialog pd) {
+		File file = null;
+		DefaultHttpClient client = new DefaultHttpClient();
+		HttpParams httParams = client.getParams();
+		HttpConnectionParams.setConnectionTimeout(httParams, 20000);
+		HttpConnectionParams.setSoTimeout(httParams, 20000);
+
+		HttpProtocolParams.setContentCharset(httParams, HTTP.UTF_8);
+		HttpProtocolParams.setUseExpectContinue(httParams, false);
+		if (OrongApplication.cookieStore != null) {
+			client.setCookieStore(OrongApplication.cookieStore);
+		}
+		HttpGet get = new HttpGet(uri);
+		try {
+			HttpResponse responese = client.execute(get);
+			int responeseCode = responese.getStatusLine().getStatusCode();
+			if (responeseCode == HttpStatus.SC_OK) {
+				HttpEntity httpentity = responese.getEntity();
+				int max = (int) httpentity.getContentLength();
+				pd.setMax(max);
+				if (fileDirect != null) {
+					File dire = new File(fileDirect);
+					if (!dire.exists()) {
+						dire.mkdirs();
+					}
+					if (dire.exists()) {
+						if (fileName == null) {
+							fileName = uri.substring(uri.lastIndexOf("/"));
+							if(!fileName.endsWith(".apk")){
+								fileName=fileName+".apk";
+							}
+						} else {
+							fileName = "/" + fileName;
+						}
+						file = new File(dire + fileName);
+						file.createNewFile();
+						InputStream is = httpentity.getContent();
+						FileOutputStream fos = new FileOutputStream(file);
+						byte[] buffer = new byte[1024];
+						int len = 0;
+						int total = 0;
+						while ((len = is.read(buffer)) != -1) {
+							fos.write(buffer, 0, len);
+							total += len;
+							pd.setProgress(total);
+						}
+						if (total == max) {
+							pd.dismiss();
+						}
+						fos.flush();
+						fos.close();
+						is.close();
+					}
+
+				}
+			}
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		return file;
+	}
+
+	public static CustomRunnable<?, ?> imageUpload(UpLoadDatas datas, final UploadCallback callback) {
+		CustomRunnable<UpLoadDatas, String> customRunnable = new CustomRunnable<UpLoadDatas, String>(datas) {
+			@Override
+			public String executeTask(UpLoadDatas... param) {
+				UpLoadDatas upLoadDatas = param[0];
+				DefaultHttpClient httpclient = new DefaultHttpClient();
+				HttpParams httParams = httpclient.getParams();
+				HttpConnectionParams.setConnectionTimeout(httParams, 20000);
+				HttpConnectionParams.setSoTimeout(httParams, 20000);
+				HttpProtocolParams.setContentCharset(httParams, HTTP.UTF_8);
+				HttpProtocolParams.setUseExpectContinue(httParams, false);
+				if (OrongApplication.cookieStore != null) {
+					httpclient.setCookieStore(OrongApplication.cookieStore);
+				}
+				// 设置通信协议版本
+				httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
+				HttpPost httppost = new HttpPost(upLoadDatas.getUrl());
+				File file = upLoadDatas.getImageFile();
+
+				MultipartEntity mpEntity = new MultipartEntity(); // 文件传输
+				ContentBody cbFile = new FileBody(file);
+				StringBody imageStr = null;
+				StringBody mothodStr = null;
+				ArrayList<BasicNameValuePair> paramList = upLoadDatas.getParamList();
+				try {
+					imageStr = new StringBody("image");
+					mpEntity.addPart("upType", imageStr);
+					if (paramList != null) {
+						for (BasicNameValuePair valuePair : paramList) {
+							mpEntity.addPart(valuePair.getName(), new StringBody(valuePair.getValue()));
+						}
+					}
+				} catch (UnsupportedEncodingException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				mpEntity.addPart("fileData", cbFile);
+				// mpEntity.addPart(file.getName(), cbFile); // <input
+				// type="file"
+				// name="userfile"
+				// /> 对应的
+				System.out.println(file.getName());
+				httppost.setEntity(mpEntity);
+				HttpResponse responese;
+				String result = null;
+				try {
+					responese = httpclient.execute(httppost);
+					int responeseCode = responese.getStatusLine().getStatusCode();
+					if (responeseCode == HttpStatus.SC_OK) {
+
+						result = EntityUtils.toString(responese.getEntity(), HTTP.UTF_8);
+						System.out.println(result);
+						return result;
+					} else if (399 < responeseCode && responeseCode < 500) {// 请求无响应拒绝等
+						return String.valueOf(Constant.NO_RESPONSE);
+					} else if (500 <= responeseCode && responeseCode < 600) {// 服务器出错出现异常
+						return String.valueOf(Constant.S_EXCEPTION);
+					} else {// 其它异常
+						return String.valueOf(Constant.RESPONESE_EXCEPTION);
+					}
+				} catch (ClientProtocolException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ConnectTimeoutException e) {
+					e.printStackTrace();
+					return String.valueOf(Constant.TIMEOUT);
+				} catch (UnknownHostException e) {
+					// 网络状态是否可用
+					if (!NetUtils.isHasNet(upLoadDatas.getContext())) {
+						return String.valueOf(Constant.NO_NETWORK);// 无可用网络
+					} else {
+						e.printStackTrace();
+						return String.valueOf(Constant.RESPONESE_EXCEPTION);
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+					return String.valueOf(Constant.RESPONESE_EXCEPTION);
+				}
+				httpclient.getConnectionManager().shutdown();
+				return result;
+			}
+
+			@Override
+			public void beforTask() {
+				// TODO Auto-generated method stub
+				callback.beforeUpload();
+				super.beforTask();
+			}
+
+			@Override
+			public void afterTask(String result) {
+				callback.afterUpload(result);
+				super.afterTask(result);
+
+			}
+		};
+		ThreadPoolService.execute(customRunnable);
+		return customRunnable;
+	}
+
+	/**
+	 * 下载图片
+	 * 
+	 * @param url
+	 *            图片的Url
+	 * @param context
+	 *            上下文
+	 * @param callback
+	 *            回调
+	 * @return
+	 */
+	public static CustomRunnable<String, LoadImageRespone> downLoadImage(String url, final Context context, final DownloadCallback callback) {
+		return downLoadImage(url, context, null, null, callback);
+	}
+
+	/**
+	 * 
+	 * 下载图片
+	 * 
+	 * @param url
+	 *            图片的Url
+	 * @param context
+	 *            上下文
+	 * @param savePath
+	 *            保存路径 （目录）为空表示不保存
+	 * @param callback
+	 *            回调
+	 * @return
+	 */
+	public static CustomRunnable<String, LoadImageRespone> downLoadImage(String url, final Context context, String savePath, final DownloadCallback callback) {
+		return downLoadImage(url, context, savePath, null, callback);
+	}
+
+	/**
+	 * 下载图片
+	 * 
+	 * @param url
+	 *            图片的Url
+	 * @param context
+	 *            上下文
+	 * @param savePath
+	 *            保存路径 （目录）为空表示不保存
+	 * @param imagefile
+	 *            图片文件名称 如果为空则以url的图片名称做文件名称 只接受 .png和.jpg后缀路径
+	 * @param callback
+	 *            回调
+	 * @return
+	 */
+	public static CustomRunnable<String, LoadImageRespone> downLoadImage(String url, final Context context, String savePath, final String imagefileName,
+			final DownloadCallback callback) {
+		if (url == null) {
+			return null;
+		}
+		CustomRunnable<String, LoadImageRespone> customRunnable = new CustomRunnable<String, LoadImageRespone>(new String[] { url, savePath }) {
+			@Override
+			public LoadImageRespone executeTask(String... param) {
+
+				String uri = param[0];
+				if (uri == null) {
+					return new LoadImageRespone();
+				}
+				String savePath = null;
+				if (param.length > 1) {
+					savePath = param[1];
+				}
+				DefaultHttpClient client = new DefaultHttpClient();
+				HttpParams httParams = client.getParams();
+				HttpConnectionParams.setConnectionTimeout(httParams, 20000);
+				HttpConnectionParams.setSoTimeout(httParams, 20000);
+
+				HttpProtocolParams.setContentCharset(httParams, HTTP.UTF_8);
+				HttpProtocolParams.setUseExpectContinue(httParams, false);
+				if (OrongApplication.cookieStore != null) {
+					client.setCookieStore(OrongApplication.cookieStore);
+				}
+				HttpGet get = new HttpGet(uri);
+				LoadImageRespone respone = null;
+
+				try {
+					HttpResponse responese = client.execute(get);
+					int responeseCode = responese.getStatusLine().getStatusCode();
+					if (responeseCode == HttpStatus.SC_OK) {
+						HttpEntity httpentity = responese.getEntity();
+						InputStream imStream = httpentity.getContent();
+						Bitmap bitmap = BitmapFactory.decodeStream(imStream);
+						respone = new LoadImageRespone(bitmap);
+						if (savePath != null) {
+							File dire = FileUitls.createDirectory(context, savePath);
+							if (dire.exists()) {
+								String fileName = null;
+								if (imagefileName != null && (imagefileName.endsWith(".jpg") || imagefileName.endsWith(".png"))) {
+									fileName = "/" + imagefileName;
+								} else {
+									fileName = uri.substring(uri.lastIndexOf("/"));
+								}
+								File file = new File(dire + fileName);
+								if (!file.exists()) {
+									file.createNewFile();
+									FileOutputStream out = new FileOutputStream(file);
+									if (bitmap != null) {
+										bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out);
+									}
+									out.flush();
+									out.close();
+								}
+
+								respone.setFileSavePath(file);
+							}
+
+						}
+
+					}
+				} catch (ClientProtocolException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return respone;
+			}
+
+			@Override
+			public void beforTask() {
+				// TODO Auto-generated method stub
+				callback.beforeDownload();
+				super.beforTask();
+			}
+
+			@Override
+			public void afterTask(LoadImageRespone result) {
+				callback.loadCompleteCallback(result);
+				super.afterTask(result);
+			}
+		};
+		ThreadPoolService.execute(customRunnable);
+		return customRunnable;
+	}
+
+	/**
+	 * 发送网络请求
+	 * 
+	 * @param datas
+	 *            请求参数集合
+	 * @param context
+	 *            上下文
+	 * @param callback
+	 *            回调
+	 * @return
+	 */
+	public static HttpAsyncTask sendRequest(HttpDatas datas, Context context, TaskCallBack callback) {
+		HttpAsyncTask task = new HttpAsyncTask(callback, context);
+		task.execute(datas);
+		return task;
+	}
+
+	/**
+	 * 发送网络请求
+	 * 
+	 * @param datas
+	 *            请求参数集合
+	 * @param context
+	 *            上下文
+	 * @param dialogStr
+	 *            进度文字
+	 * @param callback
+	 *            回调
+	 * @return
+	 */
+	public static HttpAsyncTask sendRequest(HttpDatas datas, Context context, String dialogStr, TaskCallBack callback) {
+		HttpAsyncTask task = new HttpAsyncTask(callback, context, dialogStr);
+		task.execute(datas);
+		return task;
+	}
+
+	public interface UploadCallback {
+		public void beforeUpload();
+
+		public void afterUpload(String response);
+	}
+
+	public interface DownloadCallback {
+		public void beforeDownload();
+
+		public void loadCompleteCallback(LoadImageRespone respone);
+	}
+
+}

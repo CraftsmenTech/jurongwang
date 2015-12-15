@@ -1,0 +1,131 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <EditText
+        android:id="@+id/et_project_name"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/project_name"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/colorhint"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        android:id="@+id/et_contact_name"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/contact_name"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/colorhint"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        android:id="@+id/et_contact_phone"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/contact_phone"
+        android:paddingLeft="@dimen/pad3"
+        android:phoneNumber="true"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textColorHint="@color/colorhint"
+        android:textSize="@dimen/f21" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_demands"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:numeric="decimal"
+            android:hint="@string/demands"
+            android:paddingLeft="@dimen/pad3"
+            android:singleLine="true"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/pad4"
+            android:paddingRight="@dimen/pad4"
+            android:text="元"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_cycle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:hint="@string/cycle"
+            android:numeric="integer"
+            android:paddingLeft="@dimen/pad3"
+            android:singleLine="true"
+            android:textColor="@color/textcolor"
+            android:textColorHint="@color/colorhint"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/pad4"
+            android:paddingRight="@dimen/pad4"
+            android:text="月"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_recommend"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_button_background_selector"
+        android:text="@string/declare_project"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

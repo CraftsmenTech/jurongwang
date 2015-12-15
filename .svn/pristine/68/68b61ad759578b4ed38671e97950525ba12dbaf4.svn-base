@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/pad4"
+        android:layout_marginLeft="@dimen/pad3"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/pad4"
+        android:paddingRight="@dimen/pad4"
+        android:paddingTop="@dimen/pad4" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|right"
+            android:text="感谢您选择聚融网投资助手提供的服务！在使用本服务前，请您务必先仔细阅读本协议以下条款：
+1、聚融网投资助手仅为投资者提供投资及填报推荐信息的服务。同时使用独立的手机绑定及手势密码控制，保障您的账户使用安全。
+2、投资助手运用在线存储服务，根据用户的指令和密码为用户提供指定的账户操作服务。
+3、聚融网投资助为投资人提供投资行为的记录，投资人的投资数据以正式的投资合同为准。
+
+
+
+4、聚融网将不对投资人因手机及密码丢失所导致的账户损失承担责任。但平台将严格限制账户的提现账号一定是会员指定银行账户。
+        "
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="15dp"
+            android:text="深圳聚融电子商务有限公司" />
+    </LinearLayout>
+
+</LinearLayout>

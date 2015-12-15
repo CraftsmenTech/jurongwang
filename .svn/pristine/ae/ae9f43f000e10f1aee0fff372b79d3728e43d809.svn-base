@@ -1,0 +1,33 @@
+package com.orong.activity;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+import com.orong.adapter.UserNewsListAdapter;
+
+import android.os.Bundle;
+import android.widget.ListView;
+
+/**
+ * @Title: UserNewSListActivity.java
+ * @Description: 提醒用户的一些信息列表
+ * @author lanhaizhong
+ * @date 2013年7月9日下午4:25:16
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class UserNewSListActivity extends BaseActivity {
+
+	private ListView lvNewsList;
+	private UserNewsListAdapter adapter;//提醒信息列表适配
+	private ArrayList<Object> newsList;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_user_news);
+		lvNewsList = (ListView) this.findViewById(R.id.lv_usernews_list);
+		adapter=new UserNewsListAdapter(null, UserNewSListActivity.this);
+		lvNewsList.setAdapter(adapter);
+	}
+}

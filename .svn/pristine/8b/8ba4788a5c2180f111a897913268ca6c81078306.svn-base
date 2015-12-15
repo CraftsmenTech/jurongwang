@@ -1,0 +1,25 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: DoRecProjectActivity.java
+ * @Description: 填写推荐项目信息的界面
+ * @author lanhaizhong
+ * @date 2013年7月10日下午5:20:38
+ * @version V1.0 
+ * Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DoRecProjectActivity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_do_recom_project);
+		initivReabck(this);
+		
+	}
+}

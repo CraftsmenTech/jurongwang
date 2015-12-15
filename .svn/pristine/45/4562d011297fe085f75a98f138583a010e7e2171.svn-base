@@ -1,0 +1,75 @@
+package com.orong.fragment;
+
+import com.orong.R;
+import com.orong.activity.BecomeDeputyActivity;
+import com.orong.activity.DeclareProjectActivity;
+import com.orong.activity.RecomMemberActivity;
+import com.orong.activity.UserNewSListActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class MyOrongFragment extends Fragment implements OnClickListener {
+
+	private ImageView ivUser;// 用户图像
+	private TextView tvMemberName;// 会员姓名
+	private TextView tvMemberPhone;// 会员电话
+	private TextView tv_MemberSun;// 会员总资金
+	private ImageView ivNews;// 信息
+	private RelativeLayout rlRecomMember;// 推荐会员
+	private RelativeLayout rlDeclareProjec;// 申报项目
+	private RelativeLayout rltoBeDeputy;// 成为代表
+
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+		View view = inflater.inflate(R.layout.fragment_myorong, container, false);
+
+		ivUser = (ImageView) view.findViewById(R.id.iv_usericon);
+		ivUser.setOnClickListener(this);
+
+		tvMemberName = ((TextView) view.findViewById(R.id.tv_member_name));
+		tvMemberPhone = (TextView) view.findViewById(R.id.tv_member_phone);
+		tv_MemberSun = (TextView) view.findViewById(R.id.tv_member_sum);
+		ivNews = (ImageView) view.findViewById(R.id.iv_news);
+		ivNews.setOnClickListener(this);
+
+		rlRecomMember = (RelativeLayout) view.findViewById(R.id.rl_recom_member);
+		rlRecomMember.setOnClickListener(this);
+		rlDeclareProjec = (RelativeLayout) view.findViewById(R.id.rl_declare_project);
+		rlDeclareProjec.setOnClickListener(this);
+		rltoBeDeputy = (RelativeLayout) view.findViewById(R.id.rl_toBeDeputy);
+		rltoBeDeputy.setOnClickListener(this);
+		return view;
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.iv_news:
+			startActivity(new Intent(getActivity(), UserNewSListActivity.class));
+			break;
+		case R.id.rl_recom_member:
+			startActivity(new Intent(getActivity(), RecomMemberActivity.class));
+			break;
+		case R.id.rl_declare_project:
+			startActivity(new Intent(getActivity(), DeclareProjectActivity.class));
+			break;
+		case R.id.rl_toBeDeputy:
+			startActivity(new Intent(getActivity(), BecomeDeputyActivity.class));
+			break;
+
+		default:
+			break;
+		}
+	}
+
+}

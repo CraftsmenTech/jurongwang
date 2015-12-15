@@ -1,0 +1,47 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="normal_Labletextstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white2</item>
+    </style>
+
+    <style name="normal_textstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textcolor</item>
+    </style>
+
+    <style name="screen_margin_style">
+        <item name="android:layout_marginRight">@dimen/pad3</item>
+        <item name="android:layout_marginTop">@dimen/pad3</item>
+        <item name="android:layout_marginLeft">@dimen/pad3</item>
+    </style>
+
+    <style name="navigation_radiobutton_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingTop">@dimen/pad1</item>
+        <item name="android:paddingBottom">@dimen/pad1</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/white2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/f18</item>
+:        <item name="android:background">@drawable/radiolbutton_background_selector</item>
+    </style>
+
+</resources>

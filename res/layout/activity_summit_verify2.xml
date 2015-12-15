@@ -1,0 +1,64 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <EditText
+        android:id="@+id/et_infoOfVerify"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:background="@drawable/editext_backgound_selector"
+        android:paddingLeft="@dimen/pad5"
+        android:paddingRight="@dimen/pad5"
+        android:singleLine="true"
+        android:textColorHint="@color/colorhint" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:layout_marginLeft="@dimen/pad4"
+        android:layout_marginTop="@dimen/pad4"
+        android:gravity="center_vertical|left"
+        android:text="收款银行卡"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <TextView
+        android:id="@+id/tv_infoOfVerify"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa74"
+        android:background="@drawable/corner_round"
+        android:paddingLeft="@dimen/pad5"
+        android:paddingRight="@dimen/pad5"
+        android:singleLine="true"
+        android:textColorHint="@color/colorhint" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:layout_marginLeft="@dimen/pad4"
+        android:layout_marginRight="@dimen/pad3"
+        android:layout_marginTop="@dimen/pad4"
+        android:gravity="center_vertical|left"
+        android:text="若验证金额错误，必须更换新的实名信息及银行卡号从新验证"
+        android:textColor="@color/yellow_text"
+        android:textSize="@dimen/f21" />
+
+    <Button
+        android:id="@+id/bt_summit"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/blue_button_background_selector"
+        android:text="@string/summitverify"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

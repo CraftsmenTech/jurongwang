@@ -1,0 +1,31 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: RepayPlanActivity.java
+ * @Description: 还款计划界面
+ * @author lanhaizhong
+ * @date 2013年7月15日上午11:42:54
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class RepayPlanActivity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_repay_plan);
+		initivReabck(this);
+		setTitle(this, R.string.repayed_plan);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		// TODO Auto-generated method stub
+		super.initView();
+	}
+}

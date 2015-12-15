@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/pad3" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/optionmemubackround"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_rules_of_recmember"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/pad20"
+            android:text="@string/recomenber_rules_title"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/white_sharp_line" >
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_rules_of_recproject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/pad20"
+            android:text="@string/recproject_rules_title"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/white_sharp_line" >
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_rules_of_deputy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:padding="@dimen/pad20"
+            android:text="@string/deputy_rules_title"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26" />
+    </LinearLayout>
+
+</LinearLayout>

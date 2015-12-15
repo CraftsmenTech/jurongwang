@@ -1,0 +1,97 @@
+package com.orong.utils;
+
+import java.io.File;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Environment;
+
+/**
+ * @Title: FileUitls.java
+ * @Description: 创建File对象的工具
+ * @author lanhaizhong
+ * @date 2013年8月14日 上午11:41:01
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class FileUitls {
+
+	/**
+	 * 判断Sd卡是否可用
+	 * 
+	 * @param context
+	 * @return
+	 */
+	private static boolean isSdCardUsed(Context context) {
+		return Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+	}
+
+	/**
+	 * 在sd卡下创建一个目录对象
+	 * 
+	 * @param context
+	 * @param directoryName
+	 *            下的目录名称
+	 * @return
+	 */
+	public static File createDirectory(Context context, String directoryName) {
+		String path;
+		if (isSdCardUsed(context)) {
+			path = Environment.getExternalStorageDirectory() + "/" + directoryName;
+		} else {
+			path = Environment.getRootDirectory() + "/" + directoryName;
+		}
+
+		File file = new File(path);
+		if (!file.exists()) {
+			if (file.mkdirs()) {
+				return file;
+			}
+		}
+		return file;
+	}
+
+	/**
+	 * 在sd卡下得到一个图片的bitmap
+	 * 
+	 * @param fileName
+	 *            sd卡下的相对名称（sd卡目录步用加进去）
+	 * @return
+	 */
+	public static Bitmap getBitmapfromSDPathByName(Context context, String fileName) {
+		File file = new File(getSDCardPath(context) + "/" + fileName);
+		Bitmap bitmap = null;
+		if (file.exists()) {
+			bitmap = BitmapFactory.decodeFile(file.getPath());
+		}
+		return bitmap;
+	}
+
+	/**
+	 * 将文件对象变成Bitmap 对象
+	 * 
+	 * @param filePath
+	 * @return
+	 */
+	public static Bitmap getBitmapfromFile(String filePath) {
+		Bitmap bitmap = null;
+		try {
+			bitmap = BitmapFactory.decodeFile(filePath);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return bitmap;
+
+	}
+
+	private static String getSDCardPath(Context context) {
+		String path;
+		if (isSdCardUsed(context)) {
+			path = Environment.getExternalStorageDirectory().getPath();
+		} else {
+			path = Environment.getRootDirectory().getPath();
+		}
+		return path;
+	}
+}

@@ -1,0 +1,339 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="horizontal"
+        android:padding="@dimen/pad3" >
+
+        <ImageView
+            android:id="@+id/iv_project_ic"
+            android:layout_width="@dimen/spa120"
+            android:layout_height="@dimen/spa100"
+            android:scaleType="fitXY"
+            android:src="@drawable/project_ic" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad3"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_project_theme"
+                style="@style/normal_textstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="中国风格的森林防火但是考虑分红看电视了粉红色的森林防火搜房电话铃声" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/str￥"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tv_project_sum"
+                    style="@style/normal_textstyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="4500000"
+                    android:textStyle="bold" />
+
+                <CheckBox
+                    android:id="@+id/cb_pro_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/project_statucheck_selection"
+                    android:checked="true"
+                    android:clickable="false" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_investment_info"
+            style="@style/green_buttom_style"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa72"
+            android:gravity="center_vertical"
+            android:padding="@dimen/pad4"
+            android:text="中国馆搜房电话搜房很简单是" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/pad4"
+            android:layout_marginLeft="@dimen/pad3"
+            android:layout_marginRight="@dimen/pad4"
+            android:layout_marginTop="@dimen/pad4"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="进度:" />
+
+            <ProgressBar
+                android:id="@+id/pb_project_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/pad3"
+                android:layout_marginRight="@dimen/pad4"
+                android:layout_weight="1"
+                android:background="@drawable/corner_round"
+                android:max="100"
+                android:progress="90"
+                android:progressDrawable="@drawable/color_progessbar" />
+
+            <TextView
+                android:id="@+id/tv_progress_text"
+                style="@style/normal_textstyle"
+                android:layout_width="@dimen/spa74"
+                android:layout_height="wrap_content"
+                android:text="60%" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/interest_rate_of_year" />
+
+                <TextView
+                    android:id="@+id/tv_rate_percent"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="left|center_vertical"
+                    android:text="18%" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/pad4" >
+
+                <TextView
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="right|center_vertical"
+                    android:text="@string/time_limit" />
+
+                <TextView
+                    android:id="@+id/tv_time_limit"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="right|center_vertical"
+                    android:text="18%" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/pad4"
+                android:layout_marginTop="@dimen/pad4"
+                android:layout_weight="1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/indemnity" />
+
+                <TextView
+                    android:id="@+id/tv_indemnity"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="left|center_vertical"
+                    android:text="18%" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_vertical|right"
+                android:orientation="horizontal"
+                android:paddingRight="@dimen/pad4" >
+
+                <TextView
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="right|center_vertical"
+                    android:text="@string/lave" />
+
+                <TextView
+                    android:id="@+id/tv_lave"
+                    style="@style/normal_textstyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/pad3"
+                    android:gravity="right|center_vertical"
+                    android:text="18%" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_project_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad3"
+                android:layout_weight="2"
+                android:text="@string/project_info" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/listitem_arrow" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <LinearLayout
+            android:id="@+id/ll_contract_info"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad3"
+                android:layout_weight="2"
+                android:text="@string/contract_info" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/listitem_arrow" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <LinearLayout
+            android:id="@+id/ll_repayed_plan"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad3"
+                android:layout_weight="2"
+                android:text="@string/repayed_plan" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/listitem_arrow" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_invest"
+        style="@style/blue_buttom_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_margin="@dimen/pad3"
+        android:text="@string/doinvestment" />
+
+</LinearLayout>

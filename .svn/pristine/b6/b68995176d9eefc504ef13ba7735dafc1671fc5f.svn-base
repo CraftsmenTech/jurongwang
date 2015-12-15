@@ -1,0 +1,42 @@
+package com.orong.view;
+
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.util.AttributeSet;
+import android.widget.TextView;
+
+/**
+ * @Title: CustomTextView.java
+ * @Description: TODO
+ * @author lanhaizhong
+ * @date 2013年7月4日 上午9:22:24
+ * @version V1.0 Copyright (c) 2013 Crong.com,Inc. All Rights Reserved.
+ */
+public class CustomTextView extends TextView {
+
+	public CustomTextView(Context context) {
+		super(context);
+		// TODO Auto-generated constructor stub
+	}
+
+	public CustomTextView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		// TODO Auto-generated constructor stub
+	}
+
+	public CustomTextView(Context context, AttributeSet attrs, int defStyle) {
+		super(context, attrs, defStyle);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	protected void onDraw(Canvas canvas) {
+		// TODO Auto-generated method stub
+		Paint p = new Paint();
+
+		canvas.drawLine(0, 0, 666, 300, p);
+		super.onDraw(canvas);
+	}
+
+}

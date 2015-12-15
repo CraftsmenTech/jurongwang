@@ -1,0 +1,61 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa90"
+            android:background="@drawable/green_top_round" >
+
+            <ImageView
+                android:id="@+id/iv_change_ic"
+                android:layout_width="@dimen/spa74"
+                android:layout_height="@dimen/spa74"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/useric" />
+        </RelativeLayout>
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/pad1"
+            android:gravity="center"
+            android:text="修改头像" />
+
+        <ImageView
+            android:id="@+id/iv_member_space"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/green_buttom_round"
+            android:gravity="center"
+            android:minHeight="@dimen/spa10"
+            android:padding="@dimen/pad3"
+            android:text="请使用二维码工具，扫描此会员推荐码  > 下载聚融投标助手APP   >  并注册成为会员  >  再拍一次推荐成功。"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+    </LinearLayout>
+
+</LinearLayout>

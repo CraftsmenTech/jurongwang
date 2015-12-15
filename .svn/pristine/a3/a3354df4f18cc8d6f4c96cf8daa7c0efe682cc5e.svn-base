@@ -1,0 +1,23 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: DoRecomMemberActivity.java
+ * @Description: 我的会员身份界面
+ * @author lanhaizhong
+ * @date 2013年7月10日下午4:21:37
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DoRecomMemberActivity extends BaseActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_do_recom_member);
+		initivReabck(this);
+		setTitle(this, R.string.my_member_id);
+	}
+}

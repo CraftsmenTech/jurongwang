@@ -1,0 +1,55 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/tv_infoOfVerify"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:gravity="top"
+        android:minHeight="@dimen/spa150"
+        android:textColorHint="@color/colorhint" />
+
+    <RelativeLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginBottom="@dimen/pad3"
+        android:background="@drawable/cor6_rounded_rectangle" >
+
+        <TextView
+            android:id="@+id/tv_telephone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="400-2830-9888"
+            android:textSize="@dimen/f24" />
+
+        <ImageView
+            android:id="@+id/iv_callPhone"
+            android:layout_width="@dimen/spa100"
+            android:layout_height="@dimen/spa72"
+            android:layout_alignParentRight="true"
+            android:scaleType="center"
+            android:src="@drawable/telephone" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/bt_resummit"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/blue_button_background_selector"
+        android:text="@string/resummit"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

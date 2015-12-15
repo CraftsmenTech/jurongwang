@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <RelativeLayout
+            style="@style/screen_margin_style"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="@dimen/pad3"
+            android:background="@drawable/corner_round" >
+
+            <TextView
+                android:id="@+id/tv_nomessage_notice"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                android:text="没有任何信息"
+                android:layout_centerVertical="true" />
+
+            <ListView
+                android:id="@+id/lv_usernews_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:divider="@color/linecolor"
+                android:dividerHeight="1px" >
+            </ListView>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/bt_previous"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/translucent_button_left_selector"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/bt_next"
+            android:layout_width="50dp"
+            android:layout_height="100dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/translucent_button_right_selector"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

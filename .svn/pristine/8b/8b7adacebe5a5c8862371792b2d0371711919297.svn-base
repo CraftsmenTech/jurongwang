@@ -1,0 +1,292 @@
+package com.orong.activity;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Hashtable;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
+import com.orong.Constant;
+import com.orong.OrongApplication;
+import com.orong.R;
+import com.orong.entity.UpLoadDatas;
+import com.orong.utils.EditPictureUtil;
+import com.orong.utils.FileUitls;
+import com.orong.utils.QCCodeUtil;
+import com.orong.utils.net.NetUtils;
+import com.orong.utils.net.NetUtils.UploadCallback;
+import com.orong.view.CustomDialog;
+import com.orong.view.CustomDialog.ButtonRespond;
+import com.orong.view.UploadImageDialog;
+import com.orong.view.UploadImageDialog.ClickCallback;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.Bitmap.Config;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+/**
+ * @Title: DoRecomMemberActivity.java
+ * @Description: 我的会员身份界面
+ * @author lanhaizhong
+ * @date 2013年7月10日下午4:21:37
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class MyIdentityActivity extends BaseActivity {
+
+	private ImageView ivChangeIc;// 修改图像
+	private ImageView ivMemberSpace;// 会员空间
+	private UploadImageDialog dialog;
+	private CustomDialog customDialog;
+
+	// 预览剪切后的图片
+	ImageView imageView;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_myidentity);
+		initivReabck(this);
+		setTitle(this, R.string.my_member_id);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		ivChangeIc = (ImageView) this.findViewById(R.id.iv_change_ic);
+		ivChangeIc.setOnClickListener(this);
+		Bitmap bitmap = FileUitls.getBitmapfromFile(OrongApplication.getOrSharedPrefences(this).getString(Constant.USERICONPATH, null)
+				.replace(String.valueOf(OrongApplication.user.getQrCode()), ""));
+		Bitmap logo = null;
+		if (bitmap != null) {
+			ivChangeIc.setImageBitmap(bitmap);
+			logo = getRoundedBitmap(bitmap);
+		} else {
+			BitmapDrawable bdrawable = (BitmapDrawable) ivChangeIc.getDrawable();
+			logo = getRoundedBitmap(bdrawable.getBitmap());
+		}
+
+		ivMemberSpace = (ImageView) this.findViewById(R.id.iv_member_space);
+		ivMemberSpace.setOnClickListener(this);
+		ivMemberSpace.setImageBitmap(encodeQRAsBitmap(QCCodeUtil.creatememberCode(String.valueOf(OrongApplication.user.getQrCode())), logo));
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.iv_change_ic:
+			showUploadeDialog();
+			break;
+		case R.id.iv_member_space:
+
+			break;
+
+		default:
+			super.onClick(v);
+			break;
+		}
+	}
+
+	private void showUploadeDialog() {
+		if (dialog == null) {
+			dialog = new UploadImageDialog(MyIdentityActivity.this, new ClickCallback() {
+
+				@Override
+				public void clickSelectPhotoCallback() {
+					Intent intent = EditPictureUtil.getGalleryIntent(200, 200, EditPictureUtil.createTempCropImageFile(MyIdentityActivity.this));
+					startActivityForResult(intent, 2);
+					dialog.dismiss();
+				}
+
+				@Override
+				public void clickPhotographCallback() {
+					dialog.dismiss();
+					Intent intent = EditPictureUtil.getCaptureIntent(MyIdentityActivity.this);
+					startActivityForResult(intent, 1);
+				}
+			});
+		}
+		dialog.show();
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		if (resultCode == Activity.RESULT_OK) {
+			if (requestCode == 1) {
+				// 启动修剪相片功能
+				Intent intent = EditPictureUtil.getCropImageIntent(EditPictureUtil.getCaptureTempFileUri(MyIdentityActivity.this), 200, 200,
+						EditPictureUtil.createTempCropImageFile(MyIdentityActivity.this));
+				startActivityForResult(intent, 2);
+			}
+			if (requestCode == 2) {// 剪切完成
+
+				Uri uri = EditPictureUtil.getCropImageTempFileUri(MyIdentityActivity.this);
+				Bitmap bitmap = EditPictureUtil.getBitmapFromUri(MyIdentityActivity.this, uri);
+				showCustomDialog(uri);
+			}
+		}
+
+	}
+
+	private void showCustomDialog(final Uri uri) {
+		if (customDialog == null) {
+			customDialog = new CustomDialog(MyIdentityActivity.this, new ButtonRespond() {
+
+				@Override
+				public void buttonRightRespond() {
+					// TODO Auto-generated method stub
+					customDialog.dismiss();
+					String url = Constant.USERAPI;
+					File file = EditPictureUtil.createTempCropImageFile(MyIdentityActivity.this);
+					UpLoadDatas datas = new UpLoadDatas(url, file, MyIdentityActivity.this);
+					NetUtils.imageUpload(datas, new UploadCallback() {
+
+						@Override
+						public void beforeUpload() {
+							// TODO Auto-generated method stub
+
+						}
+
+						@Override
+						public void afterUpload(String response) {
+							System.out.println(response);
+							// TODO Auto-generated method stub
+
+						}
+					});
+				}
+
+				@Override
+				public void buttonLeftRespond() {
+					// TODO Auto-generated method stub
+					customDialog.dismiss();
+				}
+			});
+
+			View view = LayoutInflater.from(MyIdentityActivity.this).inflate(R.layout.identity, null);
+			imageView = (ImageView) view.findViewById(R.id.iv_usericon);
+			customDialog.setDialogTitle(R.string.result_preview);
+			customDialog.setRightButtonText(R.string.uploade);
+			customDialog.setLeftButtonText(R.string.quit);
+			customDialog.addView2Frame(view);
+			customDialog.setMagssageViewVisibility(View.GONE);
+			customDialog.setFrameViewVisibility(View.VISIBLE);
+		}
+
+		imageView.setImageBitmap(EditPictureUtil.getBitmapFromUri(MyIdentityActivity.this, uri));
+		customDialog.show();
+	}
+
+	@Override
+	protected void onDestroy() {
+
+		// if (tempfile != null) {
+		// // tempfile.deleteOnExit();
+		// }
+		super.onDestroy();
+	}
+
+	private Bitmap encodeQRAsBitmap(String encodeStr, Bitmap logo) {
+		final int WHITE = 0xFFFFFFFF;
+		final int BLACK = 0xFF000000;
+		Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
+		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+		hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+
+		BitMatrix result = null;
+		try {
+
+			result = new MultiFormatWriter().encode(encodeStr, BarcodeFormat.QR_CODE, 300, 300, hints);
+
+		} catch (WriterException e) {
+
+			e.printStackTrace();
+
+		}
+		int width = result.getWidth();
+		int height = result.getHeight();
+		int[] pixels = new int[width * height];
+		for (int y = 0; y < height; y++) {
+			int offset = y * width;
+			for (int x = 0; x < width; x++) {
+				pixels[offset + x] = result.get(x, y) ? BLACK : WHITE;
+			}
+		}
+
+		Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+		bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
+
+		if (logo != null) {
+			int logoWidth = logo.getWidth();
+			int logoHeight = logo.getHeight();
+			// 缩放比例
+			float widthScale = 60f / logoWidth;
+			float heightScale = 60f / (float) logoHeight;
+			Matrix matrix = new Matrix();
+			matrix.postScale(widthScale, heightScale);
+			Bitmap bit = Bitmap.createBitmap(logo, 0, 0, logoWidth, logoHeight, matrix, true);
+
+			Canvas canvas = new Canvas(bitmap);
+			Paint paint = new Paint();
+			canvas.drawBitmap(bit, (width - bit.getWidth()) / 2, (height - bit.getHeight()) / 2, paint);
+		}
+
+		return bitmap;
+	}
+
+	// 图片圆角处理
+	private Bitmap getRoundedBitmap(Bitmap souce) {
+		if (souce == null) {
+			return null;
+		}
+		Bitmap mBitmap = souce;
+		// 创建新的位图
+		Bitmap bgBitmap = Bitmap.createBitmap(mBitmap.getWidth(), mBitmap.getHeight(), Config.ARGB_8888);
+		// 把创建的位图作为画板
+		Canvas mCanvas = new Canvas(bgBitmap);
+
+		Paint mPaint = new Paint();
+		Rect mRect = new Rect(0, 0, mBitmap.getWidth(), mBitmap.getHeight());
+		RectF mRectF = new RectF(mRect);
+		// 设置圆角半径为20
+		float roundPx = 15;
+		mPaint.setAntiAlias(true);
+		// 先绘制圆角矩形
+		mCanvas.drawRoundRect(mRectF, roundPx, roundPx, mPaint);
+
+		// 设置图像的叠加模式
+		mPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+		// 绘制图像
+		mCanvas.drawBitmap(mBitmap, mRect, mRect, mPaint);
+
+		return bgBitmap;
+	}
+
+}

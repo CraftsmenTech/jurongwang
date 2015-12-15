@@ -1,0 +1,122 @@
+package com.orong.activity;
+
+import com.orong.R;
+import com.orong.view.MoreOptionPopupWindow;
+import com.orong.view.MoreOptionPopupWindow.ClickOptionItemCallBack;
+
+import android.app.ActionBar.LayoutParams;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+/**
+ * @Title: BaseRecommendActivity.java
+ * @Description: 我要推荐会员，申报项目，成为代表的基类
+ * @author lanhaizhong
+ * @date 2013年7月10日上午9:48:08
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class BaseRecommendActivity extends BaseActivity {
+	public ImageView ivOptionMenu;// 更多（选择）的菜单点击图案
+	public TextView tvHasRecommendedNum;// 成功推荐（项目，会员等）数量
+	public TextView tvHasGotBrokerage;// 已获得佣金
+	public TextView tvWillHaveGotBrokerage;// 未到期佣金
+	public RelativeLayout rlRecommendedRules;// 推荐规则
+	public TextView tvRecommendedRules;// 推荐规则的标题
+	public Button btRecommend;// 我要推荐
+	public MoreOptionPopupWindow popupWindow;
+
+	public void initView(Activity activity) {
+		ivOptionMenu = (ImageView) activity.findViewById(R.id.iv_option_menu);
+		ivOptionMenu.setOnClickListener(this);
+		tvHasGotBrokerage = (TextView) activity.findViewById(R.id.tv_has_got_brokerage);
+		tvWillHaveGotBrokerage = (TextView) activity.findViewById(R.id.tv_will_have_got_brokerage);
+		tvHasRecommendedNum = (TextView) activity.findViewById(R.id.tv_recommendedNum);
+		rlRecommendedRules = (RelativeLayout) activity.findViewById(R.id.rl_recommended_rules);
+		tvRecommendedRules = (TextView) activity.findViewById(R.id.tv_recom_regulation);
+		btRecommend = (Button) activity.findViewById(R.id.bt_recommend);
+
+	}
+
+	/**
+	 * 设置TvHasRecommendedNum显示对象，调用前先初始化,方法initview()
+	 * 
+	 * @param recomName
+	 *            推荐名称
+	 * @param number
+	 *            数量
+	 */
+	public void setTextOfTvHasRecommendedNum(String recomName, int number) {
+		String s = getString(R.string.recommended_num);
+		tvHasRecommendedNum.setText(String.format(s, recomName, number));
+	}
+
+	/**
+	 * 设置TvHasGotBrokerage显示对象，调用前先初始化,方法initview()
+	 * 
+	 * @param sum
+	 *            已获得佣金数额
+	 */
+	public void setTextOfTvHasGotBrokerage(double sum) {
+		String s = getString(R.string.sum);
+		tvHasGotBrokerage.setText(String.format(s, sum));
+	}
+
+	/**
+	 * 设置TvWillHaveGotBrokerage显示对象，调用前先初始化,方法initview()
+	 * 
+	 * @param sum
+	 *            位到佣金数额
+	 */
+	public void setTextOfTvWillHaveGotBrokerage(double sum) {
+		String s = getString(R.string.sum);
+		tvWillHaveGotBrokerage.setText(String.format(s, sum));
+	}
+
+	/**
+	 * 设置BtRecommend显示对象，调用前先初始化,方法initview()
+	 * 
+	 * @param textStr
+	 *            位到佣金数额
+	 */
+	public void setTextOfBtRecommend(String TextStr) {
+		btRecommend.setText(TextStr);
+	}
+
+	public void showPopupWindow(final Activity activity) {
+		if (popupWindow == null) {
+			popupWindow = new MoreOptionPopupWindow(activity, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT,
+					new ClickOptionItemCallBack() {
+
+						@Override
+						public void clickRecProject() {
+							startActivity(new Intent(activity, RulesOfRecMemberActivity.class));
+							popupWindow.dismiss();
+						}
+
+						@Override
+						public void clickRecMember() {
+							startActivity(new Intent(activity, RulesOfRecProjectActivity.class));
+							popupWindow.dismiss();
+						}
+
+						@Override
+						public void clickDeputy() {
+							startActivity(new Intent(activity, RulesOfDeputyActivity.class));
+							popupWindow.dismiss();
+						}
+					});
+		}
+
+		if (popupWindow.isShowing()) {
+			popupWindow.dismiss();
+		} else {
+			popupWindow.showAsDropDown(ivOptionMenu, -5, -2);
+		}
+	}
+}

@@ -1,0 +1,210 @@
+package com.orong.activity;
+
+import com.orong.R;
+import com.orong.utils.MatchUtil;
+
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.telephony.TelephonyManager;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
+
+/**
+ * @Title: RegisterActivity.java
+ * @Description: 注册页面
+ * @author lanhaizhong
+ * @date 2013年7月5日 上午10:15:31
+ * @version V1.0 Copyright (c) 2013 Crong.com,Inc. All Rights Reserved.
+ */
+public class RegisterActivity extends BaseActivity implements OnClickListener {
+
+	// private ImageView iv_reback;// 返回退票
+	private LinearLayout ll_step_navigate;// 页面第一第二步的导航条
+	private TextView tv_step1;
+	private ViewFlipper vf_register;// 页面切换的容器
+	private int viewIndex = 0;// 初始化当前页排位
+
+	// step1界面元素
+	private EditText et_phoneNum;// 电话号码输入框
+	private Button bt_getCode;// 获取验证码按钮;
+	private EditText et_checkCode;// 验证码输入框
+	private Button bt_next_step;// 下一步按钮
+	private CheckBox cb_accepted;// 同意复选框
+	private TextView tv_protocol_of_orong;// 服务条款标题
+
+	// step2的界面元素
+	private EditText et_userName;// 电话或用户名
+	private EditText et_passWord;// 登录密码
+	private EditText et_transatonPassWord;// 交易密码
+	private Button bt_regissterLogin;// 注册并登录
+
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		setContentView(R.layout.activity_register);
+		intiView();
+
+	}
+
+	private void intiView() {
+		ll_step_navigate = (LinearLayout) this
+				.findViewById(R.id.ll_step_navigate);
+		tv_step1 = (TextView) this.findViewById(R.id.tv_step1);
+
+		iv_reback = (ImageView) this.findViewById(R.id.iv_reback);
+		iv_reback.setOnClickListener(this);
+		vf_register = (ViewFlipper) this.findViewById(R.id.vfl_register);
+
+		// step1
+		et_phoneNum = (EditText) this.findViewById(R.id.et_phonenum);
+		bt_getCode = (Button) this.findViewById(R.id.bt_get_checkCode);
+		bt_getCode.setOnClickListener(this);
+
+		et_checkCode = (EditText) this.findViewById(R.id.et_checkcode);
+
+		//同意并已经输入验证码才能实行下一步
+		cb_accepted = (CheckBox) this.findViewById(R.id.cb_accepted);
+		cb_accepted.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				// TODO Auto-generated method stub
+				bt_next_step.setClickable(isChecked
+						&& !"".equals(et_checkCode.getText().toString().trim()));
+
+			}
+		});
+
+		tv_protocol_of_orong = (TextView) this
+				.findViewById(R.id.tv_protocol_of_orong);
+		tv_protocol_of_orong.setOnClickListener(this);
+
+		bt_next_step = (Button) this.findViewById(R.id.bt_next_step);
+		bt_next_step.setOnClickListener(this);
+
+		// step2
+		et_userName = (EditText) this.findViewById(R.id.et_usernmae);
+		et_passWord = (EditText) this.findViewById(R.id.et_login_paw);
+		et_transatonPassWord = (EditText) this
+				.findViewById(R.id.et_transation_paw);
+		et_transatonPassWord.setOnClickListener(this);
+		bt_regissterLogin = (Button) this
+				.findViewById(R.id.bt_register_and_login);
+		bt_regissterLogin.setOnClickListener(this);
+
+		// 试图 获取本机电话号码并显示到电话号输入框
+		TelephonyManager manager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+		et_phoneNum.setText(manager.getLine1Number());
+
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.iv_reback:
+			reback();
+			break;
+		case R.id.bt_get_checkCode:
+			String phone = et_phoneNum.getText().toString();
+			if (MatchUtil.isPhoneNum(phone)) {
+				bt_next_step.setClickable(true);
+			} else {
+				Toast.makeText(this, "输入的手机号码步正确", 0).show();
+				bt_next_step.setClickable(false);
+				return;
+			}
+			break;
+		case R.id.bt_next_step:
+			// if(){}
+			vf_register.showNext();
+			viewIndex++;
+			break;
+		case R.id.tv_protocol_of_orong:
+			startActivity(new Intent(this, ProtocolActivity.class));
+			break;
+		case R.id.bt_register_and_login:
+			// 验证用户名
+			String username = et_userName.getText().toString();
+			if (!MatchUtil.isLicitAccount(username)) {
+				Toast.makeText(this, "帐号非法", 0).show();
+				return;
+			}
+			// 验证密码
+			String loginPasWord = et_passWord.getText().toString();
+			System.out.println(loginPasWord);
+			if (!MatchUtil.isLicitPassword(loginPasWord)) {
+				Toast.makeText(this, " 密码非法", 0).show();
+				return;
+			}
+
+			// 验证交易密码
+			String transationPassWord = et_transatonPassWord.getText()
+					.toString();
+			if (loginPasWord.equals(transationPassWord)) {
+				Toast.makeText(this, "密码相同", 0).show();
+				return;
+			}
+			if (!MatchUtil.isLicitPassword(transationPassWord)) {
+				Toast.makeText(this, "交易密码步合法", 0).show();
+				return;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 返回前一页 如果ViewFlipper 的当前页不是第一页退回前一页，否则退出整个页面，
+	 */
+	private void reback() {
+		if (viewIndex > 0) {
+			vf_register.showPrevious();
+			viewIndex--;
+		} else {
+			finish();
+		}
+
+	}
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		reback();
+
+	}
+
+	/**
+	 * 捕捉back
+	 */
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+			// if (register_viewPaper.getCurrentItem() != 0) {
+			// register_viewPaper.setCurrentItem(register_viewPaper
+			// .getCurrentItem() - 1);
+			// return true;
+			// }
+
+		}
+
+		return super.onKeyDown(keyCode, event);
+	}
+}

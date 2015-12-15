@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/spa74"
+    android:background="@color/blue"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:id="@+id/iv_reback"
+        android:layout_width="@dimen/spa82"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/reback_image_selector"
+        android:clickable="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/back" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/divide" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="10"
+        android:gravity="center"
+        android:text="@string/register"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f26" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/divide" />
+
+    <ImageView
+        android:id="@+id/iv_option_menu"
+        android:layout_width="@dimen/spa82"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/reback_image_selector"
+        android:clickable="true"
+        android:scaleType="center"
+        android:src="@drawable/more" />
+
+</LinearLayout>

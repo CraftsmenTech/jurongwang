@@ -1,0 +1,33 @@
+package com.orong.db;
+
+import com.orong.entity.DetailMessage;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
+/**
+ * @Title: MessageDao.java
+ * @Description: 站内信息的CRUD操作层
+ * @author lanhaizhong
+ * @date 2013年8月20日 上午10:27:18
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ * 
+ */
+public class MessageDao {
+	private Context context;
+
+	public MessageDao(Context context) {
+		this.context = context;
+	}
+
+	public void addmessage(DetailMessage message) {
+		DBOpenHelper helper=new DBOpenHelper(context);
+		SQLiteDatabase db=helper.getWritableDatabase();
+		ContentValues values=new ContentValues();
+		values.put(DBConstants.Message.MESSAGEID, message.getMessage_ID());
+		values.put(DBConstants.Message.TITLE, message.getTitle());
+		values.put(DBConstants.Message.FLAGE, message.getRead_Flag());
+		values.put(DBConstants.Message.SENDTIME, message.getSend_Date().getTime());
+	}
+}

@@ -1,0 +1,24 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+
+/**
+ * @Title: DetailsActivity.java
+ * @Description: 提醒信息的详细信息
+ * @author lanhaizhong
+ * @date 2013年7月9日下午5:09:36
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DetailsActivity extends BaseActivity {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_details);
+		setTitle(this, "信息详情");
+		initivReabck(this);
+
+	}
+
+}

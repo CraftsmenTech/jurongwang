@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/ll_checkVerson"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="@dimen/pad20"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="检查更新"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <RelativeLayout
+            android:id="@+id/ll_aboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="@dimen/pad20"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="关于我们"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <RelativeLayout
+            android:id="@+id/ll_help"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="@dimen/pad20"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="帮助说明"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/linecolor" />
+
+        <RelativeLayout
+            android:id="@+id/ll_telUs"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_marginLeft="@dimen/pad20"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/pad3" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="联系我们"
+                android:textSize="@dimen/f21" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_rounded_rectangle"
+        android:text="退出系统"
+        android:textColor="@color/white2" />
+
+</LinearLayout>

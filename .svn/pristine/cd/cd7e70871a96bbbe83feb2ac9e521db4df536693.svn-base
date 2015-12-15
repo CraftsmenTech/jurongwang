@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/pad3" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_repay_index"
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="第一期"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_repay_date"
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad4"
+            android:text="2013-07-16"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad3"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/capital" />
+
+        <TextView
+            android:id="@+id/tv_capital"
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="450,000.00" />
+
+        <TextView
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/pad4"
+            android:text="@string/interest" />
+
+        <TextView
+            android:id="@+id/tv_interest"
+            style="@style/normal_textstyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30,000.00" />
+    </LinearLayout>
+
+</LinearLayout>

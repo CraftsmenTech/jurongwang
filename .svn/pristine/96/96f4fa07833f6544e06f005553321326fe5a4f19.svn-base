@@ -1,0 +1,67 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Light"></style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="normal_Labletextstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white2</item>
+    </style>
+
+    <style name="normal_textstyle">
+        <item name="android:textColor">@color/textcolor</item>
+        <item name="android:textSize">@dimen/f21</item>
+    </style>
+
+    <style name="screen_margin_style">
+        <item name="android:layout_marginRight">@dimen/pad3</item>
+        <item name="android:layout_marginTop">@dimen/pad3</item>
+        <item name="android:layout_marginLeft">@dimen/pad3</item>
+    </style>
+
+    <style name="navigation_radiobutton_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingTop">@dimen/pad1</item>
+        <item name="android:paddingBottom">@dimen/pad1</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/white2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/f18</item>
+        <item name="android:background">@drawable/radiolbutton_background_selector</item>
+    </style>
+
+    <style name="blue_buttom_style">
+        <item name="android:textColor">@color/white2</item>
+        <item name="android:background">@drawable/blue_button_background_selector</item>
+        <item name="android:textSize">@dimen/f21</item>
+    </style>
+
+    <style name="green_buttom_style">
+        <item name="android:textColor">@color/white2</item>
+        <item name="android:textSize">@dimen/f21</item>
+    </style>
+
+    <style name="custom_dialog" parent="@android:style/Theme.Dialog">
+
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 屏幕背景变暗 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+</resources>

@@ -1,0 +1,47 @@
+package com.orong.activity;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+import com.orong.adapter.RepayPlanAdapter;
+
+import android.os.Bundle;
+import android.widget.ListView;
+import android.widget.TextView;
+
+/**
+ * @Title: RepayPlanActivity.java
+ * @Description: 还款计划界面
+ * @author lanhaizhong
+ * @date 2013年7月15日上午11:42:54
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class RepayPlanActivity extends BaseActivity {
+
+	private TextView tvRepayPlanInfo;
+	private ListView lvRepayplans;
+	private ArrayList<Object> repayPlanList;
+	private RepayPlanAdapter adapter;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_repay_plan);
+		initivReabck(this);
+		setTitle(this, R.string.repayed_plan);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		// TODO Auto-generated method stub
+		super.initView();
+		tvRepayPlanInfo = (TextView) this.findViewById(R.id.tv_repayplaninfo_text);
+		lvRepayplans = (ListView) this.findViewById(R.id.lv_repay_plan_list);
+
+		repayPlanList = new ArrayList<Object>();
+		adapter = new RepayPlanAdapter(repayPlanList, this);
+		lvRepayplans.setAdapter(adapter);
+	}
+}

@@ -1,0 +1,150 @@
+package com.orong.utils;
+
+import java.util.HashMap;
+
+import com.orong.Constant;
+
+/**
+ * 二维码解析生成类
+ * 
+ * @author Administrator
+ * 
+ */
+public class QCCodeUtil {
+
+	public static final String PRO_TYPE_WEB = "00";
+	public static final String PRO_TYPE_MEMBER = "01";
+	public static final String PRO_TYPE_MERCHANT = "02";
+
+	/**
+	 * 分析二维码
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static HashMap<String, String> checkQCCode(String str) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		str = str.replace(Constant.DOWNLOADURL, "");
+		// str = str.replace("http://m.icaiban.com/d/", "");
+		try {
+			str = recoverIndex(str);
+			if (getCheckCode(str.substring(0, str.length() - 4)).equals(str.substring(str.length() - 4, str.length()))) {
+				// 解除混淆
+				int type = Integer.parseInt(str.substring(0, 2));
+				map.put("type", "0" + type);
+				switch (type) {
+				case 0:// 实物卡
+					map.put("qrCode", str.substring(2, str.length() - 4));// 会员二维码
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return map;
+	}
+
+	/**
+	 * 拼装会员二维码文字
+	 * 
+	 * @param qrCode
+	 *            会员二维码（类似id）
+	 * @return
+	 */
+	public static String creatememberCode(String qrCode) {
+		if (isEmpty(qrCode)) {
+			qrCode = "";
+		}
+		StringBuffer sb = new StringBuffer();
+		sb.append("00");
+		sb.append(qrCode);// 会员二维码
+		return appendCode(sb.toString());
+	}
+
+	/**
+	 * 拼接字符串
+	 * 
+	 * @param strCode
+	 * @return
+	 */
+	private static String appendCode(String strCode) {
+		strCode += getCheckCode(strCode);
+		String s = Constant.DOWNLOADURL + changeIndex(strCode);
+		System.out.println(s);
+		return s;
+	}
+
+	/**
+	 * 生成校验码
+	 * 
+	 * @param strCode
+	 * @return
+	 */
+	private static String getCheckCode(String strCode) {
+		char[] values = new String(Base64.encode(strCode.getBytes())).toCharArray();
+		int checkCode = 0;
+		for (char c : values) {
+			checkCode += (int) c;
+		}
+		if (checkCode > 9999) {
+			return (checkCode + "").substring(0, 4);
+		} else {
+			return "0000".substring(0, 4 - (checkCode + "").length()) + (checkCode + "").substring(0, 4);
+		}
+	}
+
+	/**
+	 * 混淆
+	 * 
+	 * @param strCode
+	 * @return
+	 */
+	private static String changeIndex(String strCode) {
+		char[] chars = strCode.toCharArray();
+		char temp;
+		for (int i = 0; i < chars.length; i++) {
+			if (i != 0 && i % 2 == 0) {
+				temp = chars[i - 1];
+				chars[i - 1] = chars[i];
+				chars[i] = temp;
+			}
+		}
+		temp = chars[0];
+		chars[0] = chars[chars.length - 1];
+		chars[chars.length - 1] = temp;
+		return new String(chars);
+	}
+
+	/**
+	 * 解除混淆
+	 * 
+	 * @param strCode
+	 * @return
+	 */
+	private static String recoverIndex(String strCode) {
+		char[] chars = strCode.toCharArray();
+		char temp;
+		temp = chars[0];
+		chars[0] = chars[chars.length - 1];
+		chars[chars.length - 1] = temp;
+		for (int i = 0; i < chars.length; i++) {
+			if (i != 0 && i % 2 == 0) {
+				temp = chars[i - 1];
+				chars[i - 1] = chars[i];
+				chars[i] = temp;
+			}
+		}
+		return new String(chars);
+	}
+
+	/**
+	 * 是否为空
+	 * 
+	 * @param s
+	 * @return
+	 */
+	public static boolean isEmpty(String s) {
+		return s == null || "".equals(s.trim()) || "null".equals(s.trim().toLowerCase());
+	}
+
+}

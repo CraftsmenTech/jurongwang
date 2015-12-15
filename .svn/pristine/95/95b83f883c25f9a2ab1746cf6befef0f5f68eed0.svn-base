@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/wave_line"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_sequ_by_sum"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@null"
+                android:drawablePadding="0px"
+                android:drawableRight="@drawable/sequence_backgound_selector"
+                android:gravity="center_vertical"
+                android:text="@string/sequ1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_sequ_by_pro"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@null"
+                android:drawablePadding="0px"
+                android:drawableRight="@drawable/sequence_backgound_selector"
+                android:gravity="center_vertical"
+                android:text="@string/sequ2" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_sequ_by_time"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@null"
+                android:drawablePadding="0px"
+                android:drawableRight="@drawable/sequence_backgound_selector"
+                android:gravity="center_vertical"
+                android:text="@string/sequ3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_sequ_by_interest_rate"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:button="@null"
+                android:checked="false"
+                android:drawableLeft="@null"
+                android:drawablePadding="0px"
+                android:drawableRight="@drawable/sequence_backgound_selector"
+                android:gravity="center_vertical"
+                android:text="@string/sequ4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lv_projects"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@drawable/sharp_line"
+        android:dividerHeight="1px" >
+    </ListView>
+
+</LinearLayout>

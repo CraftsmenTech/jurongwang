@@ -1,0 +1,54 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
+/**
+ * @Title: DeclareProjectActivity.java
+ * @Description: 申报项目界面
+ * @author lanhaizhong
+ * @date 2013年7月10日上午11:25:04
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DeclareProjectActivity extends BaseRecommendActivity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_recom_declare);
+		initView(this);
+		initivReabck(this);
+
+		setTitle(this, R.string.my_declared_project);
+		setTextOfTvHasRecommendedNum(getString(R.string.project_has_declared), 23);
+		setTextOfTvHasGotBrokerage(234.00);
+		setTextOfTvWillHaveGotBrokerage(1232312.00);
+
+		tvRecommendedRules.setText(R.string.the_project_declared_rules);
+		setTextOfBtRecommend(getString(R.string.declare_project));
+
+		rlRecommendedRules.setOnClickListener(this);
+		btRecommend.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.rl_recommended_rules:
+			startActivity(new Intent(this, RulesOfRecProjectActivity.class));
+			break;
+		case R.id.bt_recommend:
+			startActivity(new Intent(this, DoRecProjectActivity.class));
+			break;
+		case R.id.iv_option_menu:
+			showPopupWindow(DeclareProjectActivity.this);
+			break;
+		default:
+			super.onClick(v);
+			break;
+		}
+	}
+}

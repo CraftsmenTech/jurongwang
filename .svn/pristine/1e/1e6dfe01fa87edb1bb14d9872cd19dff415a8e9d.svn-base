@@ -1,0 +1,83 @@
+package com.orong.adapter;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+import com.orong.utils.NumberConert;
+
+import android.content.Context;
+import android.text.TextPaint;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+/**
+ * @Title: RepayPlanAdapter.java
+ * @Description: 还款计划的适配器
+ * @author lanhaizhong
+ * @date 2013年7月17日上午10:09:35
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class RepayPlanAdapter extends BaseAdapter {
+
+	private ArrayList<Object> repayPlanList;
+	private Context context;
+
+	public RepayPlanAdapter(ArrayList<Object> repayPlanList, Context context) {
+		this.context = context;
+		this.repayPlanList = repayPlanList;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View view, ViewGroup parent) {
+		ViewHolder holder;
+		if (view == null) {
+			view = LayoutInflater.from(context).inflate(R.layout.repay_plan_item, null);
+			holder = new ViewHolder();
+
+			holder.tvRepayDate = (TextView) view.findViewById(R.id.tv_repay_date);
+			holder.tvRepayIndex = (TextView) view.findViewById(R.id.tv_repay_index);
+			//设置中文字体加粗
+			TextPaint tp = holder.tvRepayIndex.getPaint();
+			tp.setFakeBoldText(true);
+			
+			holder.tvCapital = (TextView) view.findViewById(R.id.tv_capital);
+			holder.tvInterest = (TextView) view.findViewById(R.id.tv_interest);
+			view.setTag(holder);
+		} else {
+			holder = (ViewHolder) view.getTag();
+		}
+		String repayInextStr = String.format(context.getString(R.string.repayindexformatstr), NumberConert.translate(position + 1));
+		holder.tvRepayIndex.setText(repayInextStr);
+		// do something
+
+		return view;
+	}
+
+	class ViewHolder {
+		TextView tvRepayIndex;
+		TextView tvRepayDate;
+		TextView tvCapital;
+		TextView tvInterest;
+	}
+}

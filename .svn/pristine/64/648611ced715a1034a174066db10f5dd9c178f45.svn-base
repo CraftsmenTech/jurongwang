@@ -1,0 +1,32 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar2" />
+
+    <include layout="@layout/recommendedinterface" />
+
+    <Button
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginTop="25dp"
+        android:text="投资着代表权限正在审核中"
+        android:background="@drawable/cor6_rounded_rectangle"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+    <Button
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:layout_marginTop="12dp"
+        android:text="你已经成为投资者代表"
+        android:background="@drawable/cor6_rounded_rectangle"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

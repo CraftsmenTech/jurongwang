@@ -1,0 +1,119 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <EditText
+        style="@style/screen_margin_style"
+        android:id="@+id/et_project_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/project_name"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        style="@style/screen_margin_style"
+        android:id="@+id/et_contact_name"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/contact_name"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        style="@style/screen_margin_style"
+        android:id="@+id/et_contact_phone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/contact_phone"
+        android:paddingLeft="@dimen/pad3"
+        android:phoneNumber="true"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        style="@style/screen_margin_style"
+        android:id="@+id/et_demands"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/demands"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <EditText
+        android:id="@+id/et_cycle"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa68"
+        android:background="@drawable/corner_round"
+        android:gravity="center_vertical"
+        android:hint="@string/cycle"
+        android:paddingLeft="@dimen/pad3"
+        android:singleLine="true"
+        android:textColor="@color/textcolor"
+        android:textSize="@dimen/f21" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <EditText
+            android:id="@+id/et_captcha"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_weight="1"
+            android:background="@drawable/corner_round"
+            android:gravity="center_vertical"
+            android:hint="@string/captcha"
+            android:paddingLeft="@dimen/pad3"
+            android:singleLine="true"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f21" />
+
+        <Button
+            android:id="@+id/bt_captcha"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa68"
+            android:layout_marginLeft="@dimen/pad3"
+            android:layout_weight="1"
+            android:background="@color/light_gray"
+            android:text="KTMF"
+            android:textColor="@color/textcolor"
+            android:textSize="@dimen/f26" />
+    </LinearLayout>
+
+    <Button
+        style="@style/screen_margin_style"
+        android:id="@+id/recommend"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_rounded_rectangle"
+        android:text="@string/declare_project"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

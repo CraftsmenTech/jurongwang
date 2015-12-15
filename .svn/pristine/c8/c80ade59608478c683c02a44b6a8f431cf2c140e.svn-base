@@ -1,0 +1,64 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.AlphaAnimation;
+import android.widget.RelativeLayout;
+
+/**
+ * 
+ * @ClassName:SplashActivity
+ * @Description: 欢迎界面
+ * @author lanhaizhong
+ * @date 2013年7月3日 下午3:02:59
+ * 
+ */
+public class SplashActivity extends Activity {
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_splash);
+		RelativeLayout rl = (RelativeLayout) this.findViewById(R.id.rl_splash);
+//		AlphaAnimation aa = new AlphaAnimation(0.0f, 1.0f);
+//		aa.setDuration(500);
+//		rl.setAnimation(aa);
+		AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>() {
+
+			@Override
+			protected Void doInBackground(Void... params) {
+				// TODO Auto-generated method stub
+				try {
+					Thread.sleep(1500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+			}
+
+			@Override
+			protected void onPostExecute(Void result) {
+				// TODO Auto-generated method stub
+				super.onPostExecute(result);
+				Intent intent = new Intent(SplashActivity.this,
+						LoginActivity.class);
+				startActivity(intent);
+				finish();
+			}
+		};
+		task.execute();
+
+	}
+}

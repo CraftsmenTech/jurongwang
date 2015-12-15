@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.orong"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" >
+    </uses-permission>
+
+    <application
+        android:name=".OrongApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".activity.SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.ProtocolActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.UserNewSListActivity" />
+        <activity android:name=".activity.DetailsActivity" />
+        <activity android:name=".activity.RecomMemberActivity" />
+        <activity android:name=".activity.DeclareProjectActivity" />
+        <activity android:name=".activity.BecomeDeputyActivity" />
+        <activity android:name=".activity.ApplyForDeputyActivity" />
+        <activity android:name=".activity.RulesOfDeputyActivity" />
+        <activity android:name=".activity.RulesOfRecMemberActivity" />
+        <activity android:name=".activity.DoRecomMemberActivity" />
+        <activity android:name=".activity.RulesOfRecProjectActivity" />
+        <activity android:name=".activity.DoRecProjectActivity" />
+        <activity android:name=".activity.AboutActivity" />
+        <activity android:name=".activity.TelUsActivity" />
+        <activity android:name=".activity.HelpCaptionActivity" />
+        <activity android:name=".activity.RulesOfRepayActivity" />
+        <activity android:name=".activity.DetailOfInvestmentActivity" />
+        <activity android:name=".activity.ProjectInfoActivity" />
+        <activity android:name=".activity.ContractInfoActivity" />
+        <activity android:name=".activity.RepayPlanActivity" />
+        <activity android:name=".activity.InvestActivity" />
+    </application>
+
+</manifest>

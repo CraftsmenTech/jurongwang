@@ -1,0 +1,99 @@
+# view res/layout/activity_main.xml #generated:8
+-keep class android.support.v4.view.ViewPager { <init>(...); }
+
+# view AndroidManifest.xml #generated:29
+-keep class com.orong.OrongApplication { <init>(...); }
+
+# view AndroidManifest.xml #generated:91
+-keep class com.orong.activity.AboutActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:73
+-keep class com.orong.activity.ApplyForDeputyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:70
+-keep class com.orong.activity.BecomeDeputyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:109
+-keep class com.orong.activity.ContractInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:67
+-keep class com.orong.activity.DeclareProjectActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:103
+-keep class com.orong.activity.DetailOfInvestmentActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:61
+-keep class com.orong.activity.DetailsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:88
+-keep class com.orong.activity.DoRecProjectActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:129
+-keep class com.orong.activity.ErrorVerifyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:97
+-keep class com.orong.activity.HelpCaptionActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:115
+-keep class com.orong.activity.InvestActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class com.orong.activity.LoginActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:55
+-keep class com.orong.activity.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:118
+-keep class com.orong.activity.MemberSpaceActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:82
+-keep class com.orong.activity.MyIdentityActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:133
+-keep class com.orong.activity.NameVerifyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:106
+-keep class com.orong.activity.ProjectInfoActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:52
+-keep class com.orong.activity.ProtocolActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:64
+-keep class com.orong.activity.RecomMemberActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:49
+-keep class com.orong.activity.RegisterActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:112
+-keep class com.orong.activity.RepayPlanActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:76
+-keep class com.orong.activity.RulesOfDeputyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:79
+-keep class com.orong.activity.RulesOfRecMemberActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:85
+-keep class com.orong.activity.RulesOfRecProjectActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:100
+-keep class com.orong.activity.RulesOfRepayActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:35
+-keep class com.orong.activity.SplashActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:121
+-keep class com.orong.activity.SummitVerifyActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:94
+-keep class com.orong.activity.TelUsActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:58
+-keep class com.orong.activity.UserNewSListActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:125
+-keep class com.orong.activity.VerifyResultActivity { <init>(...); }
+
+# view res/layout/fragment_capture.xml #generated:18
+-keep class com.orong.zxing.view.ViewfinderView { <init>(...); }
+

@@ -1,0 +1,68 @@
+package com.orong.activity;
+
+import com.orong.R;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+/**
+ * @Title: DoRecProjectActivity.java
+ * @Description: 填写推荐项目信息的界面
+ * @author lanhaizhong
+ * @date 2013年7月10日下午5:20:38
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class DoRecProjectActivity extends BaseActivity {
+	private EditText etProjectName;// 项目名称
+	private EditText etContactName;// 联系人
+	private EditText etContactPhone;// 联系人电话
+	private EditText etDemands;// 项目需求
+	private EditText etCycle;// 项目周期
+	private EditText etCaptcha;// 验证码输入框
+	private Button btCaptcha;// 验证码显示按钮
+	private Button btRecommend;// 提交推荐按钮
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_do_recom_project);
+		initivReabck(this);
+		setTitle(this, R.string.declare_project);
+
+	}
+
+	@Override
+	public void initView() {
+		super.initView();
+
+		etProjectName = (EditText) this.findViewById(R.id.et_project_name);
+		etContactName = (EditText) this.findViewById(R.id.et_contact_name);
+		etContactPhone = (EditText) this.findViewById(R.id.et_contact_phone);
+		etDemands = (EditText) this.findViewById(R.id.et_demands);
+		etCycle = (EditText) this.findViewById(R.id.et_cycle);
+
+		etCaptcha = (EditText) this.findViewById(R.id.et_captcha);
+		btCaptcha = (Button) this.findViewById(R.id.bt_captcha);
+		btCaptcha.setOnClickListener(this);
+		btRecommend = (Button) this.findViewById(R.id.bt_recommend);
+		btRecommend.setOnClickListener(this);
+	}
+
+	@Override
+	public void onClick(View v) {
+
+		switch (v.getId()) {
+		case R.id.bt_recommend:
+
+			break;
+
+		default:
+			super.onClick(v);
+			break;
+		}
+
+	}
+}

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 推荐的公告界面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_recommendedNum"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/green_top_round"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/pad4"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad4"
+                android:gravity="right"
+                android:paddingRight="20dp"
+                android:text="@string/has_got_brokerage" />
+
+            <TextView
+                android:id="@+id/tv_has_got_brokerage"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad4"
+                android:gravity="right"
+                android:paddingRight="20dp"
+                android:text="@string/will_have_got_brokerage" />
+
+            <TextView
+                android:id="@+id/tv_will_have_got_brokerage"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_recommended_rules"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa74"
+            android:layout_gravity="center_vertical"
+            android:background="@color/cor5" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/pad4"
+                android:paddingRight="@dimen/pad3"
+                android:text="·"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/f26"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_recom_regulation"
+                style="@style/normal_textstyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/pad1"
+                android:layout_toRightOf="@+id/textView1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/pad3"
+                android:src="@drawable/listitem_arrow" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_recommend"
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa72"
+        android:background="@drawable/blue_button_background_selector"
+        android:textColor="@color/white2"
+        android:textSize="@dimen/f21" />
+
+</LinearLayout>

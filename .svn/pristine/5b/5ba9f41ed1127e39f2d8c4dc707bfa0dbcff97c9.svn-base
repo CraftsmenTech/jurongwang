@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="title_labbar">52dp</dimen>
+    <!-- 以下为文字大小定义 -->
+    <!--
+    <dimen name="font4">18sp</dimen>
+    <dimen name="font3">15sp</dimen>
+    <dimen name="font2">13sp</dimen>
+    <dimen name="font1">11sp</dimen>
+    -->
+    <dimen name="f26">18sp</dimen>
+    <dimen name="f21">15sp</dimen>
+    <dimen name="f18">13sp</dimen>
+    <dimen name="f16">11sp</dimen>
+
+    <!-- 间距 -->
+    <dimen name="spa11">34dp</dimen>
+    <dimen name="spa12">50dp</dimen>
+    <dimen name="rebackimage_whidth">60dp</dimen>
+    <dimen name="spa10">67dp</dimen>
+    <dimen name="spa74">50dp</dimen>
+    <dimen name="spa72">49dp</dimen>
+    <dimen name="spa78">53dp</dimen>
+    <dimen name="spa68">45dp</dimen>
+    <dimen name="spa150">100dp</dimen>
+    <dimen name="spa180">120dp</dimen>
+    <!-- 边距 -->
+    <dimen name="pad1">4dp</dimen>
+    <dimen name="pad3">6dp</dimen>
+    <dimen name="pad4">12dp</dimen>
+    <dimen name="pad20">14dp</dimen>
+
+</resources>

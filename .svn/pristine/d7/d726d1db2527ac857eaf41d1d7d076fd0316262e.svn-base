@@ -1,0 +1,55 @@
+package com.orong.adapter;
+
+import java.util.ArrayList;
+
+import com.orong.R;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+
+/**
+ * @Title: ProjectsAdapter.java
+ * @Description: 展示可投资项目的列表
+ * @author lanhaizhong
+ * @date 2013年7月11日下午5:24:29
+ * @version V1.0 Copyright (c) 2013 Company,Inc. All Rights Reserved.
+ */
+public class ProjectsAdapter extends BaseAdapter {
+
+	private ArrayList<Object> projectList;
+	private Context context;
+
+	public ProjectsAdapter(ArrayList<Object> projectList, Context context) {
+		this.projectList = projectList;
+		this.context = context;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 5;
+	}
+
+	@Override
+	public Object getItem(int position) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long getItemId(int position) {
+		// TODO Auto-generated method stub
+		return position;
+	}
+
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent) {
+		// TODO Auto-generated method stub
+		convertView=LayoutInflater.from(context).inflate(R.layout.projects_item, null);
+		return convertView;
+	}
+
+}

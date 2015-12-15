@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 上传图像布局 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/spa390"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spa78"
+        android:background="@drawable/cor8_top_rounded_rectangle" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:text="@string/uploadimage"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f26"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/cor8" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white2"
+        android:minHeight="120dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_photograph"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa78"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/pad3"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad20"
+                android:layout_marginRight="@dimen/pad20"
+                android:scaleType="fitXY"
+                android:src="@drawable/photograph" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/photograph"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/f24"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/light_gray" />
+
+        <LinearLayout
+            android:id="@+id/ll_select_photo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/spa78"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/pad3"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/pad20"
+                android:layout_marginRight="@dimen/pad20"
+                android:scaleType="fitXY"
+                android:src="@drawable/select_photo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_from_albums"
+                android:textColor="@color/textcolor"
+                android:textSize="@dimen/f24"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

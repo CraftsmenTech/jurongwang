@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@android:id/background"
+        android:drawable="@drawable/corner_round">
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape>
+                <corners android:radius="5dip" />
+
+                <gradient
+                    android:angle="270"
+                    android:centerColor="#ffFFFF00"
+                    android:centerY="0.45"
+                    android:endColor="#ffAABD00"
+                    android:startColor="#ffffffff" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>

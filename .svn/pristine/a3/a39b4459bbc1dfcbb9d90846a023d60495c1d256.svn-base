@@ -1,0 +1,43 @@
+ <!-- 合同信息页面 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/title_bar" />
+
+    <LinearLayout
+        style="@style/screen_margin_style"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/pad3"
+        android:background="@drawable/corner_round"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_projectinfo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/green_top_round"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/spa72"
+            android:paddingLeft="@dimen/pad3"
+            android:text="办公楼装修项目"
+            android:textColor="@color/white2"
+            android:textSize="@dimen/f21" />
+
+        <ListView
+            android:id="@+id/lv_contract_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/pad3"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@color/linecolor"
+            android:dividerHeight="1px" >
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>
